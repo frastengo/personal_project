@@ -1,68 +1,173 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# FURBook
 
-## Available Scripts
+## frontend
 
-In the project directory, you can run:
+### dependencies
 
-### `npm start`
+- axios
+- react-router-dom (browserRouter)
+- react-redux 
+- redux (store, createStore)
+- redux-promise-middleware
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### components
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- App.js
+    - Welcome
+    - Header
+    - Home 
+        - Profile (small display)
+        - Friends (small display)
+        - Browser (small display)
+    - Profile
+        - User (user info)
+        - UserProfiles (userprofiles)
+    - FriendBrowser
+    - CreateProfile 
+    *****(will have form, and preview of profile)
+    - Friends
+    - Profile
+    - Register
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Routes
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Home => '/'
+- Profile => '/profile'
+- Create => '/create'
+- Friends => '/friends'
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Redux
 
-### `npm run eject`
+```js
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+const initialState = {
+    profiles: [],
+    friends: [],
+    user: []
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## backend
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### dependencies
 
-## Learn More
+npm i massive express bcrypt axios redux redux-promise-middleware react-redux react-router-dom express-session dotenv concurrently
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- express
+- express-session
+- massive
+- dotenv
+- bcrypt
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## endpoint routes 
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+**auth**
 
-### Analyzing the Bundle Size
+- login: => '/auth/login'
+- logout: => '/auth/logout'
+- register: => '/auth/register'
+- session: => '/auth/session'
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+**user**
 
-### Making a Progressive Web App
+- get: => '/api/user'
+- getOne: => '/api/user/id'
+- put: => '/api/user/:id'
+- delete: => '/api/user/:id'
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+**profiles**
 
-### Advanced Configuration
+- get: => '/api/profiles'
+- getOne: => '/api/profile/id'
+- post: => '/api/profile'
+- put: => '/api/profile/:id'
+- delete: => '/api/profile/:id'
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+**friends**
 
-### Deployment
+- get: => '/api/friends'
+- getOne: => '/api/friend/id'
+- post: => '/api/friends' + body
+- put: => '/api/friend/:id'
+- delete: => '/api/friend/:id'
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### database schema
+
+- user
+```sql
+
+create table user(
+    user_id serial primary key,
+    username text not null,
+    password text,
+    email text,
+    name text,
+)
+
+
+-- session is an obj, it contains user data when you log in but it can also contain which dog I will be selecting 
+
+
+
+create table profiles(
+    user_id integer references user(user_id)
+    profile_id serial primary key,
+    name text not null,
+    breed text,
+    gender text,
+    image text,
+    favorites text,
+    country text,
+    city text,
+    state text,
+    zipcode integer
+)
+
+
+
+```
+
+
+- messages
+
+
+```sql
+
+create table messages(
+    message_id serial primary key,
+    message text not null,
+    profile_id integer references profiles(profile_id)
+)
+
+
+JOIN - 
+
+```
+
+### server file structure 
+
+- /server
+    - index.js
+    - controllers/
+        - profilesController.js
+        - friendsController.js
+        - messagesController.js
+        - userController.js
+
+### dotenv - (add to gitignore)
+```text
+
+SESSION_SECRET = 
+SERVER_PORT = 
+CONNECTION_STRING = (append => ?ssl=true)
+
+```
+

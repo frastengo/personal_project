@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import './Register.css'
+import './Login.css'
 
 export default class Register extends Component {
     constructor(props) {
@@ -10,9 +10,9 @@ export default class Register extends Component {
           name: '',
           email: '',
           password: '',
-          displayForm: false,
+          displayForm: true,
 
-          registeredUser: []
+          loggedInUser: []
         };
       }
     
@@ -35,11 +35,11 @@ export default class Register extends Component {
       //   })
       // }
     
-      submit() {
-        let { name, email, password } = this.state
-        axios.post('/auth/register', {name, email, password}).then(res => {
+      login() {
+        let {email, password} = this.state
+        axios.post('/auth/login', {email, password}).then(res => {
           this.setState({
-            registeredUser: res.data,
+            loggedInUser: res.data,
             displayForm: false
           })
         })
@@ -54,26 +54,17 @@ export default class Register extends Component {
       }
     
       render() {
-        console.log(this.state.registeredUser)
-        let { registeredUser, email, password, name, displayForm} = this.state;
+        console.log(this.state.loggedInUser)
+        let { loggedInUser, email, password, name, displayForm} = this.state;
         return (
           
           
-          <div className="registration-container">
+          <div className="login-container">
             {displayForm ? (
             <div>
-              <div className="registration-form">
-                <h1>Welcome To FURBook</h1>
+              <div className="login-form">
+                <h1>Welcome back FUR Parent, login to continue...</h1>
                 <div className='form'>
-                  <div className='label-input'>
-                    <label>Name: </label>
-                    <input
-                        value={name}
-                        onChange={e => this.setState({ name: e.target.value })}
-                        type="text"
-                        placeholder="Name"
-                      />
-                  </div>
                   <div className='label-input'>
                     <label>Email: </label>
                     <input
@@ -99,14 +90,18 @@ export default class Register extends Component {
                 ) : (
                   <button onClick={() => this.login()}>Login</button>
                 )} */}
-                <button onClick={() => this.submit()}>Submit</button>
+                <button onClick={() => this.login()}>Login</button>
               </div>
             </div>
             ):(
-              <div className="registration-form">
-                <h1>Welcome {registeredUser.name},</h1>
-                <p>You are now registered and ready to begin your FurBook experience.</p>
-                <Link to='/new' ><button>Create New FURRY Profile</button></Link>
+              <div className="login-form">
+                <h1>Welcome back {loggedInUser.name},</h1>
+                <p>You are now logged-in and ready to continue your FurBook experience. Where do you want to go next?</p>
+                <div className='next'>
+                    <Link to='/profile' ><button>My Profile</button></Link>
+                    <Link to='/profiles' ><button>Find Friends</button></Link>
+                    <Link to='/friends' ><button>My Friends</button></Link>
+                </div>
                 {/* <h2>You are now registered and ready to create your dog profiles.</h2> */}
               </div>
             )}

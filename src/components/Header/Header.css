@@ -30,6 +30,7 @@ header{
 .link {
     text-decoration: none;
     color: white;
+    font-size: 25px;
 }
 
 .link:hover{

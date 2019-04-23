@@ -1,7 +1,7 @@
-.registration-container{
+.login-container{
     width: 100%;
     border-top: 1px solid white;
-    background-image: url('./../Home/resources/iggy.JPG');
+    background-image: url('./../Home/resources/batman2.JPG');
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 1300px;
@@ -9,23 +9,24 @@
     width: 100%;
     height: 1000px;
 }
-.registration-form h1 {
+.login-form h1 {
     font-size: 45px;
 }
 
-.registration-form p {
+.login-form p {
     font-size: 30px;
 }
 
-.registration-form button {
+.login-form button {
     font-family: 'Fjalla One', sans-serif;
     font-size: 20px;
     border-radius: 5%;
     padding: 10px 15px;
     color: grey;
+    margin-right: 40px;
 }
 
-.registration-form button:hover {
+.login-form button:hover {
     font-family: 'Fjalla One', sans-serif;
     font-size: 20px;
     border-radius: 5%;
@@ -34,7 +35,7 @@
     background: black;
 }
 
-.registration-form{
+.login-form{
     width: 100%;
     max-width: 1300px;
     height: 400px;

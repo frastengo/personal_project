@@ -1,13 +1,9 @@
 import React, {Component} from 'react'
 import './Home.css'
-import logo from './resources/whitefurlogo.png'
 import {Link} from 'react-router-dom'
 
 export default class Home extends Component {
-    constructor(){
-        super()
-        
-    }
+
 
    
 
