@@ -1,19 +1,57 @@
 .profile-container {
     width: 100%;
     height: 200px;
-    /* display: flex; */
+    display: flex;
     /* flex-wrap: wrap; */
-    /* justify-content: center; */
-    /* align-items: ; */
-    height: 200px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 700px;
     width: 1300px;
     margin: 0 auto;
     border: 1px solid red;
+    background-image: url('./../Home/resources/opacityprints.png');
+    border: 3px solid black;
+    overflow: scroll;
+
 }
 
 .profile {
     width: 100%;
     max-width: 1300px;
     display: flex;
-    border: 1px solid blue;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    /* background: rgba(100, 100, 100, 0.2); */
+    
+}
+
+.profile-container img {
+    display: block;
+    height: 600px;
+    width: auto;
+    border: 2px solid white;
+    border-radius: 5%;
+    /* background-image: contain; */
+}
+
+.profile .info {
+    height: 300px;
+    /* text-align: center; */
+    background: white;
+    color: grey;
+    border-radius: 5%;
+}
+
+.profile .name h1{
+    font-size: 60px;
+    color: black;
+    background: white;
+    border: 1px solid black;
+}
+
+.profile .info h3{
+    font-size: 25px;
 }

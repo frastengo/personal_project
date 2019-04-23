@@ -7,16 +7,17 @@ export default class Profile extends Component {
         return (
             <div className='profile-container'>
                 <div className='profile'>
+                    <div className="name">
+                        <h1>{name}</h1></div>
                     <div className='info'>
-                        <h1>{name}</h1>
                         <h3>{age}</h3>
                         <h3>{breed}</h3>
                         <h3>{gender}</h3>
-                        <h3>{city}, {state}</h3>
+                        <h3>{city}, {state}, {country}</h3>
                         <h3>Favorites: {favorites}</h3>
                     </div>
-                    <img src={image}/>
                 </div>
+                <img src={image} />
             </div>
         )
     }
