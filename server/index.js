@@ -9,6 +9,8 @@ const pC = require('./controllers/profilesController')
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
 app.use(express.json())
 
+
+
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
@@ -19,6 +21,13 @@ app.use(session({
     }
 }))
 
+function sessionCheck(req, res, next){
+    if (req.session.user){
+        next()
+    } else {
+        res.status(401).send('you must login!')
+    }
+}
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
@@ -32,7 +41,13 @@ massive(CONNECTION_STRING).then(db => {
 
 app.route('/auth/register').post(uC.register);
 app.route('/auth/login').post(uC.login);
-// app.route('/logout').get(uC.logout)
+app.route('/auth/logout').get(uC.logout);
+
+// app.use(sessionCheck)
+
+app.get('/auth/user', (req, res) => {
+    res.status(200).send(req.session.user)
+})
 // app.route('/session').get(uC.getSession)
 
 //profiles
@@ -44,6 +59,9 @@ app.get('/api/profile/:id', pC.getProfile)
 //get profile/s by user-id
 app.get('/api/profiles/:id', pC.getProfilesByUserId)
 //update profile by id
+//use query to find properties/gender
+// app.get('/api/profilesbyproperty', )
+
 app.put('/api/profile/:id', pC.updateProfile)
 //delete profile by id
 app.delete('/api/profile/:id', pC.deleteProfile)

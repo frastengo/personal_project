@@ -1,8 +1,14 @@
 module.exports = {
     getAllProfiles: (req, res) => {
         const db = req.app.get('db')
+        const {gender} = req.query
+        if(gender){
+            db.get_profiles_by_gender([gender]).then(profiles => {
+                res.status(200).send(profiles)
+            }).catch(err => console.log(err.detail))
+        } 
         db.get_profiles().then(profiles => {
-            res.status(200).send(profiles)
+        res.status(200).send(profiles)
         }).catch(err => console.log(err.detail))
     },
 

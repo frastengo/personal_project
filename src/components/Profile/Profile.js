@@ -17,7 +17,9 @@ export default class Profile extends Component {
                         <h3>Favorites: {favorites}</h3>
                     </div>
                 </div>
-                <img src={image} />
+                <div className='image-container'>
+                    <img src={image} />
+                </div>
             </div>
         )
     }

@@ -83,3 +83,31 @@
     font-family: 'Fjalla One', sans-serif;
     
 }
+
+.select {
+    font-size: 30px;
+    width: 200px;
+
+}
+
+.select-container{
+    display: flex;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.select-container h1{
+    color: grey
+}
+
+.mapped-profiles {
+    display: inline-flex;
+    
+    height: 900px;
+    width: 100%;
+
+    overflow: scroll;
+}

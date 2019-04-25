@@ -10,7 +10,7 @@ export default class Register extends Component {
           name: '',
           email: '',
           password: '',
-          displayForm: false,
+          displayForm: true,
 
           registeredUser: []
         };

@@ -40,12 +40,12 @@ module.exports = {
             res.status(200).send('Incorrect email/password')
         }
 
-    }
+    },
 
-    // logout: (req,res) => {
-    //     req.session.destroy()
-    //     res.sendStatus(200)
-    // },
+    logout: (req,res) => {
+        req.session.destroy()
+        res.sendStatus(200)
+    },
 
     // getSession: (req, res) => {
     //     if (req.session.user){

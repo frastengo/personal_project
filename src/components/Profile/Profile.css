@@ -1,37 +1,44 @@
 .profile-container {
     width: 100%;
-    height: 200px;
+    max-height: 800px;
+    max-width: 1300px;
+    width: 100%;
     display: flex;
-    /* flex-wrap: wrap; */
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    height: 700px;
-    width: 1300px;
     margin: 0 auto;
+    /* flex-wrap: wrap; */
+    /* flex-direction: row; */
+    justify-content: center;
+    align-items: center;
+ 
     border: 1px solid red;
     background-image: url('./../Home/resources/opacityprints.png');
     border: 3px solid black;
-    overflow: scroll;
+    /* overflow: scroll; */
+   
 
 }
 
+.image-container{
+    padding-right: 40px;
+}
+
 .profile {
-    width: 100%;
+    width: 1300px;
     max-width: 1300px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    /* padding-left: 20px; */
     /* flex-wrap: wrap; */
     /* background: rgba(100, 100, 100, 0.2); */
     
 }
 
 .profile-container img {
-    display: block;
+    /* display: block; */
     height: 600px;
-    width: auto;
+    width: 600px;
     border: 2px solid white;
     border-radius: 5%;
     /* background-image: contain; */
@@ -39,6 +46,7 @@
 
 .profile .info {
     height: 300px;
+    width: 200px;
     /* text-align: center; */
     background: white;
     color: grey;
