@@ -86,7 +86,7 @@
 
 .select {
     font-size: 30px;
-    width: 200px;
+    width: 300px;
 
 }
 
@@ -104,10 +104,15 @@
 }
 
 .mapped-profiles {
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     
     height: 900px;
+    max-width: 1300px;
     width: 100%;
+    margin: 0 auto;
 
-    overflow: scroll;
+    /* overflow: scroll; */
 }

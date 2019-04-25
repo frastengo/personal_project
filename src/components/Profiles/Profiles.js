@@ -6,13 +6,8 @@ import './Profiles.css'
 import {getAllProfiles} from './../../ducks/profilesReducer'
 import Profile from './../Profile/Profile'
 import Select from 'react-select'
+import options from './searchData.js'
 
-
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-]
 
 const genders = [
     { value: 'male', label: 'Male' },
@@ -62,29 +57,39 @@ class Profiles extends Component {
     handleGender = (selectedGender) => {
         // this.getAllProfiles();
 
+        // if (selectedGender & selectedBreed){
+
+        // } else if {
+        //     (selectedGender && !selectedBreed)
+        // } else if {
+        //     (!selectedGender && selectedBreed)
+        // }
+
+
         let {value} = selectedGender
         value = value.charAt(0).toUpperCase() + value.slice(1)
         console.log('   value at handlegender', value)
         axios.get(`/api/profiles/?gender=${value}`).then(res => {
             this.setState({ 
                 selectedGender,
-                filteredProfiles: res.data
+                profiles: res.data
             });
         })
     }
-    handleGender = (selectedBreed) => {
+    handleBreed = (selectedBreed) => {
         // this.getAllProfiles();
 
         let {value} = selectedBreed
-        value = value.charAt(0).toUpperCase() + value.slice(1)
+        // value = value.charAt(0).toUpperCase() + value.slice(1)
         // value = value.charAt(0).toUpperCase() + value.slice(1)
         console.log('IIII AMM HERE   value at handlebreed', value)
         // axios.get(`/api/profiles/?breed=${value}`).then(res => {
-        let result = this.state.filteredProfiles.filter(dog => dog.breed.toLowerCase() == value);
+        let result = this.state.profiles.filter(dog => dog.breed.toLowerCase() == value);
 
         this.setState({ 
             selectedBreed,
-            filteredProfiles: result
+            // filteredProfiles: result,
+            profiles: result
         });
     }
 
@@ -107,27 +112,43 @@ class Profiles extends Component {
 
     
     render() {
+        console.log('OPTIONS', options)
         const {selectedGender} = this.state
         console.log('selectegender on state', (selectedGender))
         const {value} = selectedGender
         console.log(value)
 
-
+        var valuesArray = []
         var array = []
         for (const [key, value] of Object.entries(this.state.breeds)) {
-            array.push(key)
+            if (value.length > 0){
+                var options = []
+                for (let i = 0; i < value.length; i++){
+                    // array.push({label: key, options: [
+                    //     {value: value[i], label: value[i]}
+                    // ]})
+                    options.push({value: value[i] + " " + key, label: (value[i].charAt(0).toUpperCase() + value[i].slice(1)) + ' ' + (key.charAt(0).toUpperCase()+(key.slice(1)))})
+                }
+                array.push({label: key, options})
+            }else {
+
+                // array.push({value: breed, label: breed.charAt(0).toUpperCase()+breed.slice(1)})
+                array.push({label: (key.charAt(0).toUpperCase()+(key.slice(1))), value: key})
+            }
         }
-        console.log(array)
+        // console.log('array of values', valuesArray)
+        console.log('ARRAY OF KEYS', array)
+        var breedsToAdd = ["pitbull"]
 
-        const mappedArray = array.map(breed => {
-            return {value: breed, label: breed.charAt(0).toUpperCase()+breed.slice(1)}
-        })
+        array.push("pitbull", "boston Bulldog", "english Bulldog", "french Bulldog", "staffordshire bullterrier", "australian Cattledog", "border Collie", "cardigan Corgi", "great Dane", "scottish Deerhound", "norwegian Elkhound", "bichon frise", "italian Greyhound", "walker Hound", "ibizan Hound", "english Hound", "blood Hound", "basset Hound" , "afghan Hound", "english Mastiff", "tibetan Mastiff", "bull Mastiff" , "swiss moutain" )
+        console.log('ARRAY WITH PITBULL ADDED', array)
 
-        const pitbull = {value: 'pitbull', label: 'Pitbull'}
+        // const mappedArray = array.map(breed => {
+        //     return {value: breed, label: breed.charAt(0).toUpperCase()+breed.slice(1)}
+        // })
 
-        mappedArray.push(pitbull)
 
-        console.log('mappedArray', mappedArray)
+        // console.log('mappedArray', mappedArray)
 
 
 
@@ -154,7 +175,7 @@ class Profiles extends Component {
     console.log('PROFILES FROM AXIOS', this.state.profiles)
     
     // let { loggedInUser, profiles} = this.props;
-    const mappedProfiles = this.state.filteredProfiles.map(dog =>
+    const mappedProfiles = this.state.profiles.map(dog =>
      {
         return <Profile key={dog.profile_id} dog={dog}/>
     })
@@ -166,7 +187,7 @@ class Profiles extends Component {
     return (
         <div>
             <div className="select-container">
-                <h1 >Search by... </h1>
+                <h1 >Search by </h1>
 
                 <Select
                     className='select'
@@ -181,7 +202,7 @@ class Profiles extends Component {
                     placeholder="Breed"
                     value={this.selectedBreed}
                     onChange={this.handleBreed}
-                    options={mappedArray}
+                    options={array}
                 />
 
                 <Select

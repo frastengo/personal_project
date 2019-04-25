@@ -1,15 +1,30 @@
 module.exports = {
     getAllProfiles: (req, res) => {
         const db = req.app.get('db')
-        const {gender} = req.query
+        const {gender, breed} = req.query
         if(gender){
             db.get_profiles_by_gender([gender]).then(profiles => {
                 res.status(200).send(profiles)
             }).catch(err => console.log(err.detail))
         } 
-        db.get_profiles().then(profiles => {
-        res.status(200).send(profiles)
-        }).catch(err => console.log(err.detail))
+        if(breed){
+            db.get_profiles_by_breed([breed]).then(profiles => {
+                res.status(200).send(profiles)
+            }).catch(err => console.log(err.detail))
+        }
+        if(gender && breed){
+            db.get_profiles_by_gender_and_breed([gender, breed]).then(profiles => {
+                res.status(200).send(profiles)
+            }).catch(err => console.log(err.detail))
+        } 
+        else {
+            db.get_profiles().then(profiles => {
+                res.status(200).send(profiles)
+            }).catch(err => console.log(err.detail))       
+        }
+
+        
+        
     },
 
     getProfile: (req, res) => {
