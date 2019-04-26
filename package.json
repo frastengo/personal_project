@@ -19,6 +19,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "react-select": "^2.4.3",
+    "react-select-country-list": "^1.0.7",
     "redux": "^4.0.1",
     "redux-promise-middleware": "^6.1.0"
   },

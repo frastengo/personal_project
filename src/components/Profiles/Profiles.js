@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import './Profiles.css'
 import {getAllProfiles} from './../../ducks/profilesReducer'
@@ -8,7 +8,7 @@ import {getFriends} from './../../ducks/friendsReducer'
 import {setUser} from './../../ducks/userReducer'
 import Profile from './../Profile/Profile'
 import Select from 'react-select'
-import options from './searchData.js'
+
 
 
 
@@ -33,7 +33,8 @@ class Profiles extends Component {
             profiles: [],
             breeds: [],
             selectedGender: {},
-            selectedBreed: {}
+            selectedBreed: {},
+            friends: []
         };
     }
     
@@ -47,6 +48,8 @@ class Profiles extends Component {
             })
         })
     }
+
+
 
     componentDidMount(){
         axios.get("/auth/user").then(res => {
@@ -66,6 +69,8 @@ class Profiles extends Component {
                 breeds: res.data.message
             })
         })
+
+
     }
 
     handleGender = (selectedGender) => {
@@ -187,20 +192,20 @@ class Profiles extends Component {
 
     
     render() {
-        console.log('OPTIONS', options)
+      
         const {selectedGender} = this.state
         console.log('selectegender on state', (selectedGender))
         const {value} = selectedGender
         console.log(value)
 
         console.log('BREEDS FROM API', this.state.breeds)
-        var breedsToAdd = {goldendoogle: [], pitbull: []}
+       
         var newBreedsObject = {...this.state.breeds}
         newBreedsObject['goldenDoodle'] = []
         newBreedsObject['pitbull'] = []
         console.log('NEW BREEDS OBJECT', newBreedsObject)
 
-        var valuesArray = []
+        
         var array = []
         for (const [key, value] of Object.entries(newBreedsObject)) {
             if (value.length > 0){
@@ -301,6 +306,11 @@ class Profiles extends Component {
             </div>
             
             <div className="mapped-profiles">{mappedProfiles} </div>
+            <div className="friends-display-section">
+                <h1>My Friends</h1>
+                <div className="friends-maped">
+                </div>
+            </div>
                 {/* <h1>{mappedBreeds}</h1> */}
         </div>
         );

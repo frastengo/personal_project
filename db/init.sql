@@ -32,8 +32,8 @@ create table profiles(
 );
 
 create table friends (
-    logged_id integer references profiles(profile_id),
-    friend_id integer references profiles(profile_id)
+    logged_id integer references profiles(user_id),
+    friend_id integer references profiles(user_id)
 );
 
 insert into friends (logged_id, friend_id)

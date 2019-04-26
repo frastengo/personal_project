@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import './Profile.css'
-
+import './UserProfile.css'
 
 export default class Profile extends Component {
     render(){
@@ -26,7 +25,7 @@ export default class Profile extends Component {
                 </div>
            
                 <div className='image-container'>
-                    <img alt="dog" src={image} />
+                    <img alt='dog' src={image} />
                 </div>
             </div>
         )

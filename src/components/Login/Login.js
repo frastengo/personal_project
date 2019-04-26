@@ -25,7 +25,7 @@ class Login extends Component {
           if(res.data){
             this.setState({
               loggedInUser: res.data,
-              displayFrom: false
+             
             })
           }
         });
@@ -71,7 +71,7 @@ class Login extends Component {
         console.log('logged in user in login component', this.state.loggedInUser)
         console.log('user in component login',this.props.user)
         const {user} = this.props.user
-        let { loggedInUser, email, password, name, displayForm} = this.state;
+        let { loggedInUser, email, password} = this.state;
         return (
           
           

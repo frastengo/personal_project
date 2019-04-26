@@ -66,5 +66,8 @@ app.put('/api/profile/:id', pC.updateProfile)
 //delete profile by id
 app.delete('/api/profile/:id', pC.deleteProfile)
 
+//creat profile by user id
+app.post('/api/profiles/:id', pC.createProfile)
+
 app.listen(SERVER_PORT, () => console.log(`Listening on server port: ${SERVER_PORT}`))
 

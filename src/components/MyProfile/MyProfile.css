@@ -1,0 +1,92 @@
+.user-pet-profiles{
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.user-pet-profiles-display{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    
+    height: 750px;
+    max-width: 1350px;
+    width: 100%;
+    margin: 0 auto;
+
+    overflow: scroll;
+}
+
+.user-info{
+    display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(100, 100, 100, 0.7);
+    border-top: 15px solid white;
+    border-radius: 15%;
+    color: lightgrey;
+}
+
+.user-info:hover{
+    color: white;
+    background: rgba(100, 100, 100, 0.9);
+}
+
+
+.user-info h2 {
+    font-size: 30px;
+}
+
+.user-info h1 {
+    font-size: 30px;
+    /* color: grey; */
+}
+
+.title{
+    font-size: 40px;
+    border: 3px solid black;
+    margin: 20px 20px;
+    padding: 10px 10px;
+    width: 300px;
+    text-align: center;
+    border-radius: 7%;
+    BACKGROUND: BLACK;
+    COLOR: WHITE;
+
+
+}
+
+.user-info button {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 20px;
+    border-radius: 5%;
+    padding: 10px 15px;
+    color: grey;
+    margin-right: 40px;
+}
+
+.user-pet-profiles{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.user-pet-profiles button{
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 20px;
+    border-radius: 5%;
+    padding: 10px 15px;
+    color: grey;
+    margin-right: 40px;
+}
+
+.user-pet-profiles button:hover{
+    background: black;
+    color: white;
+}

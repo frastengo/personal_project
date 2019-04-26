@@ -63,6 +63,17 @@ module.exports = {
         db.delete_profile([id]).then(profiles => {
             res.status(200).send(profiles)
         }).catch(err => console.log(err.detail))
+    },
+
+    createProfile: (req, res) => {
+        const db = req.app.get('db')
+        console.log(req.body)
+        console.log(req.params)
+        const { id } = req.params
+        const { name, breed, gender, age, favorites, image, country, city, state, zipcode } = req.body
+        db.create_new_profile([id, name, breed, gender, age, favorites, image, country, city, state, zipcode]).then(profile => {
+            res.status(200).send(profile)
+        }).catch(err => console.log(err))
     }
 
 }
