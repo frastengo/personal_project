@@ -2,21 +2,26 @@ module.exports = {
     getAllProfiles: (req, res) => {
         const db = req.app.get('db')
         const {gender, breed} = req.query
-        if(gender){
-            db.get_profiles_by_gender([gender]).then(profiles => {
-                res.status(200).send(profiles)
-            }).catch(err => console.log(err.detail))
-        } 
-        if(breed){
-            db.get_profiles_by_breed([breed]).then(profiles => {
-                res.status(200).send(profiles)
-            }).catch(err => console.log(err.detail))
-        }
         if(gender && breed){
+            console.log(breed)
+            // let splittedbreed= breed.split(' ')
+            // let mapped = splittedbreed.map(letter => ((letter.chartAt(0).toUpperCase())+(letter.splice(1)))).join('')
+            // console.log(splittedbreed)
+            // console.log(mapped)
             db.get_profiles_by_gender_and_breed([gender, breed]).then(profiles => {
                 res.status(200).send(profiles)
             }).catch(err => console.log(err.detail))
         } 
+        else if(gender){
+            db.get_profiles_by_gender([gender]).then(profiles => {
+                res.status(200).send(profiles)
+            }).catch(err => console.log(err.detail))
+        } 
+        else if(breed){
+            db.get_profiles_by_breed([breed]).then(profiles => {
+                res.status(200).send(profiles)
+            }).catch(err => console.log(err.detail))
+        }
         else {
             db.get_profiles().then(profiles => {
                 res.status(200).send(profiles)

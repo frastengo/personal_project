@@ -32,10 +32,15 @@ create table profiles(
 );
 
 create table friends (
-    profile_id integer,
-    friend_id 
-)
-}
+    logged_id integer references profiles(profile_id),
+    friend_id integer references profiles(profile_id)
+);
+
+insert into friends (logged_id, friend_id)
+values (1, 2), (2, 1), (1, 2), (1,3);
+
+
+
 
 insert into profiles (user_id, name, breed, gender, age, favorites, image, country, city, state, zipcode)
 values (1, 'Batman', 'Pitbull', 'Male', '6 months old', 'Bitting and snacks', 'https://lh3.googleusercontent.com/MNtG2WW6wsDFVmByAqTfC8MXOj1XUZYeGBWUzdIShxc7nctgALwj4obuQ3VQEsioSOexMvBZTGMkliAapgyBZEWLHVHpJryIJCo-Nv-KnLI4qf8LRqHCFxv9LdthTpNJsCWvLA0e0SOu7t4ZxYrd5vloFgw1XvORU0_tIeSJYi-U7_SR8gYGOvdTK0PBtRDJIPJHXH-CKyPVmwX7NkmWo31dA3U9vNXFFIgcF_QR1KGSfbS8D7zCKtPrzXE6791jRiEnhexdDhlWSYx9nGWzVBucInNQ9VqUA7-0ImPv7g1_Y2NJRkhOAHHmR1ruyDku8a9tja0ucWo2mLbB7aNht_-xE_ZecsIJtbt5LvKrCo-HnKau18dSgo15tyd4K_AFiH1yAnsVATSdlj6RHgPUYI7TEWfPd7W7zF2bKa9BPKRW9NBYxkxmy3PabX7SEd3PyxkqTBmFym9momK3m04-SFbWIGGownF7H9scjHSJI82UCOGAIKM6j3uccMy7HUcDcfo3VzbQFy-ugkgEk2ol6MfPTMckpSGyfRtwuhyHSJMzLGShM0QImwVdSs9hmRHkoNZ3sOltA-t8c4jUD1dmjwDg6L_nw16nuXdfdsPYDpNQk0Rx8fuMYGUOTJclfHt4DJ7_utOdgCD_BgrRwyO_7XVk1OjhH08=w575-h766-no', 'USA','Phoenix', 'AZ', 85054), (1, 'Iggy', 'English Bulldog', 'Female', '4 years old', 'Napping and walks', 'https://lh3.googleusercontent.com/Yi2U24IRtl7q-120giGZWsHzjN8wNdcct6OXHMV8MLGUFNsmyvUBU6Rfi3kw0Df-TP5AbzF_DWHha8wtIf9_7elTWynT7G_j05N-bWQrBwaoYSaz3K2-8fgYiYB4DB99dyd24Q-oi9fxaIKNsgMSEq1d2SyCSNG9YdTapH6OTVyuc5SWOd8oImrrszoP4vD-C8nbWddT74JO6a3sXxdkzVmdeWbkID-uZzV6iAy2_qQMWr_11Sfoc-LuQj6Jcy6vU1PQI6S5LkxKk7B8acdcO9H-oC3VAkUV8oQ8ZAKVC_UMy1Cux6plQYixUWv0EttQ5scf5iHnicQJ9WYAbqjohGYy-5sbRZ1wGgHAEuFIMuRWJSkv4ffqL1CO3p5BHWbonpgbRkVAtN0t3RdH5xgb_1KUkigzJ0BN2QzLuEV1keMNHhfiIi1nIvARa2l5t0FG5xB66hytT6opBZ_GsX99IC5bbJavA3A4jYsJ4aPMJokFywDNs6C9pYvrngROEM6PKU5wrCyLlhNgF8WSxfsfyiZIZr8D-Tszj9rtCehdfubCnJPj4mo9mhgnnEgygoAqn5Cu13KpDs8ahuvedGIgqyFJo5M4rXl1MlNR6b-9ucmEQi-5taFNeRr9JDls1clBd2DPOWGdF4Npc66sPbEcRhN1zBPEa24=w741-h737-no', 'USA', 'Salt Lake City', 'Utah', 85054), (1, 'Nala', 'GoldenDoodle', 'Female', '2 years old', 'Wearing bandanas', 'https://lh3.googleusercontent.com/FnqsDEb1zSKwyaSVgQL_J3Bz2WdKmPtqFhVg1We-Nj-C-DLQ1B-CsYLZU1dBWtHGwssQAaTB1N7MMqjV-WyoKkhT_70sHZQ5_XVrKQU8KAJtD9EDBBGXn5nWknqTiaSDatqdxVtDEfYhbWUBJ1oM99DApJ6X_RR6gNMxYAwJG-sjDJUkmSd-DNXsgYZE1IXrP7xDuD0M5-iNIrCq3w9RK_bv2ylowczuTOzvhoxt15BCX8hiwOFvyXQPk1JIMAC2HNpqIu2PbmXVyaXiIRwvrXplNanrYmXLEhlCToxd_U0VBGMlPI-nonXE9fH2Yil6dt4SHRLDwTqq82eSRIgNx9L43bwCr_V6XFOM08a90zJ66J9jUWXPGvplnndnyrGhbqMd4NT1UsZuPHbWE_-mc7fGEYdmu_zScsUK5EaPKkfERg0GL-d3Y8Yx107wE0NImm5mGRmEA7Qi5ko5sAbc45-mdkcJlS1wPYrJfjhyPsmx1kuMCpARmcU7q5FCgTzYjhqlN-YymyM0e5-6zSG4W2XSvTPk0vwpIi1-Wrwa1sYsKsn7vXbAuI52fUnI8RRMOyiV4IwYZMb5gQMIzVzR9f9aKO9xu3nm6qj8Wa7mKkQYClFQHTBi6i-Wwdu7ietonF982NmQTkt_FE9HbP5rUb8dlrVFgdc=w555-h740-no', 'USA','Phoenix', 'Arizona', 85054),
