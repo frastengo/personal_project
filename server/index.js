@@ -5,6 +5,7 @@ const massive = require('massive')
 const session = require('express-session')
 const uC = require('./controllers/userController')
 const pC = require('./controllers/profilesController')
+const fC = require('./controllers/friendsController')
 
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
 app.use(express.json())
@@ -41,7 +42,9 @@ massive(CONNECTION_STRING).then(db => {
 
 app.route('/auth/register').post(uC.register);
 app.route('/auth/login').post(uC.login);
+
 app.route('/auth/logout').get(uC.logout);
+// app.use(sessionCheck)
 
 // app.use(sessionCheck)
 
@@ -68,6 +71,13 @@ app.delete('/api/profile/:id', pC.deleteProfile)
 
 //creat profile by user id
 app.post('/api/profiles/:id', pC.createProfile)
+
+
+
+//get friends by user id 
+app.get('/api/friends/:id', fC.getFriends)
+//add friend by user id
+app.post('/api/friend/:id', fC.addFriend)
 
 app.listen(SERVER_PORT, () => console.log(`Listening on server port: ${SERVER_PORT}`))
 

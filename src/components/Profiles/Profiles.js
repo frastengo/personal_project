@@ -30,6 +30,7 @@ class Profiles extends Component {
         super(props);
         this.state = {
             loggedInUser: null,
+            loggedInUserId: null,
             profiles: [],
             breeds: [],
             selectedGender: {},
@@ -57,6 +58,7 @@ class Profiles extends Component {
             if (res.data){
                 this.setState({
                     loggedInUser: res.data,
+                    loggedInUserId: res.data.id
                 })
             }
           
@@ -126,6 +128,9 @@ class Profiles extends Component {
         
     
     addFriend = (profileId) => {
+        console.log('profileID in add friend in PROFILES', profileId)
+        const { loggedInUserId } = this.state
+        axios.post()
         
     }
 
@@ -187,7 +192,9 @@ class Profiles extends Component {
         // console.log('filtered by gender',mappedProfilesByGender)
 
 
-    
+    addFriend = (profileId) => {
+
+    }
     
 
     
@@ -263,13 +270,14 @@ class Profiles extends Component {
     // let { loggedInUser, profiles} = this.props;
     const mappedProfiles = this.state.profiles.map(dog =>
      {
-        return <Profile key={dog.profile_id} dog={dog} profileId={dog.profile_id}/>
+        return <Profile addFriend={this.addFriend} key={dog.profile_id} dog={dog} profileId={dog.profile_id}/>
     })
 
 
      
     console.log('THIS.STATE', this.state)
     console.log('LOGGED IN USER IN PROFILES COMPONENT', this.state.loggedInUser)
+    console.log('LOGGEDIN IUSER ID IN PROFILES', this.state.loggedInUserId)
 
     return (
         <div className="profiles">

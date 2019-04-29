@@ -53,20 +53,21 @@ class Header extends Component {
                     <img className='logo' alt ='FURBook' src={logo}/>
                     <nav>
                         {!user ? (
-                            <div>
+                            <div className='nav'>
                                 <Link className='link' to='/register'>Register |</Link>
                                 <Link className='link' to='/login'> Login</Link>
                                 <Link className='link' to = '/'> | Home</Link>
                               
                             </div>
                         ) : (
-                            <div>
+                            <div className='nav'>
                                 <h1 className='link'>{user.name} logged in</h1>
-                                <Link className='link' to = '/'> | Home</Link>
-                                <Link className='link' to = '/new'> | New</Link>
+                                <Link className='link' to = '/'> Home |</Link>
+                                <Link className='link' to = '/new'>       New</Link>
                                 <Link className='link' onClick={this.logout} >| Logout</Link>
-                                <Link to='/friends' className='link' >| My Friends</Link>
+                                <Link to='/friends' className='link' > | My Friends </Link>
                                 <Link className='link' to = '/profile'> | My Pets</Link>
+                                <Link className='link' to = '/profiles'> | Find Friends</Link>
                             </div>
                         )}
                     </nav>

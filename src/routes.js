@@ -7,6 +7,7 @@ import Login from './components/Login/Login'
 import Profiles from './components/Profiles/Profiles'
 import MyProfile from './components/MyProfile/MyProfile'
 import AddPetForm from './components/AddPetForm/AddPetForm'
+import Friends from './components/Friends/Friends'
 
 
 export default (
@@ -18,6 +19,7 @@ export default (
         {/* <Route path = '/friends' component={Friends}/> */}
         <Route path = '/new' component={AddPetForm}/>
         <Route path = '/profiles' component={Profiles}/>
+        <Route path = '/friends' component={Friends}/>
     </Switch>
 
 )

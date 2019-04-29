@@ -1,12 +1,12 @@
-.add {
+/* .add {
     width: 100px;
     height: 100px;
     background: white;
     background-image: url('/../resources/pawwithheartopacity.png');
     /* background-size: cover; */
-    z-index: 1;
-    border-radius: 50%;
-}
+    /* z-index: 1; */
+    /* border-radius: 50%; */
+ */
 
 
 .profile-container {
@@ -167,4 +167,11 @@
 
 .profile .info h3{
     font-size: 25px;
+}
+
+.profile-buttons button {
+    background: url('./../resources/heartwithpaw.png');
+    background-size: cover;
+    height: 100px;
+    width: 100px;
 }

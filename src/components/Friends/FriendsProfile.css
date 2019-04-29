@@ -1,11 +1,26 @@
+/* .friends h1{
+        text-align: center;
+    
+        font-size: 45px;
+        text-shadow: 4px 3px 3px black;
+        color: white;
+
+} */
 
 
-
-.profile-container {
+.title-container{
+    max-width: 1500px;
     width: 100%;
+    margin: 0 auto;
+}
+
+
+.friends-profile-container {
+    width: 100%;
+    
     max-height: 100%;
     
-    max-width: 1300px;
+    max-width: 350px;
     width: 100%;
     display: flex;
     margin: 0 auto;
@@ -13,36 +28,39 @@
     
     /* flex-wrap: wrap; */
     /* flex-direction: row; */
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
  
     /* border: 1px solid red; */
-    background: white;
-    background-image: url('./../Home/resources/opacityprints.png');
+    /* background: white; */
+    /* background-image: url('./../Home/resources/opacityprints.png'); */
     
     /* background-image: url('./../resources/pawprints.png'); */
     
     
 
     background-size: 1500px 1500px;
-    border: 3px solid black;
-    box-shadow: 3px 3px 3px grey;
-    margin: 20px 20px;
+    /* border: 3px solid black; */
+    /* box-shadow: 3px 3px 3px grey; */
+    /* margin: 20px 20px; */
     border-radius: 1%;
     /* overflow: scroll; */
+    display: flex;
+    /* flex-direction: column; */
    
 
 }
 
-.image-container{
+.friends-image-container{
     padding-right: 40px;
 }
 
 
 
-.profile {
-    width: 1300px;
-    max-width: 1300px;
+.friends-profile {
+    width: 1500px;
+    max-width: 1500px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,7 +83,7 @@
 }
 
 
-.profile-container img:hover{
+.friends-profile-container img:hover{
     opacity: 2;
     /* border: 2px solid black; */
     -webkit-transform: scale(1.2);
@@ -73,10 +91,10 @@
     box-shadow: 5px 5px 5px black;
 }
 
-.profile-container img {
+.friends-profile-container img {
     /* display: block; */
-    height: 650px;
-    width: 650px;
+    height: 300px;
+    width: 300px;
     border: 2px solid white;
     border-radius: 5%;
     /* background-image: contain; */
@@ -89,7 +107,7 @@
     
     
 }
-.info-logo {
+.friends-info-logo {
     height: 60px;
     width: 60px;
     background-image: url('./../resources/pawprint.png');
@@ -97,7 +115,7 @@
     margin-right: 10px;
 }
 
-.name {
+.friends-name {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,7 +138,7 @@
     /* width: 200px; */
 }
 
-.profile .info {
+.friends-profile .info {
     height: 300px;
     width: 350px;
     text-align: center;
@@ -159,11 +177,11 @@
     text-shadow: 1px 1px 1px lightgrey; */
 }
 
-.profile .info h3{
+.friends-profile .info h3{
     font-size: 25px;
 }
 
-.buttons button {
+.friends-buttons button {
     background: url('./../resources/heartwithpaw.png');
     background-size: cover;
 }

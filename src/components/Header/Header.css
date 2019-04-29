@@ -2,6 +2,10 @@ header{
     height: 150px;
     width: 100%;
     background: black;
+    
+ 
+    text-shadow: 4px 3px 3px lighgrey;
+    color: white;
 
 
     /* position: fixed; */
@@ -15,6 +19,15 @@ header{
 
 }
 
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav h1{
+    color: lightgrey;
+    margin-right: 50px;
+}
 
 
 .logo-container {

@@ -2,7 +2,8 @@ import axios from 'axios'
 
 
 const initialState = {
-    profiles: []
+    profiles: [],
+    loading: false,
 }
 
 const GET_ALL_PROFILES = "GET_ALL_PROFILES"

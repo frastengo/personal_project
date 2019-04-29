@@ -92,6 +92,9 @@ export default class Register extends Component {
                       placeholder="password"
                     />
                   </div>
+                    <div className='label-input'>
+                      <button onClick={() => this.submit()}>Submit</button>
+                    </div>
                 </div>
                 
                 {/* {loggedInUser.email ? (
@@ -99,7 +102,6 @@ export default class Register extends Component {
                 ) : (
                   <button onClick={() => this.login()}>Login</button>
                 )} */}
-                <button onClick={() => this.submit()}>Submit</button>
               </div>
             </div>
             ):(

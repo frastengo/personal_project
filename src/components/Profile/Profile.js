@@ -19,8 +19,8 @@ export default class Profile extends Component {
                         <h3>{city}, {state}, {country}</h3>
                         <h3>Favorites: {favorites}</h3>
                     </div>
-                    <div className='buttons'>
-                        <button className="add" onClick={()=> this.props.add(this.props.profileId)}>Add</button>
+                    <div className='profile-buttons'>
+                        <button className="add" onClick={()=> this.props.addFriend(this.props.profileId)}>Add</button>
                         <div className="message" onClick={this.message}>Message</div>
                     </div>
                 </div>

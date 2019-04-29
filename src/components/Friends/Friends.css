@@ -1,0 +1,37 @@
+.mapped-friends{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    
+    height: 350px;
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+    background: url('./../Home/resources/opacityprints.png');
+    border-radius: 9%;
+    box-shadow: 3px 3px 3px grey;
+
+    overflow: scroll;
+    margin-bottom: 30px;
+}
+
+.friends {
+    background: linear-gradient( white, grey, white);
+}
+
+.mapped-current-friend{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    
+    height: 800px;
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+
+    /* overflow: scroll; */
+}

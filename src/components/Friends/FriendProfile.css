@@ -1,19 +1,19 @@
 
 
 
-.profile-container {
+.friend-profile-container {
     width: 100%;
     max-height: 100%;
     
-    max-width: 1300px;
+    max-width: 1500px;
     width: 100%;
-    display: flex;
+    
     margin: 0 auto;
-    height: 800px;
+    height: 900px;
     
     /* flex-wrap: wrap; */
     /* flex-direction: row; */
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
  
     /* border: 1px solid red; */
@@ -24,23 +24,25 @@
     
     
 
-    background-size: 1500px 1500px;
-    border: 3px solid black;
+    background-size: 1900px 1900px;
+    border: 1px solid grey;
     box-shadow: 3px 3px 3px grey;
     margin: 20px 20px;
     border-radius: 1%;
     /* overflow: scroll; */
+    display: flex;
+    /* flex-direction: column; */
    
 
 }
 
-.image-container{
+.friend-image-container{
     padding-right: 40px;
 }
 
 
 
-.profile {
+.friend-profile {
     width: 1300px;
     max-width: 1300px;
     display: flex;
@@ -65,7 +67,7 @@
 }
 
 
-.profile-container img:hover{
+.friend-profile-container img:hover{
     opacity: 2;
     /* border: 2px solid black; */
     -webkit-transform: scale(1.2);
@@ -73,10 +75,10 @@
     box-shadow: 5px 5px 5px black;
 }
 
-.profile-container img {
+.friend-profile-container img {
     /* display: block; */
-    height: 650px;
-    width: 650px;
+    height: 700px;
+    width: 700px;
     border: 2px solid white;
     border-radius: 5%;
     /* background-image: contain; */
@@ -89,7 +91,7 @@
     
     
 }
-.info-logo {
+.friend-info-logo {
     height: 60px;
     width: 60px;
     background-image: url('./../resources/pawprint.png');
@@ -97,7 +99,7 @@
     margin-right: 10px;
 }
 
-.name {
+.friend-name {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,7 +122,7 @@
     /* width: 200px; */
 }
 
-.profile .info {
+.friend-profile .friend-info {
     height: 300px;
     width: 350px;
     text-align: center;
@@ -139,6 +141,7 @@
      /* background-image: url('./../resources/pawprint.png');
      background-repeat: no-repeat;
      background-size: 20%; */
+     
     
 }
 
@@ -159,11 +162,13 @@
     text-shadow: 1px 1px 1px lightgrey; */
 }
 
-.profile .info h3{
+.friend-profile .info h3{
     font-size: 25px;
 }
 
-.buttons button {
+
+
+.friend-buttons button {
     background: url('./../resources/heartwithpaw.png');
     background-size: cover;
 }

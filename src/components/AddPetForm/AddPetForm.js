@@ -145,90 +145,95 @@ class AddPetForm extends Component {
 
         console.log('STATE IN ADD PET FORM', this.state)
        return (
-        <div className="add-pet-form">
-            <h1>Add New Pet</h1>
-            <div className='selections'>
+           <div className='container-pet-form'>
+            <div className="add-pet-form-container">
+                <div className='add-pet-form'>
+                    <h1>Add New Pet</h1>
+                    <div className='selections'>
 
 
-                <Select
-                    className='select'
-                    placeholder="Gender"
-                    value={this.selectedGender}
-                    onChange={this.handleGender}
-                    options={genders}
-                />
+                        <Select
+                            className='select'
+                            placeholder="Gender"
+                            value={this.selectedGender}
+                            onChange={this.handleGender}
+                            options={genders}
+                        />
 
-                <Select
-                    className='select'
-                    placeholder="Breed"
+                        <Select
+                            className='select'
+                            placeholder="Breed"
+                            
+                            value={this.selectedBreed}
+                            onChange={this.handleBreed}
+                            options={array}
+                        />
+
+                        <Select
+                            className='select'
+                            placeholder="Age"
+                            
+                            value={this.selectedAge}
+                            onChange={this.handleAge}
+                            options={ageGroups}
+                        />
+
+                        <Select
+                            className='select'
+                            placeholder="State"
+                            name="state"
+                            value={this.selectedState}
+                            onChange={this.handleState}
+                            options={stateOptions}
+                        />
+
+                        <Select
+                            className='select'
+                            placeholder="Country"
+                            name="country"
+                            value={this.selectedCountry}
+                            onChange={this.handleCountry}
+                            options={this.state.options}
+                        />
+                        <input 
+                            className='select'
+                            placeholder='City'
+                            name="city"
+                            value={this.state.city}
+                            onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
+                        />
+
+                        <input 
+                            className='select'
+                            placeholder='Zipcode'
+                            name="zipcode"
+                            value={this.state.zipcode}
+                            onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
+                        />
+
+                        <input 
+                            type= 'text'
+                            className='select'
+                            placeholder='Image'
+                            name="image"
+                            value={this.state.image}
+                            onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
+                        />
+
+                        <textarea 
+                            className='select'
+                            placeholder='Favorites'
+                            name="favorites"
+                            value={this.state.favorites}
+                            onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
+                        />
+
+                    </div>
+                        <button>Add Pet</button>
                     
-                    value={this.selectedBreed}
-                    onChange={this.handleBreed}
-                    options={array}
-                />
+                </div>
 
-                <Select
-                    className='select'
-                    placeholder="Age"
-                    
-                    value={this.selectedAge}
-                    onChange={this.handleAge}
-                    options={ageGroups}
-                />
-
-                <Select
-                    className='select'
-                    placeholder="State"
-                    name="state"
-                    value={this.selectedState}
-                    onChange={this.handleState}
-                    options={stateOptions}
-                />
-
-                <Select
-                    className='select'
-                    placeholder="Country"
-                    name="country"
-                    value={this.selectedCountry}
-                    onChange={this.handleCountry}
-                    options={this.state.options}
-                />
-                <input 
-                    className='select'
-                    placeholder='City'
-                    name="city"
-                    value={this.state.city}
-                    onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
-                />
-
-                <input 
-                    className='select'
-                    placeholder='zipcode'
-                    name="zipcode"
-                    value={this.state.zipcode}
-                    onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
-                />
-
-                <input 
-                    type= 'text'
-                    className='select'
-                    placeholder='image url'
-                    name="image"
-                    value={this.state.image}
-                    onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
-                />
-
-                <textarea 
-                    className='select'
-                    placeholder='Favorites'
-                    name="favorites"
-                    value={this.state.favorites}
-                    onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
-                />
-                <button>Add Pet</button>
-                
             </div>
-
         </div>
         )
     }

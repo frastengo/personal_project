@@ -16,7 +16,7 @@ class MyProfile extends Component {
             loggedInUserId: null,
             userProfiles: [],
             friends: null,
-            showForm: true,
+            showForm: false,
         }
     }
 

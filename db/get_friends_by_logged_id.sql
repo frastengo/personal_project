@@ -1,2 +1,3 @@
 select * from friends
-where logged_id = $1;
+join profiles on profiles.profile_id = friends.friend_id
+where friends.logged_id = $1;
