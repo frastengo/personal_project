@@ -16,7 +16,7 @@ export default (
         <Route path = '/profile' component={MyProfile}/>
         <Route path = '/register' component={Register}/>
         <Route path = '/login' component={Login}/>
-        {/* <Route path = '/friends' component={Friends}/> */}
+
         <Route path = '/new' component={AddPetForm}/>
         <Route path = '/profiles' component={Profiles}/>
         <Route path = '/friends' component={Friends}/>

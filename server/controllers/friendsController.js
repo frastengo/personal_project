@@ -8,6 +8,9 @@ module.exports = {
     },
 
     addFriend: (req, res) => {
-        const db 
+        const db = req.app.get('db')
+        db.add_friend([req.params.id, req.query.id]).then(profiles =>{
+            res.status(200).send(profiles)
+        }).catch(err => console.log(err.detail))
     }
 }

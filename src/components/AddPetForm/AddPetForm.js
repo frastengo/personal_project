@@ -1,17 +1,20 @@
 import React, {Component} from 'react'
 import './AddPetForm.css'
 import axios from 'axios'
+import Profile from './../Profile/Profile'
 import Select from 'react-select'
 import {products, genders, ageGroups, stateOptions} from './searchData.js'
 import countryList from 'react-select-country-list'
+import {setUser} from './../../ducks/userReducer'
+import {connect} from 'react-redux'
+import Dropzone from 'react-dropzone'
+const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/frastengo2019/image/upload"
 
 
 
 // import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
 
 
-import {setUser} from './../../ducks/userReducer'
 
 
 
@@ -39,7 +42,10 @@ class AddPetForm extends Component {
             favorites: '',
             zipcode: '',
             profile: [],
-            image: ''
+            displayProfile: [],
+            image: '',
+            uploadedFile: '',
+            cloudinaryUrl: []
         }
     }
 
@@ -100,21 +106,59 @@ class AddPetForm extends Component {
 
     addProfile = () => {
         const {country, state, name, age, breed, favorites, gender, loggedInUserId, zipcode, image} = this.state
+        
+
+        
 
 
 
-        axios.post(`/api/profiles/${loggedInUserId}, `, {country, state, name, age, breed, favorites, gender, loggedInUserId, zipcode, image}).then(res => {
+        axios.post(`/api/profiles/${loggedInUserId}`, {country, state, name, age, breed, favorites, gender, zipcode, image}).then(res => {
             this.setState({
                 profile: res.data
             })
         })
     }
 
+    onImageDrop = (files) => {
+        console.log("onImageDrop FILES", files)
+        this.setState({
+          uploadedFile: files[0]
+        });
+        
+        this.handleImageUpload(files[0]);
+    }
+
+    handleImageUpload = (file) => {
+
+        axios.get('/api/upload').then(response => {
+    
+            let formData = new FormData();
+            formData.append("signature", response.data.signature)
+            formData.append("api_key", "923861371997432");
+            formData.append("timestamp", response.data.timestamp)
+            formData.append("file", file);
+        
+            axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
+
+                this.setState({
+                    cloudinaryUrl: [...this.state.cloudinaryUrl, response.data.secure_url],
+                    image: [...this.state.cloudinaryUrl, response.data.secure_url][0]
+                    })
+                }).catch( err => {
+                console.log(err);
+            })
+        
+        })
+     }
+    
+
 
     
 
 
     render(){
+        // const {cloudinaryUrl} = this.state
+        // console.log('THIS STATE IN ADD PET FORM CLOUDINARY URL',cloudinaryUrl[0])
        
 
 
@@ -138,8 +182,13 @@ class AddPetForm extends Component {
             }
         }
 
-       
 
+        let display = this.state.displayProfile 
+        
+       
+        const mappedDisplayProfile = this.state.displayProfile.map(dog => {
+            return <Profile dog={dog}/>
+        })
 
 
 
@@ -150,7 +199,13 @@ class AddPetForm extends Component {
                 <div className='add-pet-form'>
                     <h1>Add New Pet</h1>
                     <div className='selections'>
-
+                        <input 
+                            className='select'
+                            placeholder='Name'
+                            name="name"
+                            value={this.state.name}
+                            onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
+                        />
 
                         <Select
                             className='select'
@@ -211,14 +266,14 @@ class AddPetForm extends Component {
                             onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
                         />
 
-                        <input 
+                        {/* <input 
                             type= 'text'
                             className='select'
                             placeholder='Image'
                             name="image"
                             value={this.state.image}
                             onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
-                        />
+                        /> */}
 
                         <textarea 
                             className='select'
@@ -228,12 +283,35 @@ class AddPetForm extends Component {
                             onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
                         />
 
+                        <Dropzone onDrop={this.onImageDrop}accept="image/*, video/*" multiple={false}>
+                            {({getRootProps, getInputProps}) => (
+                                <section>
+                                <div {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    <p id="dropzone">Click to select files, or drop file here</p>
+                                </div>
+                                </section>
+                            )}
+                        </Dropzone>
+
                     </div>
-                        <button>Add Pet</button>
+                        <button onClick={this.addProfile}>Add Pet</button>
+
+                    
                     
                 </div>
 
             </div>
+
+            {this.state.profile.length ? (
+                        <div>
+                            {mappedDisplayProfile}
+                        </div>
+
+                    ):(
+                        <div>Your profile preview will display here   
+                        </div>
+                    )}
         </div>
         )
     }

@@ -71,3 +71,12 @@
 .container-pet-form {
     background: linear-gradient( white, grey, white);
 }
+
+#dropzone{
+    height: 100px;
+    width: 100%;
+    border: 2.2px lightgray dashed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -67,8 +67,8 @@ module.exports = {
 
     createProfile: (req, res) => {
         const db = req.app.get('db')
-        console.log(req.body)
-        console.log(req.params)
+        console.log('REQBODY CREATE PROFILE', req.body)
+        console.log('REQPARAMS CREATE PROFILE', req.params)
         const { id } = req.params
         const { name, breed, gender, age, favorites, image, country, city, state, zipcode } = req.body
         db.create_new_profile([id, name, breed, gender, age, favorites, image, country, city, state, zipcode]).then(profile => {

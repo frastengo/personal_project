@@ -6,9 +6,12 @@ const session = require('express-session')
 const uC = require('./controllers/userController')
 const pC = require('./controllers/profilesController')
 const fC = require('./controllers/friendsController')
+const bodyParser = require('body-parser')
+const cloudinary = require('cloudinary')
 
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
 app.use(express.json())
+
 
 
 
@@ -33,7 +36,7 @@ function sessionCheck(req, res, next){
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db)
     // Run init once
-    // db.init();
+    // app.init();
     console.log('Connected to db')
 }).catch(err => console.log('cannot connect to db', err))
 
@@ -78,6 +81,26 @@ app.post('/api/profiles/:id', pC.createProfile)
 app.get('/api/friends/:id', fC.getFriends)
 //add friend by user id
 app.post('/api/friend/:id', fC.addFriend)
+
+
+app.get('/api/upload', (req, res) => {
+
+    const timestamp = Math.round((new Date()).getTime() / 1000);
+    
+    const api_secret  = process.env.CLOUDINARY_SECRET_API;
+
+    const signature = cloudinary.utils.api_sign_request({ timestamp: timestamp }, api_secret);
+
+    const payload = {
+        signature: signature,
+        timestamp: timestamp
+    };
+    res.json(payload);
+
+})
+
+
+
 
 app.listen(SERVER_PORT, () => console.log(`Listening on server port: ${SERVER_PORT}`))
 

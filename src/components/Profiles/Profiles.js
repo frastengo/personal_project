@@ -50,6 +50,32 @@ class Profiles extends Component {
         })
     }
 
+    getFriends = (loggedInUserId) => {
+        axios.get(`/api/friends/${loggedInUserId}`).then(res => {
+            this.props.getFriends(loggedInUserId)
+            this.setState({
+                friends: res.data
+            })
+        })
+    }
+        // function comparer(otherArray){
+        //     return function(current){
+        //       return otherArray.filter(function(other){
+        //         return other.profile_id == current.profile_id && other.display == current.display
+        //       }).length == 0;
+        //     }
+        // }
+        // const {friends, profiles} = this.state
+        //     var onlyInA = profiles.filter(comparer(friends));
+        //     var onlyInB = friends.filter(comparer(profiles));
+            
+        //     const result = onlyInA.concat(onlyInB);
+            
+        //     this.setState({
+        //         friends: result
+        //     })
+    
+
 
 
     componentDidMount(){
@@ -59,6 +85,13 @@ class Profiles extends Component {
                 this.setState({
                     loggedInUser: res.data,
                     loggedInUserId: res.data.id
+                })
+
+                axios.get(`/api/friends/${res.data.id}`).then(res => {
+                    this.props.getFriends(res.data.id)
+                    this.setState({
+                        friends: res.data
+                    })
                 })
             }
           
@@ -71,6 +104,8 @@ class Profiles extends Component {
                 breeds: res.data.message
             })
         })
+
+        
 
 
     }
@@ -130,9 +165,21 @@ class Profiles extends Component {
     addFriend = (profileId) => {
         console.log('profileID in add friend in PROFILES', profileId)
         const { loggedInUserId } = this.state
-        axios.post()
+        console.log('logged in user id in profiles', loggedInUserId)
+        axios.post(`/api/friend/${loggedInUserId}?id=${profileId}`).then(res =>{
+            this.setState({
+                friends: res.data
+                 
+            })
+        })
+        this.getAllProfiles()
+        this.getFriends(loggedInUserId)
         
     }
+
+    
+    
+      
 
 
     handleBreed = (selectedBreed) => {
@@ -192,13 +239,34 @@ class Profiles extends Component {
         // console.log('filtered by gender',mappedProfilesByGender)
 
 
-    addFriend = (profileId) => {
-
-    }
     
-
     
     render() {
+
+        console.log('FRIENDS ARRAY IN PROFILES', this.state.friends)
+        console.log('PROFILES ARRAY IN PROIFLES',this.state.profiles)
+        
+
+        
+        
+
+        
+
+        // const friendsIds = friends.map(friend => friend.friend_id)
+        // console.log(friendsIds)
+        // function filterProfiles (arr1, arr2)  {
+            
+        //     for (var i = 0 ; i < arr2.length; i++) {
+        //         let filter = arr1.filter(item => item.profile_id != arr2[i])
+        //     }
+        //     return filter
+        // }
+
+        // const trial = arr_diff(profiles, friends)
+        // console.log('try WEEEEIIIRDD', trial)
+
+
+        console.log('FRIENDS ARRAY INPROFILE COMPONENT',this.state.friends)
       
         const {selectedGender} = this.state
         console.log('selectegender on state', (selectedGender))
@@ -273,9 +341,13 @@ class Profiles extends Component {
         return <Profile addFriend={this.addFriend} key={dog.profile_id} dog={dog} profileId={dog.profile_id}/>
     })
 
+    const mappedFriends = this.state.friends.map(dog => {
+        return <Profile  key={dog.image} dog={dog} />
+    })
+
 
      
-    console.log('THIS.STATE', this.state)
+    console.log('THIS.STATE in profiles', this.state)
     console.log('LOGGED IN USER IN PROFILES COMPONENT', this.state.loggedInUser)
     console.log('LOGGEDIN IUSER ID IN PROFILES', this.state.loggedInUserId)
 
@@ -317,6 +389,7 @@ class Profiles extends Component {
             <div className="friends-display-section">
                 <h1>My Friends</h1>
                 <div className="friends-maped">
+                    {/* {mappedFriends} */}
                 </div>
             </div>
                 {/* <h1>{mappedBreeds}</h1> */}
