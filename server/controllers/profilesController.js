@@ -74,6 +74,14 @@ module.exports = {
         db.create_new_profile([id, name, breed, gender, age, favorites, image, country, city, state, zipcode]).then(profile => {
             res.status(200).send(profile)
         }).catch(err => console.log(err))
-    }
+    },
+
+    getFilteredProfiles: (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        db.get_filtered_profiles([id]).then(profiles => {
+            res.status(200).send(profiles)
+        }).catch(err => console.log(err.detail))
+    },
 
 }

@@ -68,6 +68,8 @@ app.get('/api/profiles/:id', pC.getProfilesByUserId)
 //use query to find properties/gender
 // app.get('/api/profilesbyproperty', )
 
+app.get('/api/filteredprofiles/:id', pC.getFilteredProfiles)
+
 app.put('/api/profile/:id', pC.updateProfile)
 //delete profile by id
 app.delete('/api/profile/:id', pC.deleteProfile)
