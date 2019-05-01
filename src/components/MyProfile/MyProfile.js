@@ -1,11 +1,14 @@
 import React, {Component} from 'react'
 import './MyProfile.css'
+import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {setUser} from './../../ducks/userReducer'
-import axios from 'axios'
+
 import UserProfile from './../UserProfile/UserProfile'
 import AddPetForm from './../AddPetForm/AddPetForm'
+
+
 class MyProfile extends Component {
 
     constructor(props){
@@ -14,9 +17,12 @@ class MyProfile extends Component {
         this.state = {
             loggedInUser: null,
             loggedInUserId: null,
+            user_name: null,
+            email: null,
             userProfiles: [],
             friends: null,
             showForm: false,
+            showUserEdit: true,
         }
     }
 
@@ -26,7 +32,9 @@ class MyProfile extends Component {
             if (res.data){
                 this.setState({
                     loggedInUser: res.data,
-                    loggedInUserId: res.data.id
+                    loggedInUserId: res.data.id,
+                    email: res.data.email,
+                    user_name: res.data.user_name
                 })
 
                 axios.get(`/api/profiles/${res.data.id}`).then(res => {
@@ -51,7 +59,27 @@ class MyProfile extends Component {
     //         })
     //     })
     // }
+
+    submitUserChanges = () => {
+        const {user_name, email, loggedInUserId} = this.state
+
+        axios.put(`/auth/user/${loggedInUserId}`, {user_name, email}).then( res=>{
+            this.props.setUser(res.data)
+            this.setState({
+                loggedInUser: res.data,
+                loggedInUserId: res.data.id,
+                email: res.data.email,
+                user_name: res.data.user_name,
+                showUserEdit: !this.state.showUserEdit,
+            })
+        })
+    }
    
+    showUserEditForm = () => {
+        this.setState({
+            showUserEdit: !this.state.showUserEdit,
+        }) 
+    }
 
     displayFormToAdd =()=>{
         this.setState({
@@ -60,15 +88,18 @@ class MyProfile extends Component {
     }
 
     render(){
+        console.log('state in MY PROFILE',this.state)
         console.log('logged in user in MYPROFILE component', this.state.loggedInUser)
         console.log('USERID IN MYPROFILE COMPONENT', this.state.loggedInUserId)
         console.log('USER PROFILES', this.state.userProfiles)
         console.log('user in component MYPROFILE',this.props.user)
+
+        
         
         
 
         const mappedPetProfiles = this.state.userProfiles.map(dog => {
-           return <UserProfile dog={dog}/>
+           return <UserProfile  loggedInUserId={this.state.loggedInUserId} key={dog.image} dog={dog} profileId={dog.profileId}/>
         })
 
         const {user} = this.props.user
@@ -77,41 +108,62 @@ class MyProfile extends Component {
         return (
             <div className='home'>
                 {user ? (
-                <div>
-                    <div className="user-info">
-                        <h1>My Information: </h1>
-                        <h2>{user.name}</h2>
-                        <h2>{user.email}</h2>
-                        <button>EDIT</button>
-                    </div>
-                    <div className="user-pet-profiles">
-                        {this.state.userProfiles.length > 0 ? (
-                            <h1 className='title'>My Pets</h1>
+                    <div>
+                        {!this.state.showUserEdit ? (
+                        
+                            <div className="user-info">
+                                <h1>My Information: </h1>
+                                <h2>{user.user_name}</h2>
+                                <h2>{user.email}</h2>
+                                
+                                <button onClick={this.showUserEditForm}>EDIT</button>
+                            </div>
                         ):(
-                            <h1 className='title'>My Pet</h1> 
+                        
+                            <div className="user-info">
+                                <h1>My Information: </h1>
+                                <input 
+                                    placeholder={user.user_name}
+                                    onChange={(e) => this.setState({user_name: e.target.value})}
+                                    
+                                />
+                                <input 
+                                    placeholder={user.email}
+                                    onChange={(e)=> this.setState({email: e.target.value})}
+                                    
+                                />
+                                <button onClick={this.submitUserChanges}>SUBMIT</button>
+                                <button onClick={this.showUserEditForm}>CANCEL</button>
+                            </div>
                         )}
-                        {!this.state.showForm ? (
-                            <Link to='/new'><button onClick={this.displayFormToAdd}>ADD NEW</button></Link>
-                        ):(
-                            <button onClick={this.displayFormToAdd}>CANCEL</button>
+                        <div className="user-pet-profiles">
+                            {this.state.userProfiles.length > 0 ? (
+                                <h1 className='title'>My Pets</h1>
+                            ):(
+                                <h1 className='title'>My Pet</h1> 
+                            )}
+                            {!this.state.showForm ? (
+                                <Link to='/new'><button onClick={this.displayFormToAdd}>ADD NEW</button></Link>
+                            ):(
+                                <button onClick={this.displayFormToAdd}>CANCEL</button>
+                            )}
+                        </div>
+                        {this.state.showForm ? (
+                            <div className='add-pet-form'>
+                                <AddPetForm />
+                            </div>
+                        ):( 
+                            <div className='user-pet-profiles-display'>
+                            {mappedPetProfiles}
+                            </div>
                         )}
-                    </div>
-                    {this.state.showForm ? (
-                        <div className='add-pet-form'>
-                            <AddPetForm />
-                        </div>
-                    ):( 
-                        <div className='user-pet-profiles-display'>
-                        {mappedPetProfiles}
-                        </div>
-                    )}
 
-               
-                </div>
-                ):(
+                    </div>
+                ):(  
                     <div>You need to log in!</div>
                 )}
 
+            
             </div>
             
         )

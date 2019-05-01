@@ -41,7 +41,7 @@
     overflow: scroll;
 }
 
-.friends-display {
+/* .friends-display {
     height: 200px;
     width: 100%;
     max-width: 1300px;
@@ -50,4 +50,23 @@
     border: 2px solid white;
     
 
+} */
+
+.mapped-friends{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    
+    height: 350px;
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+    background: url('./../Home/resources/opacityprints.png');
+    border-radius: 9%;
+    box-shadow: 3px 3px 3px grey;
+
+    overflow: scroll;
+    margin-bottom: 30px;
 }

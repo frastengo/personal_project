@@ -31,6 +31,13 @@
     border-top: 15px solid white;
     border-radius: 15%;
     color: lightgrey;
+    height: 80px;
+}
+
+.user-info input{
+    font-size: 30px;
+    font-family: 'Fjalla One', sans-serif;
+    padding: 5px 5px;
 }
 
 .user-info:hover{

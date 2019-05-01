@@ -61,7 +61,7 @@ class Header extends Component {
                             </div>
                         ) : (
                             <div className='nav'>
-                                <h1 className='link'>{user.name} logged in</h1>
+                                <h1 className='link'>{user.user_name} logged in</h1>
                                 <Link className='link' to = '/'> Home |</Link>
                                 <Link className='link' to = '/new'>       New</Link>
                                 <Link className='link' onClick={this.logout} >| Logout</Link>

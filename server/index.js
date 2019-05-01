@@ -54,6 +54,8 @@ app.route('/auth/logout').get(uC.logout);
 app.get('/auth/user', (req, res) => {
     res.status(200).send(req.session.user)
 })
+
+app.put('/auth/user/:id', uC.edit)
 // app.route('/session').get(uC.getSession)
 
 //profiles

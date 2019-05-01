@@ -6,10 +6,10 @@ create table users(
     user_id serial primary key,
     password text,
     email text,
-    name text
+    user_name text
 );
 
-insert into users (password, email, name) 
+insert into users (password, email, user_name) 
 values ('hello', 'frastengo@gmail.com', 'Francisca'),
 ('cata', 'cata@gmail.com', 'Catalina'), ('haley', 'haley@gmail.com', 'Haley');
 

@@ -7,7 +7,7 @@ export default class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          name: '',
+          user_name: '',
           email: '',
           password: '',
           displayForm: true,
@@ -36,8 +36,8 @@ export default class Register extends Component {
       // }
     
       submit() {
-        let { name, email, password } = this.state
-        axios.post('/auth/register', {name, email, password}).then(res => {
+        let { user_name, email, password } = this.state
+        axios.post('/auth/register', {user_name, email, password}).then(res => {
           this.setState({
             registeredUser: res.data,
             displayForm: false
@@ -55,7 +55,7 @@ export default class Register extends Component {
     
       render() {
         console.log(this.state.registeredUser)
-        let { registeredUser, email, password, name, displayForm} = this.state;
+        let { registeredUser, email, password, user_name, displayForm} = this.state;
         return (
           
           
@@ -68,8 +68,8 @@ export default class Register extends Component {
                   <div className='label-input'>
                     <label>Name: </label>
                     <input
-                        value={name}
-                        onChange={e => this.setState({ name: e.target.value })}
+                        value={user_name}
+                        onChange={e => this.setState({ user_name: e.target.value })}
                         type="text"
                         placeholder="Name"
                       />
@@ -106,7 +106,7 @@ export default class Register extends Component {
             </div>
             ):(
               <div className="registration-form">
-                <h1>Welcome {registeredUser.name},</h1>
+                <h1>Welcome {registeredUser.user_name},</h1>
                 <p>You are now registered and ready to begin your FurBook experience.</p>
                 <Link to='/new' ><button>Create New FURRY Profile</button></Link>
                 {/* <h2>You are now registered and ready to create your dog profiles.</h2> */}

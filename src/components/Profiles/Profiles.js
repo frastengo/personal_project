@@ -8,6 +8,9 @@ import {getFriends} from './../../ducks/friendsReducer'
 import {setUser} from './../../ducks/userReducer'
 import Profile from './../Profile/Profile'
 import Select from 'react-select'
+import FriendsProfile from './../Friends/FriendsProfile'
+
+
 
 
 
@@ -40,7 +43,8 @@ class Profiles extends Component {
     }
     
     getAllProfiles = () => {
-        axios.get('/api/profiles').then(res => {
+        const {loggedInUserId} = this.state
+        axios.get(`/api/filteredprofiles/${loggedInUserId}`).then(res => {
             this.setState({
                 profiles: res.data,
                 selectedGender: {},
@@ -87,16 +91,23 @@ class Profiles extends Component {
                     loggedInUserId: res.data.id
                 })
 
+                axios.get(`/api/filteredprofiles/${res.data.id}`).then( res => {
+                    this.setState({
+                        profiles: res.data
+                    })
+                })
+
                 axios.get(`/api/friends/${res.data.id}`).then(res => {
                     this.props.getFriends(res.data.id)
                     this.setState({
                         friends: res.data
                     })
                 })
+
             }
           
         });
-        this.getAllProfiles()
+        
         
         // this.props.getAllProfiles();
         axios.get('https://dog.ceo/api/breeds/list/all').then(res => {
@@ -167,12 +178,14 @@ class Profiles extends Component {
         const { loggedInUserId } = this.state
         console.log('logged in user id in profiles', loggedInUserId)
         axios.post(`/api/friend/${loggedInUserId}?id=${profileId}`).then(res =>{
+            const removeAddedFriend = this.state.profiles.filter(dog => dog.profile_id !== profileId)
             this.setState({
-                friends: res.data
-                 
+                friends: res.data,
+                profiles: removeAddedFriend
             })
         })
-        this.getAllProfiles()
+        
+        
         this.getFriends(loggedInUserId)
         
     }
@@ -338,11 +351,11 @@ class Profiles extends Component {
     // let { loggedInUser, profiles} = this.props;
     const mappedProfiles = this.state.profiles.map(dog =>
      {
-        return <Profile addFriend={this.addFriend} key={dog.profile_id} dog={dog} profileId={dog.profile_id}/>
+        return <Profile addFriend={this.addFriend} key={dog.image} dog={dog} profileId={dog.profile_id}/>
     })
 
-    const mappedFriends = this.state.friends.map(dog => {
-        return <Profile  key={dog.image} dog={dog} />
+    const mappedFriends = this.state.friends.map((dog, index) => {
+        return <FriendsProfile dog={dog} key={index}/>
     })
 
 
@@ -388,8 +401,8 @@ class Profiles extends Component {
             <div className="mapped-profiles">{mappedProfiles} </div>
             <div className="friends-display-section">
                 <h1>My Friends</h1>
-                <div className="friends-maped">
-                    {/* {mappedFriends} */}
+                <div className="mapped-friends">
+                    {mappedFriends}
                 </div>
             </div>
                 {/* <h1>{mappedBreeds}</h1> */}

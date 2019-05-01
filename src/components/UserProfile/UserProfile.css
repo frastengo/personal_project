@@ -1,7 +1,7 @@
 
 
 
-.profile-container {
+.user-profile-container {
     width: 100%;
     max-height: 100%;
     
@@ -34,13 +34,13 @@
 
 }
 
-.image-container{
+.user-profile-image-container{
     padding-right: 40px;
 }
 
 
 
-.profile {
+.user-profile {
     width: 1300px;
     max-width: 1300px;
     display: flex;
@@ -65,7 +65,7 @@
 }
 
 
-.profile-container img:hover{
+.user-profile-container img:hover{
     opacity: 2;
     /* border: 2px solid black; */
     -webkit-transform: scale(1.2);
@@ -73,7 +73,7 @@
     box-shadow: 5px 5px 5px black;
 }
 
-.profile-container img {
+.user-profile-container img {
     /* display: block; */
     height: 650px;
     width: 650px;
@@ -89,7 +89,7 @@
     
     
 }
-.info-logo {
+.user-profile-info-logo {
     height: 60px;
     width: 60px;
     background-image: url('./../resources/pawprint.png');
@@ -97,7 +97,7 @@
     margin-right: 10px;
 }
 
-.name {
+.user-profile-name {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,7 +120,7 @@
     /* width: 200px; */
 }
 
-.profile .info {
+.user-profile-info {
     height: 300px;
     width: 350px;
     text-align: center;
@@ -142,6 +142,8 @@
     
 }
 
+
+
 .profile .name h1{
     /* width: 300px;
     font-size: 60px;
@@ -159,11 +161,30 @@
     text-shadow: 1px 1px 1px lightgrey; */
 }
 
-.profile .info h3{
+.user-profile-info h3{
     font-size: 25px;
 }
 
-.buttons button {
-    background: url('./../resources/heartwithpaw.png');
-    background-size: cover;
+.edit-select {
+    font-size: 25px;
+    text-align: center;
+}
+
+
+
+.user-profile-buttons button {
+    
+    
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 20px;
+    border-radius: 5%;
+    padding: 10px 15px;
+    color: grey;
+    margin-top: 20px;
+    
+}
+
+.user-profile-buttons button:hover{
+    background: black;
+    color: white;
 }
