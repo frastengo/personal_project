@@ -3,12 +3,17 @@ import './UserProfile.css'
 import axios from 'axios'
 import {genders, ageGroups, stateOptions} from './../AddPetForm/searchData.js'
 import Select from 'react-select'
+import countryList from 'react-select-country-list'
+import Dropzone from 'react-dropzone'
+const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/frastengo2019/image/upload"
 
 export default class Profile extends Component {
     constructor(props){
         super(props)
+        this.options = countryList().getData()
 
         this.state ={
+            options: this.options,
             showEdit: false,
             editMode: false,
             editName: false,
@@ -16,6 +21,8 @@ export default class Profile extends Component {
             editFavorites: false,
             editBreed: false,
             editLocation: false,
+            editGender: false,
+            editImage: false,
 
 
             name: null,
@@ -33,6 +40,7 @@ export default class Profile extends Component {
             state: '',
             favorites: '',
             zipcode: '',
+            
             breed: '',
             profile: [],
             displayProfile: [],
@@ -50,10 +58,14 @@ export default class Profile extends Component {
         })
     }
 
-    submitChanges = () => {
+    submitUpdates = () => {
         this.setState({
             editName: !this.state.editName,
-            editAge: !this.state.editAge
+            editAge: !this.state.editAge,
+            editFavorites: !this.state.editFavorites,
+            editBreed: !this.state.editBreed,
+            editLocation: !this.state.editLocation,
+            editGender: !this.state.editGender
         })
     }
     
@@ -85,6 +97,38 @@ export default class Profile extends Component {
         })
     }
 
+    onImageDrop = (files) => {
+        console.log("onImageDrop FILES", files)
+        this.setState({
+          uploadedFile: files[0]
+        });
+        
+        this.handleImageUpload(files[0]);
+    }
+
+    handleImageUpload = (file) => {
+
+        axios.get('/api/upload').then(response => {
+    
+            let formData = new FormData();
+            formData.append("signature", response.data.signature)
+            formData.append("api_key", "923861371997432");
+            formData.append("timestamp", response.data.timestamp)
+            formData.append("file", file);
+        
+            axios.post(CLOUDINARY_UPLOAD_URL, formData).then(response => {
+
+                this.setState({
+                    cloudinaryUrl: [...this.state.cloudinaryUrl, response.data.secure_url],
+                    image: [...this.state.cloudinaryUrl, response.data.secure_url][0]
+                    })
+                }).catch( err => {
+                console.log(err);
+            })
+        
+        })
+     }
+
     render(){
         //breeds api
         var newBreedsObject = {...this.state.breeds}
@@ -110,7 +154,7 @@ export default class Profile extends Component {
 
 
         console.log('STATE IN USERPROFILE TO EDIT PROFILE', this.state)
-        const {name, age, city, state, country, favorites, breed, gender, image, profile_id} = this.props.dog
+        const {name, age, city, state, country, favorites, breed, gender, image, zipcode, profile_id} = this.props.dog
         return (
             <div>
             {!this.state.editMode ? (
@@ -124,7 +168,8 @@ export default class Profile extends Component {
                             <h3>{age}</h3>
                             <h3>{breed}</h3>
                             <h3>{gender}</h3>
-                            <h3>{city}, {state}, {country}</h3>
+                            <h3>{city}, {state}, {country},  {zipcode}</h3>
+                            
                             <h3>Favorites: {favorites}</h3>
                         </div>
                         <div className='user-profile-buttons'>
@@ -182,7 +227,7 @@ export default class Profile extends Component {
                         ):(
                             <Select
                             className='edit-select'
-                            placeholder="Breed"
+                            placeholder={this.state.breed}
                             
                             value={this.breed}
                             onChange={(breed)=>this.setState({
@@ -191,14 +236,73 @@ export default class Profile extends Component {
                             options={array}
                         />
                         )}
+                        {!this.state.editGender ? (
+                        <div onClick={(e)=> this.setState({editGender: !this.state.editGender})}>
+                            <h3 >{gender}</h3>
+                        </div>
+                        ):(
                             <Select
                             className='edit-select'
-                            placeholder="Gender"
-                            value={this.selectedGender}
-                            onChange={this.handleGender}
+                            placeholder={this.state.gender}
+                            value={this.gender}
+                            onChange={(gender)=>this.setState({
+                                gender: gender.value
+                            })}
                             options={genders}
-                        />
-                            <h3>{city}, {state}, {country}</h3>
+                            />
+
+                        )}
+                        {!this.state.editLocation ? (
+                        <div onClick={(e)=> this.setState({editLocation: !this.state.editLocation})}>
+                            <h3>{city}, {state}, {country}, {zipcode}</h3>
+                        </div>
+                        ):(
+                        <div>
+                            <input 
+                            className='edit-select'
+                            placeholder={this.state.city}
+                            type='text'
+                            
+                            
+                            onChange={(e)=> this.setState({
+                                city: e.target.value
+                            })}
+                            />
+
+                            <Select
+                            className='edit-select'
+                            placeholder={this.state.state}
+                            value={this.state}
+                            onChange={(state)=>this.setState({
+                                state: state.value
+                            })}
+                            options={stateOptions}
+                            />
+
+
+                            <Select
+                            className='edit-select'
+                            placeholder={this.state.country}
+                            name="country"
+                            value={this.country}
+                            onChange={(country)=>this.setState({
+                                country: country.value
+                            })}
+                            options={this.state.options}
+                            />
+
+                            <input
+                                placeholder={this.state.zipcode}
+                                type='text'
+                                onChange={(e)=> this.setState({
+                                    zipcode: e.target.value
+                                })}
+                            />
+
+
+                        </div>
+                        )}
+
                         {!this.state.editFavorites ? (
                             <h3 onClick={(e)=>this.setState({editFavorites: !this.state.editFavorites})}>Favorites: {favorites}</h3>
                         ):(
@@ -214,14 +318,29 @@ export default class Profile extends Component {
                         )}
                         </div>
                         <div className='user-profile-buttons'>
-                            <button className="edit" onClick={this.submitChanges}>SUBMIT</button>
+                            <button className="edit" onClick={this.submitUpdates}>UPDATE</button>
                             <button className="edit" onClick={this.showEditFormDog}>CANCEL</button>
+                            <button className="edit" onClick={this.submit}>SUBMIT</button>
                         </div>
                     </div>
-            
-                    <div className='user-profile-image-container'>
-                        <img alt='dog' src={image} />
-                    </div>
+                    {!this.state.editImage ? (
+                        <div onClick={(e)=>this.setState({editImage: !this.state.editImage})}className='user-profile-image-container'>
+                            <img alt='dog' src={image} />
+                        </div>
+                    ):(
+                        <div>
+                            <Dropzone onDrop={this.onImageDrop}accept="image/*, video/*" multiple={false}>
+                            {({getRootProps, getInputProps}) => (
+                                <section>
+                                <div {...getRootProps()}>
+                                    <input {...getInputProps()} />
+                                    <p id="dropzone">Click to select files, or drop file here</p>
+                                </div>
+                                </section>
+                            )}
+                            </Dropzone>
+                        </div>
+                    )}
                 </div>
             )}
             </div>

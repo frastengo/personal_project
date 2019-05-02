@@ -22,7 +22,7 @@ class MyProfile extends Component {
             userProfiles: [],
             friends: null,
             showForm: false,
-            showUserEdit: true,
+            showUserEdit: false,
         }
     }
 

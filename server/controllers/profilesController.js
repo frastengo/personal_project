@@ -51,8 +51,8 @@ module.exports = {
     updateProfile: (req, res) => {
         const db = req.app.get('db')
         const {id} = req.params
-        const {name, breed, gender, image, favorites, country, city, state, zipcode} = req.body
-        db.update_profile([name, breed, gender, image, favorites, country, city, state, zipcode, id]).then(profiles => {
+        const {user_id, name, breed, gender, image, favorites, country, city, state, zipcode} = req.body
+        db.update_profile([id, name, breed, gender, age, favorites, image, country, city, state, zipcode, user_id]).then(profiles => {
             res.status(200).send(profiles)
         }).catch(err => console.log(err.detail))
     },

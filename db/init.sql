@@ -46,6 +46,10 @@ create table friends (
 insert into friends (logged_id, profile_id)
 values (1, 2), (1, 3), (2, 3), (2,1);
 
+update profiles
+set user_id = 1, name = 'Naughty', breed = 'Pitbull', gender = 'Male', age = '7 months old', favorites = 'bitting mommma', image = 'https://lh3.googleusercontent.com/wy17Dz_taJzqkybctsjwH3dSzxGPh4Pyo_9JhMkyMtafNh8EZUfyrdwgXB978sgJCf0916wE1w=w328-h437-no', country = 'USA', city = 'Phoenix', state = 'Arizona', zipcode = 85054
+where profile_id = 1;
+
 
 
 
