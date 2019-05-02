@@ -4,6 +4,7 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {setUser} from './../../ducks/userReducer'
+import {getAllProfiles, getAllProfilesByUserId} from './../../ducks/profilesReducer'
 
 import UserProfile from './../UserProfile/UserProfile'
 import AddPetForm from './../AddPetForm/AddPetForm'
@@ -19,15 +20,22 @@ class MyProfile extends Component {
             loggedInUserId: null,
             user_name: null,
             email: null,
-            userProfiles: [],
+            userProfiles: this.props.userProfiles,
             friends: null,
             showForm: false,
             showUserEdit: false,
+            user_id: null,
+            
         }
     }
 
     componentDidMount() {
+        this.getUserAndProfiles()
+    }
+
+    getUserAndProfiles = () => {
         axios.get("/auth/user").then(res => {
+            console.log(res.data)
             this.props.setUser(res.data);
             if (res.data){
                 this.setState({
@@ -36,19 +44,32 @@ class MyProfile extends Component {
                     email: res.data.email,
                     user_name: res.data.user_name
                 })
-
-                axios.get(`/api/profiles/${res.data.id}`).then(res => {
-                    this.setState({
-                    userProfiles: res.data
-                    })
-                })
+                this.props.getAllProfilesByUserId(res.data.id)
             }
-          
         })
+    }
+                // console.log(res.data.id)
+
+                // axios.get(`/api/profiles/${res.data.id}`).then(res => {
+                //     console.log(res.data)
+                //     if (res.data){
+                //         console.log('RES.DATA.IN.PROFILES', res.data[0].user_id)
+                //         this.props.getAllProfilesByUserId(res.data[0].user_id)
+                //         this.setState({
+                //             userProfiles: res.data,
+                //             user_id: res.data[0].user_id
+                //         })
+                    // }
+                    
+                    
+                // })
+            // }
+          
+        // })
         // console.log(this.state.loggedInUserId)
         // this.getUserProfiles(this.state.loggedInUserId);
 
-    }
+    // }
 
     // getUserProfiles = (id) => {
     //     const { loggedInUserId} = this.state
@@ -59,6 +80,8 @@ class MyProfile extends Component {
     //         })
     //     })
     // }
+
+    
 
     submitUserChanges = () => {
         const {user_name, email, loggedInUserId} = this.state
@@ -97,15 +120,20 @@ class MyProfile extends Component {
         
         
         
-
-        const mappedPetProfiles = this.state.userProfiles.map(dog => {
-           return <UserProfile  loggedInUserId={this.state.loggedInUserId} key={dog.image} dog={dog} profileId={dog.profileId}/>
+        const {userProfiles} = this.props.userProfiles
+        console.log('USERPROFILES FROM REDUX in MY PROFILE', userProfiles)
+        
+        const mappedPetProfiles = userProfiles.map(dog => {
+           return <UserProfile  getUserAndProfiles={this.getUserAndProfiles} submit={this.submit} loggedInUserId={this.state.loggedInUserId} key={dog.image} dog={dog} profileId={dog.profileId}/>
         })
 
         const {user} = this.props.user
+
       
 
         return (
+            
+
             <div className='home'>
                 {user ? (
                     <div>
@@ -172,12 +200,15 @@ class MyProfile extends Component {
 
 const mapStateToProps = reduxState => {
     return {
-      user: reduxState.user
+      user: reduxState.user,
+      userProfiles: reduxState.userProfiles
+      
     };
   };
   
   const mapDispatchToProps = {
-    setUser: setUser
+    setUser: setUser,
+    getAllProfilesByUserId: getAllProfilesByUserId
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);

@@ -49,10 +49,13 @@ module.exports = {
     },
 
     updateProfile: (req, res) => {
+        console.log('REQ BODY AT UPDATE PROFILE', req.body)
         const db = req.app.get('db')
+        console.log('REQ PARAMS AT UPDATE PROFILE', req.params)
         const {id} = req.params
-        const {user_id, name, breed, gender, image, favorites, country, city, state, zipcode} = req.body
-        db.update_profile([id, name, breed, gender, age, favorites, image, country, city, state, zipcode, user_id]).then(profiles => {
+        const {loggedInUserId, name, breed, gender, image, age, favorites, country, city, state, zipcode} = req.body
+        db.edit_profile([+id, name, breed, gender, age, favorites, image, country, city, state, zipcode, loggedInUserId]).then(profiles => {
+            console.log(profiles)
             res.status(200).send(profiles)
         }).catch(err => console.log(err.detail))
     },

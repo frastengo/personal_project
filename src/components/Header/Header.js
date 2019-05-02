@@ -72,6 +72,18 @@ class Header extends Component {
                         )}
                     </nav>
                 </div>
+                <div className='header-nav-trial'>
+                    <h1>HEllo</h1>
+                    <div className='nav'>
+                                <h1 className='link'> logged in</h1>
+                                <Link className='link' to = '/'> Home |</Link>
+                                <Link className='link' to = '/new'>       New</Link>
+                                <Link className='link' onClick={this.logout} >| Logout</Link>
+                                <Link to='/friends' className='link' > | My Friends </Link>
+                                <Link className='link' to = '/profile'> | My Pets</Link>
+                                <Link className='link' to = '/profiles'> | Find Friends</Link>
+                            </div>
+                </div>
             </header> 
             
         )

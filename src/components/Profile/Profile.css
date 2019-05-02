@@ -1,43 +1,48 @@
-/* .add {
-    width: 100px;
-    height: 100px;
-    background: white;
-    background-image: url('/../resources/pawwithheartopacity.png');
-    /* background-size: cover; */
-    /* z-index: 1; */
-    /* border-radius: 50%; */
- */
 
-
-.profile-container {
-    width: 100%;
+#profile-container-profile {
+    
+    /* border: 2px solid blue;
     max-height: 100%;
-    max-width: 1300px;
+    max-width: 1500px;
     width: 100%;
     display: flex;
     margin: 0 auto;
-    height: 800px;
+    height: 800px; */
     /* flex-wrap: wrap; */
-    /* flex-direction: row; */
+    /* flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
  
     /* border: 1px solid red; */
-    background: white;
-    background-image: url('./../Home/resources/opacityprints.png');
+    /* background: white;
+    background-image: url('./../Home/resources/opacityprints.png'); */
     
     /* background-image: url('./../resources/pawprints.png'); */
     
     
 
-    background-size: 1500px 1500px;
+    /* background-size: 1500px 1500px;
     border: 3px solid black;
     box-shadow: 3px 3px 3px grey;
     margin: 20px 20px;
-    border-radius: 1%;
+    border-radius: 1%; */
     /* overflow: scroll; */
    
 
+}
+
+#profile-container-profile{
+    margin: 20px 20px;
+    max-width: 1450px;
+    height: 700px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: 3px solid black;
+    background-image: url('./../Home/resources/opacityprints.png');
+    padding: 20px 20px;
+    box-shadow: 3px 3px 3px grey;
 }
 
 .image-container{
@@ -45,24 +50,25 @@
 }
 
 
-
-.profile {
-    width: 1300px;
-    max-width: 1300px;
+#profile .name {
+    margin-top: 0px;
+}
+#profile {
+    margin-top: 150px;
+    margin-right: 80px;
+    border-radius: 4%;
+    
+    border: 2px solid black;
+    width: 400px;
+    height: 400px;
+    max-width: 800px;
     display: flex;
+    text-align: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background-image: url('./../resources/pawprint.png');
-    background-size: 30%;
-    background-position: 0% -10%;
-    opacity: 1%; */
-    background-repeat: no-repeat;
+    background: lightgrey;
     
-    
-
-
-
 
     /* padding-left: 20px; */
     /* flex-wrap: wrap; */
@@ -79,7 +85,7 @@
     box-shadow: 5px 5px 5px black;
 }
 
-.profile-container img {
+.profile-image-container img {
     /* display: block; */
     height: 650px;
     width: 650px;
@@ -88,7 +94,7 @@
     /* background-image: contain; */
  
     border: 8px solid rgb(248, 245, 245);
-    margin: 20px 20px;
+    /* margin: 20px 20px; */
     border-radius: 10%;
     box-shadow: 5px 5px 5px grey;
 
@@ -170,8 +176,9 @@
 }
 
 .profile-buttons button {
+    margin-bottom: 100px;
     background: url('./../resources/heartwithpaw.png');
     background-size: cover;
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
 }

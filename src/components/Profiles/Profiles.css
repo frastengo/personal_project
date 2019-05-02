@@ -27,18 +27,21 @@
 }
 
 .mapped-profiles {
+    /* border: 5px solid grey; */
     display: flex;
-    /* justify-content: center; */
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     /* flex-wrap: wrap; */
     
-    height: 750px;
-    max-width: 1350px;
+    height: 800px;
+    max-width: 1500px;
     width: 100%;
     margin: 0 auto;
+    /* border-radius: 1%; */
 
     overflow: scroll;
+    /* box-shadow: 5px 5px 5px grey; */
 }
 
 /* .friends-display {
@@ -69,4 +72,12 @@
 
     overflow: scroll;
     margin-bottom: 30px;
+}
+
+.friends-display-section h1{
+    text-align: center;
+    font-size: 50px;
+    /* border: 2px solid black; */
+    /* width: 200px; */
+    
 }

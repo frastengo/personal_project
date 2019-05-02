@@ -4,25 +4,33 @@ import axios from 'axios'
 import {genders, ageGroups, stateOptions} from './../AddPetForm/searchData.js'
 import Select from 'react-select'
 import countryList from 'react-select-country-list'
+import {getAllProfilesByUserId} from './../../ducks/profilesReducer'
+import {connect} from 'react-redux'
 import Dropzone from 'react-dropzone'
 const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/frastengo2019/image/upload"
 
-export default class Profile extends Component {
+class UserProfile extends Component {
     constructor(props){
         super(props)
         this.options = countryList().getData()
 
         this.state ={
+            
+
+
+
             options: this.options,
             showEdit: false,
             editMode: false,
-            editName: false,
-            editAge: false,
-            editFavorites: false,
-            editBreed: false,
-            editLocation: false,
-            editGender: false,
-            editImage: false,
+            editName: true,
+            editAge: true,
+            editFavorites: true,
+            editBreed: true,
+            editLocation: true,
+            editGender: true,
+            editImage: true,
+
+            userProfiles: this.props.userProfiles,
 
 
             name: null,
@@ -33,20 +41,22 @@ export default class Profile extends Component {
             
             breeds: [],
 
-            gender: "",
-            age: '',
-            city: "",
-            country: '',
-            state: '',
-            favorites: '',
-            zipcode: '',
+            gender: null,
+            age: null,
+            city: null,
+            country: null,
+            state: null,
+            favorites: null,
+            zipcode: null,
             
-            breed: '',
+            breed: null,
             profile: [],
             displayProfile: [],
-            image: '',
+            image: null,
             uploadedFile: '',
-            cloudinaryUrl: []
+            cloudinaryUrl: [],
+
+            
         }
     }
 
@@ -56,7 +66,11 @@ export default class Profile extends Component {
                 breeds: res.data.message
             })
         })
+        
+        
     }
+
+    
 
     submitUpdates = () => {
         this.setState({
@@ -68,7 +82,23 @@ export default class Profile extends Component {
             editGender: !this.state.editGender
         })
     }
-    
+
+    submitChanges = () => {
+        
+        const {city, country, state, name, age, breed, favorites, gender, loggedInUserId, zipcode, image, profileId} = this.state
+
+        axios.put(`/api/profile/${profileId}`, {city, country, state, name, age, breed, favorites, gender, loggedInUserId, zipcode, image}).then(res=>{
+            console.log('RESDATA AT SUBMIT',res.data)
+            // this.props.getAllProfilesByUserId(profileId)
+            this.props.getUserAndProfiles()
+            this.setState({
+                // userProfiles: res.data,
+                editMode: !this.state.editMode,
+
+            })
+        })
+    }
+     
     editName = () => {
         this.setState({
             editName: !this.state.editName
@@ -76,6 +106,7 @@ export default class Profile extends Component {
     }
 
     showEditFormDog = (dog) =>{
+        console.log(dog)
         this.setState({
             editMode: !this.state.editMode,
             profileId: dog.profile_id,
@@ -130,6 +161,11 @@ export default class Profile extends Component {
      }
 
     render(){
+
+
+        console.log('USER PROFILES IN USER PROFILE FROM REDUX',this.props.userProfiles.userProfiles)
+
+
         //breeds api
         var newBreedsObject = {...this.state.breeds}
         newBreedsObject['goldenDoodle'] = []
@@ -184,7 +220,7 @@ export default class Profile extends Component {
             ):(
                 //editForm
                 <div className='user-profile-container'  >
-                    <div className='user-profile'>
+                    <div className='edit-user-profile'>
                         <div className="user-profile-name">
                             <div className='user-profile-info-logo'></div>
                         {!this.state.editName ? (
@@ -194,6 +230,7 @@ export default class Profile extends Component {
                         ):(
                         <div>
                             <input
+                                className='edit-select-regular'
                                 placeholder={this.state.name}
                                 type='text'
                                 onChange={(e)=> this.setState({
@@ -203,15 +240,16 @@ export default class Profile extends Component {
                         </div>
                         )}
                         </div>
-                        <div className='user-profile-info'>
+                        <div className='edit-user-profile-info'>
                         {!this.state.editAge ? (
                         <div onClick={(e)=> this.setState({editAge: !this.state.editAge})}>
                             <h3>{this.state.age}</h3>
                         </div>
                         ):(
                             <Select
+                            id='select'
                             className='edit-select'
-                            placeholder="Age"
+                            placeholder={this.state.age}
                             
                             value={this.age}
                             onChange={(age)=>this.setState({
@@ -226,6 +264,7 @@ export default class Profile extends Component {
                         </div>
                         ):(
                             <Select
+                            id='select'
                             className='edit-select'
                             placeholder={this.state.breed}
                             
@@ -242,6 +281,7 @@ export default class Profile extends Component {
                         </div>
                         ):(
                             <Select
+                            id='select'
                             className='edit-select'
                             placeholder={this.state.gender}
                             value={this.gender}
@@ -258,18 +298,9 @@ export default class Profile extends Component {
                         </div>
                         ):(
                         <div>
-                            <input 
-                            className='edit-select'
-                            placeholder={this.state.city}
-                            type='text'
-                            
-                            
-                            onChange={(e)=> this.setState({
-                                city: e.target.value
-                            })}
-                            />
 
                             <Select
+                            id='select'
                             className='edit-select'
                             placeholder={this.state.state}
                             value={this.state}
@@ -281,6 +312,7 @@ export default class Profile extends Component {
 
 
                             <Select
+                            id='select'
                             className='edit-select'
                             placeholder={this.state.country}
                             name="country"
@@ -291,7 +323,21 @@ export default class Profile extends Component {
                             options={this.state.options}
                             />
 
+                            <input 
+                            className='edit-select-regular'
+                            className='edit-select'
+                            placeholder={this.state.city}
+                            type='text'
+
+
+                            onChange={(e)=> this.setState({
+                                city: e.target.value
+                            })}
+                            />
+
                             <input
+                                className='edit-select-regular'
+                                className='edit-select'
                                 placeholder={this.state.zipcode}
                                 type='text'
                                 onChange={(e)=> this.setState({
@@ -307,7 +353,9 @@ export default class Profile extends Component {
                             <h3 onClick={(e)=>this.setState({editFavorites: !this.state.editFavorites})}>Favorites: {favorites}</h3>
                         ):(
                             <textarea 
-                            className='select'
+                            id='select'
+                            className='edit-select'
+                            className='edit-select-regular'
                             placeholder={this.state.favorites}
                             
                             value={this.state.favorites}
@@ -320,7 +368,8 @@ export default class Profile extends Component {
                         <div className='user-profile-buttons'>
                             <button className="edit" onClick={this.submitUpdates}>UPDATE</button>
                             <button className="edit" onClick={this.showEditFormDog}>CANCEL</button>
-                            <button className="edit" onClick={this.submit}>SUBMIT</button>
+                            <button className="edit" onClick={this.submitChanges}>SUBMIT</button>
+                            <button className="edit" onClick={this.delete}>DELETE</button>
                         </div>
                     </div>
                     {!this.state.editImage ? (
@@ -334,7 +383,7 @@ export default class Profile extends Component {
                                 <section>
                                 <div {...getRootProps()}>
                                     <input {...getInputProps()} />
-                                    <p id="dropzone">Click to select files, or drop file here</p>
+                                    <p id="dropzone-edit">Click to select files, or drop file here</p>
                                 </div>
                                 </section>
                             )}
@@ -347,3 +396,18 @@ export default class Profile extends Component {
         )
     }
 }
+
+const mapStateToProps = reduxState => {
+    return {
+      user: reduxState.user,
+      userProfiles: reduxState.userProfiles
+    };
+  };
+  
+  const mapDispatchToProps = {
+    getAllProfilesByUserId: getAllProfilesByUserId
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+
+

@@ -36,7 +36,8 @@ export default class FriendsProfile extends Component {
                     
                     
                     <div className='friend-buttons'>
-                            <button className="friend-add" onClick={()=> this.props.edit(this.props.profileId)}>Delete</button>
+                            <button className="friend-delete" onClick={()=> this.props.delete(this.props.profileId)}></button>
+                            <button className="friend-message" onClick={()=> this.props.message(this.props.profileId)}></button>
                     </div>
                </div>
            

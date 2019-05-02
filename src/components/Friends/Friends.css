@@ -35,3 +35,25 @@
 
     /* overflow: scroll; */
 }
+
+.no-friends{
+    width: 100%;
+    height: 1500px;
+    max-width: 1500px;
+    margin: 0 auto;
+    background: url('./../resources/dutchie1.JPG');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.no-friends-link{
+    font-size: 50px;
+    text-decoration: none;
+    color: white;
+}
+
+.no-friends-container{
+    background: rgba(100, 100, 100, 0.7);
+    padding: 20px 20px;
+
+}

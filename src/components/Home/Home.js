@@ -1,9 +1,27 @@
 import React, {Component} from 'react'
+import Modal from 'react-modal'
 import './Home.css'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {setUser} from './../../ducks/userReducer'
 import axios from 'axios'
+import Register from '../../components/Register/Register'
+
+const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)',
+      height: '1000px',
+      width: '1000px',
+      borderRadius: '10%'
+
+    }
+  };
+
 
 class Home extends Component {
 
@@ -11,11 +29,16 @@ class Home extends Component {
         super(props)
 
         this.state = {
-            loggedInUser: null
+            loggedInUser: null,
+            isActive: false,
+          
         }
     }
 
+    
+
     componentDidMount() {
+        Modal.setAppElement('body');
         axios.get("/auth/user").then(res => {
             this.props.setUser(res.data);
             if (res.data){
@@ -26,6 +49,12 @@ class Home extends Component {
           
         });
     }
+
+    toggleModal = ()=> {
+        this.setState({
+            isActive: !this.state.isActive
+        })
+    }
    
 
     render(){
@@ -35,10 +64,27 @@ class Home extends Component {
         
         return (
             <div className='home'>
+                <section>
+                    <button onClick={this.toggleModal}>ShowModal</button>
+                    <Modal 
+                        isOpen={this.state.isActive}
+                        onRequestClose={this.toggleModal}
+                        style={customStyles}
+                        animationType='slide'
+                        transparent={true}
+                    >
+                        
+                        <Register />
+                        <button onClick={this.toggleModal}>Exit</button>
+                    </Modal>
+
+                </section>
+                
                 <div className='welcome'>
                     <div className='opacity-container1'>
                     {!user ? (
                         <h2>Welcome to FURbook</h2>
+                        
                     ):(
                         <h2>Welcome back to FURbook {user.name}</h2>
                     )}
@@ -56,6 +102,7 @@ class Home extends Component {
                         <h2>Find Friends</h2>
                     </div>
                 </div>
+                
             </div>
             
         )

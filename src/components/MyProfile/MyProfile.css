@@ -11,7 +11,7 @@
     flex-direction: column;
     /* flex-wrap: wrap; */
     
-    height: 750px;
+    height: 850px;
     max-width: 1500px;
     width: 100%;
     margin: 0 auto;
@@ -96,4 +96,8 @@
 .user-pet-profiles button:hover{
     background: black;
     color: white;
+}
+
+.profile-buttons {
+    
 }

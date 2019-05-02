@@ -57,3 +57,23 @@ header{
     /* padding-top: 10px; */
 }
 
+.header-nav-trial{
+    display: flex;
+    /* flex-direction: column; */
+    width: 1500px;
+    max-width: 1500px;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+    background: black;
+    /* background: rgba(100, 100, 100, 0.7); */
+    border-top: 15px solid white;
+    border-radius: 15%;
+    /* color: lightgrey; */
+    height: 100px;
+}
+
+.header-nav-trial h1{
+    font-size: 50px;
+}
+

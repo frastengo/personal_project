@@ -7,7 +7,7 @@ import userReducer from './userReducer'
 import friendsReducer from './friendsReducer'
 
 const rootReducer = combineReducers({
-    profiles:  profilesReducer,
+    userProfiles:  profilesReducer,
     user: userReducer,
     friends: friendsReducer
 })

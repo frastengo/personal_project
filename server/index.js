@@ -85,6 +85,8 @@ app.post('/api/profiles/:id', pC.createProfile)
 app.get('/api/friends/:id', fC.getFriends)
 //add friend by user id
 app.post('/api/friend/:id', fC.addFriend)
+//delete friend by logged in id (user_id)
+app.delete(`/api/friend/:id`, fC.removeFriend)
 
 
 app.get('/api/upload', (req, res) => {

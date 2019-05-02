@@ -4,4 +4,5 @@ where profile_id = $1;
 
 select * 
 from profiles
-where user_id = $12;
+where user_id = $12
+order by profile_id asc;

@@ -54,14 +54,14 @@ class Profiles extends Component {
         })
     }
 
-    getFriends = (loggedInUserId) => {
-        axios.get(`/api/friends/${loggedInUserId}`).then(res => {
-            this.props.getFriends(loggedInUserId)
-            this.setState({
-                friends: res.data
-            })
-        })
-    }
+    // getFriends = (loggedInUserId) => {
+    //     axios.get(`/api/friends/${loggedInUserId}`).then(res => {
+    //         this.props.getFriends(loggedInUserId)
+    //         this.setState({
+    //             friends: res.data
+    //         })
+    //     })
+    // }
         // function comparer(otherArray){
         //     return function(current){
         //       return otherArray.filter(function(other){
@@ -86,6 +86,7 @@ class Profiles extends Component {
         axios.get("/auth/user").then(res => {
             this.props.setUser(res.data);
             if (res.data){
+                this.props.getFriends(res.data.id)
                 this.setState({
                     loggedInUser: res.data,
                     loggedInUserId: res.data.id
@@ -97,12 +98,12 @@ class Profiles extends Component {
                     })
                 })
 
-                axios.get(`/api/friends/${res.data.id}`).then(res => {
-                    this.props.getFriends(res.data.id)
-                    this.setState({
-                        friends: res.data
-                    })
-                })
+                // axios.get(`/api/friends/${res.data.id}`).then(res => {
+                //     this.props.getFriends(res.data.id)
+                //     this.setState({
+                //         friends: res.data
+                //     })
+                // })
 
             }
           
@@ -186,7 +187,7 @@ class Profiles extends Component {
         })
         
         
-        this.getFriends(loggedInUserId)
+        this.props.getFriends(loggedInUserId)
         
     }
 
@@ -256,7 +257,7 @@ class Profiles extends Component {
     
     render() {
 
-        console.log('FRIENDS ARRAY IN PROFILES', this.state.friends)
+        console.log('FRIENDS ARRAY IN PROFILES', this.state.friends.friends)
         console.log('PROFILES ARRAY IN PROIFLES',this.state.profiles)
         
 
@@ -344,8 +345,9 @@ class Profiles extends Component {
     // })
     
 
+        console.log('FRIENDS IN PROFILES FROM RDUX', this.props.friends.friends)
 
-
+    const {friends} = this.props.friends
     console.log('PROFILES FROM AXIOS', this.state.profiles)
     
     // let { loggedInUser, profiles} = this.props;
@@ -354,7 +356,7 @@ class Profiles extends Component {
         return <Profile addFriend={this.addFriend} key={dog.image} dog={dog} profileId={dog.profile_id}/>
     })
 
-    const mappedFriends = this.state.friends.map((dog, index) => {
+    const mappedFriends = friends.map((dog, index) => {
         return <FriendsProfile dog={dog} key={index}/>
     })
 
@@ -411,8 +413,10 @@ class Profiles extends Component {
     }
 }
 
-    function mapStateToProps(state){
-        return state.profiles;
+    const mapStateToProps = (reduxState) => {
+        return {
+            friends: reduxState.friends
+        }
     }
       
       //mapDispatchToProps will map functions imported from the reducer onto the props of this component
