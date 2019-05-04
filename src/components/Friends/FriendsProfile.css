@@ -44,7 +44,7 @@
     /* border: 3px solid black; */
     /* box-shadow: 3px 3px 3px grey; */
     /* margin: 20px 20px; */
-    border-radius: 1%;
+    /* border-radius: 1%; */
     /* overflow: scroll; */
     display: flex;
     /* flex-direction: column; */
@@ -97,12 +97,12 @@
     height: 300px;
     width: 300px;
     border: 2px solid white;
-    border-radius: 5%;
+    /* border-radius: 5%; */
     /* background-image: contain; */
  
-    border: 8px solid rgb(248, 245, 245);
+    border: 8px solid white;
     margin: 20px 20px;
-    border-radius: 10%;
+    border-radius: 6%;
     box-shadow: 5px 5px 5px grey;
 
     

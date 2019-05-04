@@ -57,14 +57,15 @@
 
 .title{
     font-size: 40px;
-    border: 3px solid black;
-    margin: 20px 20px;
+    border: 1px solid lightgrey;
+    /* margin: 20px 20px; */
     padding: 10px 10px;
-    width: 300px;
+    width: 100%;
     text-align: center;
-    border-radius: 7%;
-    BACKGROUND: BLACK;
+    /* border-radius: 7%; */
+    /* BACKGROUND: BLACK; */
     COLOR: WHITE;
+    background: rgba(100, 100, 100, 0.4);
 
 
 }
@@ -80,7 +81,7 @@
 
 .user-pet-profiles{
     display: flex;
-    justify-content: space-around;
+    justify-content:space-between;
     align-items: center;
 }
 
@@ -100,4 +101,38 @@
 
 .profile-buttons {
     
+}
+
+@media screen and (max-width: 768px) {
+    .user-info{
+        display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    margin-top: 20px;
+    
+    }
+    .user-info h2 {
+        font-size: 20px;
+    }
+    
+    .user-info h1 {
+        font-size: 20px;
+        /* color: grey; */
+    }
+
+    .user-info button {
+        font-family: 'Fjalla One', sans-serif;
+        font-size: 10px;
+        border-radius: 5%;
+        padding: 5px 10px;
+        color: grey;
+        margin-right: 40px;
+    }
+
+    .user-pet-profiles-display{
+        max-width: 768px;
+    }
+
 }

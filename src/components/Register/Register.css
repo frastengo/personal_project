@@ -86,3 +86,41 @@
     font-family: 'Fjalla One', sans-serif;
     
 }
+
+@media screen and (max-width: 768px) {
+    .label-input {
+        /* margin-bottom: px; */
+        display: flex;
+        flex-direction: column;
+        margin-top: 45px;
+    }
+
+    .registration-form {
+        flex-direction: column;
+    }
+
+    .registration-form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        background-size: cover;
+        height: 900px;
+        background: rgba(100, 100, 100, 0.4);
+        color: white;
+    
+        width: 100%;
+        max-width: 1500px;
+        
+        
+      
+        border: 1px solid white;
+        color: white;
+    }
+
+    .login-form h1 {
+        text-align: center;
+    }
+    
+}

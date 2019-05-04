@@ -402,7 +402,7 @@ class Profiles extends Component {
             
             <div className="mapped-profiles">{mappedProfiles} </div>
             <div className="friends-display-section">
-                <h1>My Friends</h1>
+                <div className='title-container'><h1 className='title'>My Friends</h1></div>
                 <div className="mapped-friends">
                     {mappedFriends}
                 </div>

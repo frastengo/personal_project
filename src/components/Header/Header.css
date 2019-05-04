@@ -1,10 +1,17 @@
 header{  
     height: 150px;
     width: 100%;
+    /* max-width: 1500px; */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 1px;
+    
+
+    
     background: black;
     
  
-    text-shadow: 4px 3px 3px lighgrey;
+    text-shadow: 4px 3px 3px ligtgrey;
     color: white;
 
 
@@ -19,21 +26,21 @@ header{
 
 }
 
+
+
 .nav{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+   
 }
-.nav h1{
-    color: lightgrey;
-    margin-right: 50px;
-}
+
 
 
 .logo-container {
     width: 100%;
     height: 150px;
-    max-width: 1300px;
+    max-width: 1500px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -43,7 +50,14 @@ header{
 .link {
     text-decoration: none;
     color: white;
-    font-size: 25px;
+    font-size: 19px;
+    margin-right: 25px;
+}
+
+.nav h1{
+    color: lightgrey;
+    margin-right: 50px;
+    font-size: 9px;
 }
 
 .link:hover{
@@ -75,5 +89,62 @@ header{
 
 .header-nav-trial h1{
     font-size: 50px;
+}
+
+.nav-down {
+    display: none;
+    width: 100%;
+    /* padding: 5px 5px; */
+}
+
+.nav-down-container{
+    background: black;
+    height: 100px;
+    width: 100%;
+    width: 100vw;
+    
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    .nav {
+        margin-right: 30px;
+        display: none;
+    }
+
+    
+
+    .nav-down{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: black;
+        color: white;
+        border: 2px solid grey;
+        width: 100%;
+        
+    }
+    .logo {
+        height: 100px;
+        /* padding-bottom: 10px; */
+        width: auto;
+        margin-left: 30px;
+        /* padding-top: 10px; */
+    }
+
+    .link {
+        text-decoration: none;
+        color: white;
+        /* font-size: 10px; */
+        margin-right: 5px;
+    }
+
+
+
+    
 }
 

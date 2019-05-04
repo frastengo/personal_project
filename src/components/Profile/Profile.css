@@ -32,42 +32,45 @@
 }
 
 #profile-container-profile{
+    /* padding-top: 20px; */
     margin: 20px 20px;
-    max-width: 1450px;
-    height: 700px;
+    max-width: 1500px;
+    height: 800px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-content: center;
     border: 3px solid black;
-    background-image: url('./../Home/resources/opacityprints.png');
+    background: grey;
+    /* background-image: url('./../Home/resources/opacityprints.png'); */
     padding: 20px 20px;
     box-shadow: 3px 3px 3px grey;
 }
 
 .image-container{
-    padding-right: 40px;
+    /* padding-right: 40px; */
 }
 
 
 #profile .name {
-    margin-top: 0px;
+    margin-top: 30px;
 }
 #profile {
-    margin-top: 150px;
-    margin-right: 80px;
-    border-radius: 4%;
+    /* margin-top: 1px; */
+    /* margin-right: 80px; */
+    /* border-radius: 4%; */
     
-    border: 2px solid black;
-    width: 400px;
-    height: 400px;
-    max-width: 800px;
+    border: 10px solid white;
+    width: 700px;
+    height: 700px;
+    max-width: 700px;
     display: flex;
     text-align: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background: lightgrey;
+    /* color: white; */
     
 
     /* padding-left: 20px; */
@@ -87,15 +90,15 @@
 
 .profile-image-container img {
     /* display: block; */
-    height: 650px;
-    width: 650px;
-    border: 2px solid white;
-    border-radius: 5%;
+    height: 700px;
+    width: 700px;
+    border: 5px solid white;
+    /* border-radius: 5%; */
     /* background-image: contain; */
  
-    border: 8px solid rgb(248, 245, 245);
+    border: 8px solid white;
     /* margin: 20px 20px; */
-    border-radius: 10%;
+    /* border-radius: 10%; */
     box-shadow: 5px 5px 5px grey;
 
     
@@ -106,14 +109,14 @@
     width: 60px;
     background-image: url('./../resources/pawprint.png');
     background-size: cover;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .name {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 600px;
     height: 100px;
     font-size: 30px;
     color: black;
@@ -123,12 +126,13 @@
     /* font-size: 55px; */
     text-align: center;
     background-color: white;
-    border: 4px solid grey;
+    /* border-bottom: 4px solid white; */
     padding: 15px 15px;
-    border-radius: 20%; 
+    /* border-radius: 20%;  */
     box-shadow: 10px 6px 5px grey;
     text-shadow: 1px 1px 1px lightgrey;
     z-index: 2;
+    
     /* width: 200px; */
 }
 
@@ -141,7 +145,7 @@
     border-radius: 5%;
 
     font-size: 13px;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     background: rgb(218, 218, 218);
     /* border-radius: 10%; */
     color: black;
@@ -176,9 +180,9 @@
 }
 
 .profile-buttons button {
-    margin-bottom: 100px;
+    margin-bottom:60px;
     background: url('./../resources/heartwithpaw.png');
     background-size: cover;
-    height: 90px;
-    width: 90px;
+    height: 100px;
+    width: 100px;
 }

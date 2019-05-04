@@ -9,16 +9,17 @@
     width: 100%;
     
     margin: 0 auto;
-    height: 900px;
+    height: 1000px;
+    padding-right: 50px;
+    padding-left: 50px;
     
     /* flex-wrap: wrap; */
     /* flex-direction: row; */
-    justify-content: flex-start;
-    align-items: center;
+    
  
     /* border: 1px solid red; */
-    background: white;
-    background-image: url('./../Home/resources/opacityprints.png');
+    background: grey;
+    /* background-image: url('./../Home/resources/opacityprints.png'); */
     
     /* background-image: url('./../resources/pawprints.png'); */
     
@@ -27,17 +28,19 @@
     background-size: 1900px 1900px;
     border: 1px solid grey;
     box-shadow: 3px 3px 3px grey;
-    margin: 20px 20px;
+    /* margin: 20px 20px; */
     border-radius: 1%;
     /* overflow: scroll; */
     display: flex;
+    justify-content:center;
+    align-items: center;
     /* flex-direction: column; */
    
 
 }
 
 .friend-image-container{
-    padding-right: 40px;
+    /* padding-right: 40px; */
 }
 
 
@@ -77,16 +80,18 @@
 
 .friend-profile-container img {
     /* display: block; */
+    MARGIN-RIGHT: 5PX;
     height: 700px;
     width: 700px;
-    border: 2px solid white;
-    border-radius: 5%;
+    border: 10px solid white;
+    /* border-bottom: 18px solid white; */
+    /* border-radius: 5%; */
     /* background-image: contain; */
  
-    border: 8px solid rgb(248, 245, 245);
-    margin: 20px 20px;
-    border-radius: 10%;
-    box-shadow: 5px 5px 5px grey;
+    /* border: 8px solid rgb(248, 245, 245); */
+    /* margin: 20px 20px; */
+    /* border-radius: 10%; */
+    box-shadow: 5px 5px 5px black;
 
     
     
@@ -96,26 +101,29 @@
     width: 60px;
     background-image: url('./../resources/pawprint.png');
     background-size: cover;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .friend-name {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 700px;
+   
     height: 100px;
     font-size: 30px;
     color: black;
     background: white;
-    /* border: 1px solid black; */
+    /* padding-top: 0px; */
+    /* margin-top: 10px solid white; */
+    /* border: 9px solid white; */
 
     /* font-size: 55px; */
     text-align: center;
     background-color: white;
-    border: 4px solid grey;
-    padding: 15px 15px;
-    border-radius: 20%; 
+    /* border: 4px solid grey; */
+    /* padding: 15px 15px; */
+    /* border-radius: 20%;  */
     box-shadow: 10px 6px 5px grey;
     text-shadow: 1px 1px 1px lightgrey;
     z-index: 2;
@@ -123,21 +131,25 @@
 }
 
 .friend-profile .friend-info {
-    height: 300px;
-    width: 350px;
+    height: 600px;
+    /* padding-top:90px; */
+    width: 700px;
     text-align: center;
-    background: white;
+    /* background: white; */
     color: grey;
-    border-radius: 5%;
+    /* border-radius: 5%; */
 
     font-size: 13px;
-    border: 1px solid white;
+    border-right: 10px solid white;
+    border-bottom: 10px solid white;
+    border-top: 5px solid white;
     background: rgb(218, 218, 218);
     /* border-radius: 10%; */
     color: black;
     text-shadow: 1px 1px 1px white;
     /* padding: 10px 10px; */
-    box-shadow: 5px 5px 5px grey;
+    /* box-shadow: 5px 5px 5px grey; */
+    box-shadow: 5px 5px 5px black;
      /* background-image: url('./../resources/pawprint.png');
      background-repeat: no-repeat;
      background-size: 20%; */
@@ -173,7 +185,7 @@
     background-size: cover;
 } */
 .friend-buttons .friend-delete{
-    margin-top: 20px;
+    /* margin-top: 20px; */
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -186,7 +198,7 @@
     background-size: cover;
 } */
 .friend-buttons .friend-message{
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-left: 20px;
     width: 100px;
     height: 100px;
@@ -196,3 +208,40 @@
     background-color: white;
 }
 
+
+@media screen and (max-width: 768px) {
+.friend-profile-container {
+    
+    
+    
+    max-width: 768px;
+    width: 100%;
+    
+    margin: 0 auto;
+    height: 2000px;
+    
+    /* flex-wrap: wrap; */
+    flex-direction: COLUMN;
+    justify-content: flex-start;
+    align-items: center;
+ 
+    /* border: 1px solid red; */
+    background: white;
+    background-image: url('./../Home/resources/opacityprints.png');
+    
+    /* background-image: url('./../resources/pawprints.png'); */
+    
+    
+
+    /* background-size: 1900px 1900px; */
+    border: 1px solid grey;
+    box-shadow: 3px 3px 3px grey;
+    margin: 20px 20px;
+    border-radius: 1%;
+    /* overflow: scroll; */
+    display: flex;
+    /* flex-direction: column; */
+   
+
+}
+}

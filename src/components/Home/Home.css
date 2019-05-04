@@ -8,7 +8,7 @@
     /* width: 100%; */
     /* height: 50px; */
     /* width: 500px; */
-    background: linear-gradient( white, grey, white);
+    background: lightgrey;
     /* background: url('resources/opacityprints.png'); */
 }
 
@@ -113,5 +113,33 @@ h2 {
     border-bottom: 5px solid white;
     border-right: 5px solid white;
     border-left: 5px solid white;
+}
+
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 30px;
+        text-shadow: 4px 3px 3px black;
+        color: white;   
+    }
+
+    .register {
+        
+        height: 530px;
+        width: 768px;
+        margin: 0 auto;
+        
+    }
+
+    .welcome {
+        height: 600px;
+        width: 768px;
+        margin: 0 auto;
+    }
+
+    .find-friends{
+        height:500px;
+        width: 768px;
+        margin: 0 auto;
+    }
 }
 

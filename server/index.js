@@ -6,13 +6,26 @@ const session = require('express-session')
 const uC = require('./controllers/userController')
 const pC = require('./controllers/profilesController')
 const fC = require('./controllers/friendsController')
+const cC = require('./controllers/chatController')
 const bodyParser = require('body-parser')
 const cloudinary = require('cloudinary')
+const socket = require("socket.io");
+
+
+
+
 
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
-app.use(express.json())
+app.use(bodyParser.json())
+
+// const port = SERVER_PORT
 
 
+
+
+// io.on('connection', (socket) => {
+//     console.log(socket.id);
+// });
 
 
 app.use(session({
@@ -89,6 +102,17 @@ app.post('/api/friend/:id', fC.addFriend)
 app.delete(`/api/friend/:id`, fC.removeFriend)
 
 
+
+
+//chat endpoints
+app.get("/api/get_chatrooms_as_sender/:user_id", cC.getChatroomAsSender);
+app.get("/api/get_chatrooms_as_recipient/:user_id", cC.getChatroomAsRecipient);
+app.get("/api/get_chatroom_by_room_name/:room_name", cC.getChatroomByRoomName);
+app.get("/api/get_room_data/:room_name", cC.getRoomData);
+
+
+
+
 app.get('/api/upload', (req, res) => {
 
     const timestamp = Math.round((new Date()).getTime() / 1000);
@@ -107,6 +131,60 @@ app.get('/api/upload', (req, res) => {
 
 
 
+const server = app.listen(SERVER_PORT, () => console.log(`Listening on server port: ${SERVER_PORT}`))
 
-app.listen(SERVER_PORT, () => console.log(`Listening on server port: ${SERVER_PORT}`))
+
+
+
+
+//sockets
+
+const io = socket(server);
+//SOCKETS START
+io.on("connection", function(socket) {
+  console.log("USER CONNECTED", socket.id);
+
+  socket.on("CONNECT_USERS", data => {
+      console.log(data)
+    const db = app.get("db");
+    // let uniqueRoom = `${data.listing_name} - ${data.user2_profileName}`;
+    db.check_chatroom_exist([data.user_1_id, data.user_2_id]).then(
+      chatroom => {
+          console.log(chatroom)
+        if (!chatroom.length) {
+          db.create_chatroom([data.user_1_id, data.user_2_id])
+        }
+      }
+    );
+  });
+
+  socket.on("PM_MESSAGE", messageData => {
+    const db = app.get("db");
+    io.in(messageData.room_name).emit("PM_MESSAGE", {
+      message: messageData.message,
+      sender: messageData.sender
+    });
+    db.create_room_data([
+      messageData.room_name,
+      messageData.sender,
+      messageData.recipient,
+      messageData.message
+    ])
+  });
+
+  socket.on('JOIN_ROOM', roomName => {
+    socket.join(roomName.room_name)
+  });
+
+  socket.on('LEAVE_ROOM', roomName => {
+    socket.leave(roomName.room_name)
+    console.log('User has left the room')
+  });
+});
+
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
+
 

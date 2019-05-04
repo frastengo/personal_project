@@ -307,3 +307,20 @@
 h3{
     font-size: 25px;
 }
+
+
+@media screen and (max-width: 768px) {
+    .user-profile-container {
+        flex-direction: column-reverse;
+        height: 1300px;
+        max-width: 768px;
+        overflow: hidden;
+    }
+
+    .user-profile-container img {
+        /* display: block; */
+        height: 650px;
+        width: 650px;
+    }
+
+}

@@ -50,6 +50,29 @@ update profiles
 set user_id = 1, name = 'Naughty', breed = 'Pitbull', gender = 'Male', age = '7 months old', favorites = 'bitting mommma', image = 'https://lh3.googleusercontent.com/wy17Dz_taJzqkybctsjwH3dSzxGPh4Pyo_9JhMkyMtafNh8EZUfyrdwgXB978sgJCf0916wE1w=w328-h437-no', country = 'USA', city = 'Phoenix', state = 'Arizona', zipcode = 85054
 where profile_id = 1;
 
+create table chatrooms(
+    chatroom_id serial primary key,
+    user_1 integer references users(user_id),
+    user_2 integer references users(user_id),
+);
+
+create table messages(
+    message_id serial primary key,
+    sender_id int references users(user_id),
+    chatroom_id int references chatrooms(chatroom_id),
+    receivers_id int references users(user_id),
+    message text,
+    time_stamp text
+);
+
+-- create table room_data(
+-- time_sent TIMESTAMPTZ NOT NULL DEFAULT NOW()
+-- ,sender integer
+-- ,recipient integer
+-- ,message text
+-- ,room_name varchar(64) references rooms(room_name)
+-- );
+
 
 
 

@@ -12,7 +12,7 @@
     "cloudinary": "^1.14.0",
     "concurrently": "^4.1.0",
     "dotenv": "^7.0.0",
-    "express": "^4.16.4",
+    "express": "^4.15.2",
     "express-session": "^1.16.1",
     "massive": "^5.7.7",
     "react": "^16.8.6",
@@ -25,8 +25,11 @@
     "react-scripts": "2.1.8",
     "react-select": "^2.4.3",
     "react-select-country-list": "^1.0.7",
+    "react-sticky": "^6.0.3",
     "redux": "^4.0.1",
-    "redux-promise-middleware": "^6.1.0"
+    "redux-promise-middleware": "^6.1.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
   },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"nodemon --ignore src/\" ",

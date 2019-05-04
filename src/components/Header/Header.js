@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {setUser} from './../../ducks/userReducer'
 import axios from 'axios'
+import { StickyContainer, Sticky } from 'react-sticky';
 
 
 class Header extends Component {
@@ -15,6 +16,9 @@ class Header extends Component {
             loggedInUser: null
         }
     }
+    
+    
+   
 
     componentDidMount() {
         axios.get("/auth/user").then(res => {
@@ -46,33 +50,58 @@ class Header extends Component {
 
 
         return (
-    
-        
-            <header>
+            <StickyContainer>
+            {/* Other elements can be in between `StickyContainer` and `Sticky`,
+            but certain styles can break the positioning logic used. */}
+            <Sticky>
+              {({
+                style,
+     
+                // the following are also available but unused in this example
+                isSticky,
+                wasSticky,
+                distanceFromTop,
+                distanceFromBottom,
+                calculatedHeight
+              }) => (
+                <header style={style}>
                 <div className='logo-container'>
                     <img className='logo' alt ='FURBook' src={logo}/>
                     <nav>
                         {!user ? (
                             <div className='nav'>
-                                <Link className='link' to='/register'>Register |</Link>
+                                <Link className='link' to='/register'>Register </Link>
                                 <Link className='link' to='/login'> Login</Link>
-                                <Link className='link' to = '/'> | Home</Link>
+                                <Link className='link' to = '/'>Home</Link>
                               
                             </div>
                         ) : (
-                            <div className='nav'>
+                            <div className='nav'
+                            >
                                 <h1 className='link'>{user.user_name} logged in</h1>
-                                <Link className='link' to = '/'> Home |</Link>
+                                <Link className='link' to = '/'> Home</Link>
                                 <Link className='link' to = '/new'>       New</Link>
-                                <Link className='link' onClick={this.logout} >| Logout</Link>
-                                <Link to='/friends' className='link' > | My Friends </Link>
-                                <Link className='link' to = '/profile'> | My Pets</Link>
-                                <Link className='link' to = '/profiles'> | Find Friends</Link>
+                                <Link className='link' onClick={this.logout} > Logout</Link>
+                                <Link to='/friends' className='link' >Friends </Link>
+                                <Link className='link' to = '/profile'> Pets</Link>
+                                <Link className='link' to = '/profiles'> FindFriends</Link>
                             </div>
                         )}
                     </nav>
                 </div>
-                <div className='header-nav-trial'>
+                <div className="nav-down-container" className='nav-down'>
+                    <div className='nav-down'
+                                >
+                                    
+                                    <Link className='link' to = '/'> Home</Link>
+                                    <Link className='link' to = '/new'>       New</Link>
+                                    <Link className='link' onClick={this.logout} >Logout</Link>
+                                    <Link to='/friends' className='link' >Friends</Link>
+                                    <Link className='link' to = '/profile'>My Pets</Link>
+                                    <Link className='link' to = '/profiles'>Find Friends</Link>
+                                </div>
+                            </div>
+                {/* <div className='header-nav-trial'>
                     <h1>HEllo</h1>
                     <div className='nav'>
                                 <h1 className='link'> logged in</h1>
@@ -82,9 +111,17 @@ class Header extends Component {
                                 <Link to='/friends' className='link' > | My Friends </Link>
                                 <Link className='link' to = '/profile'> | My Pets</Link>
                                 <Link className='link' to = '/profiles'> | Find Friends</Link>
-                            </div>
-                </div>
-            </header> 
+                            </div> */}
+                {/* </div> */}
+            </header>
+              )}
+            </Sticky>
+            {/* ... */}
+          </StickyContainer>
+            
+    
+        
+             
             
         )
     }

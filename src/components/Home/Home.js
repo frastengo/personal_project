@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import {setUser} from './../../ducks/userReducer'
 import axios from 'axios'
 import Register from '../../components/Register/Register'
+import Socket from './../Chat/Socket'
 
 const customStyles = {
     content : {
@@ -64,8 +65,12 @@ class Home extends Component {
         
         return (
             <div className='home'>
-                <section>
-                    <button onClick={this.toggleModal}>ShowModal</button>
+                {/* <section>
+
+                    <button onClick={this.toggleModal}>
+                    Register</button>
+                    
+                    
                     <Modal 
                         isOpen={this.state.isActive}
                         onRequestClose={this.toggleModal}
@@ -78,7 +83,7 @@ class Home extends Component {
                         <button onClick={this.toggleModal}>Exit</button>
                     </Modal>
 
-                </section>
+                </section> */}
                 
                 <div className='welcome'>
                     <div className='opacity-container1'>

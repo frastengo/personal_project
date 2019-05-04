@@ -7,6 +7,7 @@ import axios from 'axios'
 import { getFriends } from '../../ducks/friendsReducer'
 import FriendsProfile from './FriendsProfile'
 import FriendProfile from './FriendProfile'
+import io from "socket.io-client";
 
 class Friends extends Component {
 
@@ -18,9 +19,11 @@ class Friends extends Component {
             loggedInUserId: null,
             friends: [],
             currentFriend: [],
-            currentFriendId: null
+            currentFriendId: null,
+            currentFriendUserId: null,
           
         }
+        this.socket = io("localhost:4000");
     }
 
     getUserAndUserFriends =()=>{
@@ -47,6 +50,14 @@ class Friends extends Component {
         });
     }
 
+    createChatroom = () => {
+        const {loggedInUserId, currentFriendUserId} = this.state
+        this.socket.emit("CONNECT_USERS", {
+          user_1_id: loggedInUserId,
+          user_2_id: currentFriendUserId    
+        });
+    };
+
     componentDidMount() {
         this.getUserAndUserFriends()
     }
@@ -55,7 +66,8 @@ class Friends extends Component {
         let displayedProfile = [...this.state.currentFriend, profile]
         console.log(displayedProfile[0])
         this.setState({
-          currentFriend: [profile]
+          currentFriend: [profile],
+          currentFriendUserId: profile.user_id
         })
       }
 
@@ -68,6 +80,7 @@ class Friends extends Component {
             this.setState({
                 // friends: res.data,
                 currentFriend: [],
+                currentFriendUserId: null,
             })
         })
     }
@@ -95,7 +108,7 @@ class Friends extends Component {
                return <FriendsProfile  display={this.display} key={index} dog={dog} profileId={dog.profile_id}/>
             })
         const mappedCurrentFriend = this.state.currentFriend.map(dog => {
-            return <FriendProfile profileId={dog.profile_id} delete={this.delete}dog={dog} key={dog.image}/>
+            return <FriendProfile createChatroom={this.createChatroom} profileId={dog.profile_id} delete={this.delete}dog={dog} key={dog.image}/>
         })
 
         return (

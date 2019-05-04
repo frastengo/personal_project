@@ -9,8 +9,8 @@
     max-width: 1500px;
     width: 100%;
     margin: 0 auto;
-    background: url('./../Home/resources/opacityprints.png');
-    border-radius: 9%;
+    /* background: url('./../Home/resources/opacityprints.png'); */
+    /* border-radius: 9%;x/ */
     box-shadow: 3px 3px 3px grey;
 
     overflow: scroll;
@@ -18,7 +18,8 @@
 }
 
 .friends {
-    background: linear-gradient( white, grey, white);
+    /* background: linear-gradient( white, grey, white); */
+    background: lightgrey;
 }
 
 .mapped-current-friend{
@@ -55,5 +56,46 @@
 .no-friends-container{
     background: rgba(100, 100, 100, 0.7);
     padding: 20px 20px;
+
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .title-container{
+        width: 768px;
+        background: lightgrey;
+        border: 2px
+    }
+    .title{
+        font-size: 30px;
+        margin-top: 50px;
+        background: lightgrey;
+        color: grey;
+        border: none;
+        /* width: 768px; */
+        /* margin: 0 auto; */
+    }
+
+    .mapped-friends{
+        border-radius: 0%;    
+    }
+
+    .mapped-current-friend{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    
+    height: 1300px;
+    max-width: 1500px;
+    width: 100%;
+    margin: 0 auto;
+
+    /* overflow: scroll; */
+    }
+
+    
 
 }
