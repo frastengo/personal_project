@@ -1,6 +1,10 @@
+DROP TABLE IF EXISTS MESSAGES;
+DROP TABLE IF EXISTS CHATROOMS;
+
 drop table if exists friends;
 drop table if exists profiles;
 drop table if exists users;
+
 
 create table users(
     user_id serial primary key,
@@ -44,7 +48,7 @@ create table friends (
 );
 
 insert into friends (logged_id, profile_id)
-values (1, 2), (1, 3), (2, 3), (2,1);
+values (1, 2);
 
 update profiles
 set user_id = 1, name = 'Naughty', breed = 'Pitbull', gender = 'Male', age = '7 months old', favorites = 'bitting mommma', image = 'https://lh3.googleusercontent.com/wy17Dz_taJzqkybctsjwH3dSzxGPh4Pyo_9JhMkyMtafNh8EZUfyrdwgXB978sgJCf0916wE1w=w328-h437-no', country = 'USA', city = 'Phoenix', state = 'Arizona', zipcode = 85054
@@ -53,16 +57,16 @@ where profile_id = 1;
 create table chatrooms(
     chatroom_id serial primary key,
     user_1 integer references users(user_id),
-    user_2 integer references users(user_id),
+    user_2 integer references users(user_id)
 );
 
 create table messages(
     message_id serial primary key,
-    sender_id int references users(user_id),
-    chatroom_id int references chatrooms(chatroom_id),
-    receivers_id int references users(user_id),
+    sender_id int NOT NULL references users(user_id),
+    chatroom_id int NOT NULL references chatrooms(chatroom_id),
+    receivers_id int NOT NULL references users(user_id),
     message text,
-    time_stamp text
+    time_stamp TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- create table room_data(

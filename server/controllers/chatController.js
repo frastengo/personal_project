@@ -1,28 +1,44 @@
 module.exports = {
 
-    getChatroomAsSender: (req, res, db) => {
-        const {user_id} = req.params
-        req.app.get('db').get_chatroom_as_sender([user_id]).then(rooms => {
-            res.status(200).json(rooms)
-        }).catch(err => console.log('Get room as sender ERROR', err))
+    getChatroomId: (req, res ) => {
+        console.log('req.params in get chat room id', req.params)
+        const {id} = req.params
+        console.log('reqbody in get chat room id', req.query)
+        const {user_2_id} = req.query
+        console.log(user_2_id)
+        // const {user_1_id} = req.params
+        // console.log('id after destructuring', id)
+        // const {user_2} = req.query
+        // console.log('user-id body req after destructuring', user_2)
+        req.app.get('db').get_chatroom_id([id, user_2_id]).then(chatroom => {
+            console.log('chatroom after db', chatroom)
+            res.status(200).send(chatroom)
+        }).catch(err => console.log('ERROR', err))
     },
-  getChatroomAsRecipient: (req, res) => {
-    const {user_id} = req.params
-    req.app.get('db').get_chatroom_as_recipient([user_id]).then(rooms => {
-      res.status(200).json(rooms)
-    }).catch(err => console.log('Get room as recipient ERROR', err))
-  },
-  getChatroomByRoomName: (req, res) => {
-    const {room_name} = req.params
-    req.app.get('db').get_chatroom_by_room_name([room_name]).then(room => {
-      res.status(200).json(room)
-    }).catch(err => console.log('Get room by name ERROR', err))
-  },
-  getRoomData: (req, res) => {
-    const {room_name} = req.params
-    req.app.get('db').get_room_data([room_name]).then(roomData => {
-      console.log(roomData)
-      res.status(200).json(roomData)
-    }).catch(err => console.log('Get room data ERROR', err))
-  }
+
+    getMessagesByChatRoomId: (req, res) => {
+        console.log('REQPARAMS AT GET MESSAGES BY CHATROOM ID', req.params)
+        const {id} = req.params
+        const db = req.app.get('db')
+        db.get_messages_by_chatroom_id([id]).then(messages => {
+            res.status(200).send(messages)
+        }).catch(err => console.log('ERROR', err))
+    },
+
+    getMessagesBySenderId: (req, res) => {
+        const {id} = req.query
+        const db = req.app.get('db')
+        db.get_messages_by_sender_id([id]).then(messages => {
+            res.status(200).send(messages)
+        }).catch(err => console.log('ERROR', err))
+    },
+
+    getUserChatRooms: (req, res) => {
+        const {id} = req.params
+        const db = req.app.get('db')
+        db.get_all_chatrooms_by_user_id([id]).then(chatrooms => {
+            res.status(200).send(chatrooms)
+        }).catch(err => console.log('ERROR', err))
+    }
+
 }

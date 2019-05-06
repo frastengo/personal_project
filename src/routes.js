@@ -8,6 +8,8 @@ import Profiles from './components/Profiles/Profiles'
 import MyProfile from './components/MyProfile/MyProfile'
 import AddPetForm from './components/AddPetForm/AddPetForm'
 import Friends from './components/Friends/Friends'
+import Messages from './components/Messages/Messages'
+import Chatroom from './components/Chatroom/Chatroom'
 
 
 export default (
@@ -20,6 +22,8 @@ export default (
         <Route path = '/new' component={AddPetForm}/>
         <Route path = '/profiles' component={Profiles}/>
         <Route path = '/friends' component={Friends}/>
+        <Route path = '/messages' component={Messages}/>
+        <Route path = '/chatroom' component={Chatroom}/>
     </Switch>
 
 )

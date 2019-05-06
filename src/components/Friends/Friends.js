@@ -3,6 +3,7 @@ import './Friends.css'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {setUser} from '../../ducks/userReducer'
+import {getChatroomId} from '../../ducks/chatReducer'
 import axios from 'axios'
 import { getFriends } from '../../ducks/friendsReducer'
 import FriendsProfile from './FriendsProfile'
@@ -21,6 +22,7 @@ class Friends extends Component {
             currentFriend: [],
             currentFriendId: null,
             currentFriendUserId: null,
+            chatroom: null,
           
         }
         this.socket = io("localhost:4000");
@@ -53,9 +55,11 @@ class Friends extends Component {
     createChatroom = () => {
         const {loggedInUserId, currentFriendUserId} = this.state
         this.socket.emit("CONNECT_USERS", {
-          user_1_id: loggedInUserId,
-          user_2_id: currentFriendUserId    
+            user_1_id: loggedInUserId,
+            user_2_id: currentFriendUserId    
         });
+        // this.props.getChatroomId(loggedInUserId, currentFriendUserId);
+        //do an axios call and redux to set chat room id as the room id needed to be accessed on messages with this.state
     };
 
     componentDidMount() {
@@ -69,7 +73,24 @@ class Friends extends Component {
           currentFriend: [profile],
           currentFriendUserId: profile.user_id
         })
+        let currentFriendUserId = profile.user_id
+        this.setChatRoom(currentFriendUserId)
+        
       }
+
+    setChatRoom = (currentFriendUserId) => {
+        const {loggedInUserId} = this.state
+        
+
+        axios.get(`/api/chatroom/${loggedInUserId}?user_2_id=${currentFriendUserId}`).then(res => {
+            console.log(res)
+            this.setState({
+                chatroom: res.data
+            })
+        })
+        this.props.getChatroomId(loggedInUserId, currentFriendUserId)
+
+    }
 
     delete = (profileId) => {
         const {loggedInUserId} = this.state
@@ -89,6 +110,8 @@ class Friends extends Component {
    
 
     render(){
+
+        console.log('THIS.PROPS.CHARTROOMID FROM REDUX', this.props.chatroomId)
 
         console.log('THIS STATE IN FRIENDS', this.state)
         console.log('THIS STATE FRIENDS FROM REDUX', this.props.friends.friends)
@@ -114,7 +137,9 @@ class Friends extends Component {
         return (
             <div className='friends'>
                 <div className='title-container'>
-                <h1 className='title'>My Friends</h1></div>
+                    <h1 className='title'>My Friends <i class="material-icons">pets</i> </h1>
+                    
+                </div>
                 {friends.length ? (
                     <div className='mapped-friends'>{mappedFriends}</div>
                 ):
@@ -124,7 +149,7 @@ class Friends extends Component {
                 {this.state.currentFriend.length ? (
                    <div className='mapped-current-friend'>{mappedCurrentFriend}</div>
                 ):(
-                    <div>Click on a friend to display</div>
+                    <div className='click-on-friend'><h3>Click on a friend to display</h3></div>
                 )}
                 
             </div>
@@ -136,13 +161,15 @@ class Friends extends Component {
 const mapStateToProps = reduxState => {
     return {
       user: reduxState.user,
-      friends: reduxState.friends
+      friends: reduxState.friends,
+      chatroomId: reduxState.chatroomId
     };
   };
   
   const mapDispatchToProps = {
     setUser: setUser,
-    getFriends: getFriends
+    getFriends: getFriends,
+    getChatroomId: getChatroomId
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(Friends);

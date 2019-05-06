@@ -66,25 +66,27 @@ class Header extends Component {
               }) => (
                 <header style={style}>
                 <div className='logo-container'>
-                    <img className='logo' alt ='FURBook' src={logo}/>
+                    <Link to='/'><img className='logo' alt ='FURBook' src={logo}/></Link>
                     <nav>
                         {!user ? (
                             <div className='nav'>
-                                <Link className='link' to='/register'>Register </Link>
-                                <Link className='link' to='/login'> Login</Link>
-                                <Link className='link' to = '/'>Home</Link>
+                                <Link className='nav-link' to='/register'>Register </Link>
+                                <Link className='nav-link' to='/login'> Login</Link>
+                                <Link className='home-icon' className='nav-link' to = '/'><img/></Link>
                               
                             </div>
                         ) : (
                             <div className='nav'
                             >
-                                <h1 className='link'>{user.user_name} logged in</h1>
-                                <Link className='link' to = '/'> Home</Link>
-                                <Link className='link' to = '/new'>       New</Link>
-                                <Link className='link' onClick={this.logout} > Logout</Link>
-                                <Link to='/friends' className='link' >Friends </Link>
-                                <Link className='link' to = '/profile'> Pets</Link>
-                                <Link className='link' to = '/profiles'> FindFriends</Link>
+                                <h1 className='nav-link-name'>{user.user_name} logged in</h1>
+                                <Link className='nav-link' to = '/'> Home</Link>
+                                <Link className='nav-link' to = '/new'>       New</Link>
+                                <Link to='/friends' className='nav-link' >Friends </Link>
+                                <Link className='nav-link' to = '/messages'>       Messages</Link>
+                                <Link to='/friends' className='nav-link' >Friends </Link>
+                                <Link className='nav-link' to = '/profile'> Pets</Link>
+                                <Link className='nav-link' to = '/profiles'> Find Friends</Link>
+                                <Link className='nav-link' onClick={this.logout} > Logout</Link>
                             </div>
                         )}
                     </nav>

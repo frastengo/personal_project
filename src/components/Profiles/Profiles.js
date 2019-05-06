@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import './Profiles.css'
 import {getAllProfiles} from './../../ducks/profilesReducer'
@@ -402,7 +402,7 @@ class Profiles extends Component {
             
             <div className="mapped-profiles">{mappedProfiles} </div>
             <div className="friends-display-section">
-                <div className='title-container'><h1 className='title'>My Friends</h1></div>
+                <Link to='/friends' className="link" ><div className='title-container'><h1 className='title'>My Friends</h1></div></Link>
                 <div className="mapped-friends">
                     {mappedFriends}
                 </div>

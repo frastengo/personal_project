@@ -1,35 +1,4 @@
 
-#profile-container-profile {
-    
-    /* border: 2px solid blue;
-    max-height: 100%;
-    max-width: 1500px;
-    width: 100%;
-    display: flex;
-    margin: 0 auto;
-    height: 800px; */
-    /* flex-wrap: wrap; */
-    /* flex-direction: column;
-    justify-content: center;
-    align-items: center; */
- 
-    /* border: 1px solid red; */
-    /* background: white;
-    background-image: url('./../Home/resources/opacityprints.png'); */
-    
-    /* background-image: url('./../resources/pawprints.png'); */
-    
-    
-
-    /* background-size: 1500px 1500px;
-    border: 3px solid black;
-    box-shadow: 3px 3px 3px grey;
-    margin: 20px 20px;
-    border-radius: 1%; */
-    /* overflow: scroll; */
-   
-
-}
 
 #profile-container-profile{
     /* padding-top: 20px; */
@@ -44,30 +13,32 @@
     background: grey;
     /* background-image: url('./../Home/resources/opacityprints.png'); */
     padding: 20px 20px;
-    box-shadow: 3px 3px 3px grey;
+    box-shadow: 5px 5px 5px grey;
 }
 
-.image-container{
-    /* padding-right: 40px; */
+#profile-container-profile:hover{
+    box-shadow: 10px 10px 10px black;
 }
 
 
-#profile .name {
-    margin-top: 30px;
-}
+
+
+
 #profile {
     /* margin-top: 1px; */
     /* margin-right: 80px; */
     /* border-radius: 4%; */
     
-    border: 10px solid white;
+    border-bottom: 10px solid white;
+    border-left: 10px solid white;
+    border-top: 10px solid white;
     width: 700px;
     height: 700px;
     max-width: 700px;
     display: flex;
     text-align: center;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     background: lightgrey;
     /* color: white; */
@@ -80,12 +51,15 @@
 }
 
 
-.profile-container img:hover{
-    opacity: 2;
+
+
+.profile-image-container img:hover{
+    
     /* border: 2px solid black; */
-    -webkit-transform: scale(1.2);
-    transform: scale(1.0);
-    box-shadow: 5px 5px 5px black;
+    /* -webkit-transform: scale(1.2);
+    transform: scale(1.2); */
+    box-shadow: 10px 10px 10px black;
+
 }
 
 .profile-image-container img {
@@ -96,10 +70,11 @@
     /* border-radius: 5%; */
     /* background-image: contain; */
  
-    border: 8px solid white;
+    border: 10px solid white;
     /* margin: 20px 20px; */
     /* border-radius: 10%; */
     box-shadow: 5px 5px 5px grey;
+    /* z-index: 4; */
 
     
     
@@ -116,7 +91,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 600px;
+    width: 690px;
     height: 100px;
     font-size: 30px;
     color: black;
@@ -127,11 +102,12 @@
     text-align: center;
     background-color: white;
     /* border-bottom: 4px solid white; */
-    padding: 15px 15px;
+    /* padding: 15px 15px; */
     /* border-radius: 20%;  */
-    box-shadow: 10px 6px 5px grey;
+    /* box-shadow: 1px 10px 4px grey; */
+    border-bottom: 4px solid grey;
     text-shadow: 1px 1px 1px lightgrey;
-    z-index: 2;
+    
     
     /* width: 200px; */
 }
@@ -142,7 +118,7 @@
     text-align: center;
     background: white;
     color: grey;
-    border-radius: 5%;
+    
 
     font-size: 13px;
     /* border: 1px solid white; */
@@ -175,14 +151,26 @@
     text-shadow: 1px 1px 1px lightgrey; */
 }
 
-.profile .info h3{
-    font-size: 25px;
+#profile .info h3{
+    font-size: 30px;
 }
 
-.profile-buttons button {
+#add {
     margin-bottom:60px;
     background: url('./../resources/heartwithpaw.png');
     background-size: cover;
     height: 100px;
     width: 100px;
+}
+
+#add:hover{
+    -webkit-transform: scale(1.4);
+    transform: scale(1.5);
+}
+
+#profile-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }

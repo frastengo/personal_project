@@ -19,7 +19,7 @@ export default class FriendsProfile extends Component {
             <div className='friend-profile-container'>
                 <div className='friend-image-container'><img alt='friend-dog' src={image} />
                 </div>
-                <div className='friend-profile'>
+                    <div className='friend-profile'>
                         <div className="friend-name">
                             <div className='friend-info-logo'></div>
                             <h1>{name}</h1>
@@ -32,8 +32,12 @@ export default class FriendsProfile extends Component {
                             <h3>{city}, {state}, {country}</h3>
                             <h3>Favorites: {favorites}</h3>
                         <div className='friend-buttons'>
-                            <button className="friend-delete" onClick={()=> this.props.delete(this.props.profileId)}></button>
-                            <Link to={`/messages`} ><button  className="friend-message" onClick={this.props.createChatroom}></button></Link>
+                            <div className="friend-delete" onClick={()=> this.props.delete(this.props.profileId)}><i class="material-icons">
+                            sentiment_very_dissatisfied
+                            </i></div>
+                            <div  className="friend-message" onClick={this.props.createChatroom}><Link id="link-to-chatroom" to={`/chatroom`} ><i class="material-icons">
+                                chat
+                            </i></Link></div>
                     </div>
                     </div>
                     

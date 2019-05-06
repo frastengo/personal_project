@@ -11,7 +11,7 @@ header{
     background: black;
     
  
-    text-shadow: 4px 3px 3px ligtgrey;
+    /* text-shadow: 4px 3px 3px ligtgrey; */
     color: white;
 
 
@@ -24,6 +24,10 @@ header{
     /* margin: 0 auto; */
 
 
+}
+
+.home-icon img{
+    /* background-image: */
 }
 
 
@@ -47,21 +51,27 @@ header{
     align-items: center;
 }
 
-.link {
+.nav-link, .nav-link-name {
     text-decoration: none;
     color: white;
-    font-size: 19px;
+    font-size: 25px;
     margin-right: 25px;
 }
 
 .nav h1{
     color: lightgrey;
-    margin-right: 50px;
-    font-size: 9px;
+    margin-right: 70px;
 }
+/* .nav .nav-link h1{
 
-.link:hover{
     color: lightgrey;
+    margin-right: 50px;
+    font-size: 20px;
+} */
+
+.nav-link:hover{
+    color: lightgrey;
+    
 }
 
 .logo {
@@ -142,6 +152,8 @@ header{
         /* font-size: 10px; */
         margin-right: 5px;
     }
+
+    
 
 
 

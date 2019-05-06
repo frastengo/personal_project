@@ -40,7 +40,9 @@
 }
 
 .friend-image-container{
-    /* padding-right: 40px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -80,7 +82,7 @@
 
 .friend-profile-container img {
     /* display: block; */
-    MARGIN-RIGHT: 5PX;
+    /* MARGIN-RIGHT: 5PX; */
     height: 700px;
     width: 700px;
     border: 10px solid white;
@@ -184,28 +186,53 @@
     background: url('./../resources/sadface.jpg');
     background-size: cover;
 } */
-.friend-buttons .friend-delete{
-    /* margin-top: 20px; */
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: url('./../resources/sadface.jpg');
-    background-size: cover;
+
+
+
+.friend-delete i {
+    font-size: 60px;
+    /* background: lightgrey; */
+    padding: 20px 20px;
+    color: grey;
+    margin-right: 20px;
 }
 
-/* .friend-buttons button {
-    background: url('./../resources/sadface.jpg');
-    background-size: cover;
-} */
-.friend-buttons .friend-message{
-    /* margin-top: 20px; */
-    margin-left: 20px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: url('./../resources/messagepng.png');
-    background-size: cover;
-    background-color: white;
+.friend-delete i:hover {
+    font-size: 50px;
+    /* background: lightgrey; */
+    padding: 20px 20px;
+    color: black;
+    -webkit-transform: scale(1.4);
+    transform: scale(1.6);
+}
+
+.friend-message i {
+    font-size: 60px;
+    padding: 20px 20px;
+    color: grey;
+}
+
+.friend-message i:hover {
+    font-size: 50px;
+    /* background: lightgrey; */
+    padding: 20px 20px;
+    color: black;
+    -webkit-transform: scale(1.4);
+    transform: scale(1.6);
+}
+
+.friend-buttons{
+    display: flex;
+    border: 2px solid white;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+
+}
+
+#link-to-chatroom{
+    /* background: lightgrey; */
+    border: none;
 }
 
 

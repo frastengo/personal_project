@@ -1,0 +1,99 @@
+.chatroom-container{
+    width: 100vw;
+    height: 100vh;
+    
+    
+    border: 5px solid black;
+}
+
+.chatroom{
+    
+    width: 100%;
+    max-width: 1500px;
+    height: 1500px;
+    
+    margin: 0 auto;
+    /* text-align: center; */
+    border: 2px solid white;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    
+    
+}
+
+.chatroom p {
+    /* padding: 5px 5px; */
+    border: 4px solid GREY;
+    border-radius: 15%;
+    width: 100%;
+    max-width: 300px;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 20px 20px;
+    box-shadow: 5px 5px 5px grey;
+    FONT-SIZE: 25PX;
+}
+
+.chatroom p:HOVER {
+    /* padding: 5px 5px; */
+    BACKGROUND: BLACK;
+    COLOR: WHITE;
+    BORDER: 4PX SOLID WHITE;
+}
+
+.messages-container{
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 30px;
+    height: 900px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    /* padding: 50px 50px; */
+}
+
+.sender{
+    justify-content: flex-start;
+    /* color: black; */
+    background: white;
+}
+.receiver{
+    align-self: flex-end;
+}
+
+.message-submit-form{
+    width: 100%;
+    height: 100px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: grey;
+}
+
+.message-input {
+    font-size: 25px;
+    padding: 8px 5px;
+    margin-right: 10px;
+    font-family: 'Fjalla One', sans-serif;
+    
+    /* letter-spacing: 1.5px; */
+
+}
+
+.message-submit-form button{
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 25px;
+    border-radius: 5%;
+    padding: 10px 15px;
+    color: grey;
+    /* margin-top: 20px; */
+}
+
+.message-submit-form button:hover{
+    background: black;
+    color: white;
+}

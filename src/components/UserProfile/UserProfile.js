@@ -21,14 +21,14 @@ class UserProfile extends Component {
 
             options: this.options,
             showEdit: false,
-            editMode: false,
+            editMode: true,
             editName: true,
             editAge: true,
             editFavorites: true,
             editBreed: true,
             editLocation: true,
             editGender: true,
-            editImage: true,
+            editImage: false,
 
             userProfiles: this.props.userProfiles,
 
@@ -196,186 +196,150 @@ class UserProfile extends Component {
             {!this.state.editMode ? (
                 <div className='user-profile-container'>
                     <div className='user-profile'>
-                        <div className="user-profile-name">
-                            <div className='user-profile-info-logo'></div>
-                            <h1>{name}</h1>
-                        </div>
-                        <div className='user-profile-info'>
-                            <h3>{age}</h3>
-                            <h3>{breed}</h3>
-                            <h3>{gender}</h3>
-                            <h3>{city}, {state}, {country},  {zipcode}</h3>
+                        <div className='user-profile-information'>
+                            <div className="user-profile-name">
+                                <div className='user-profile-info-logo'></div>
+                                <h1>{name}</h1>
+                            </div>
+                            <div className='user-profile-info'>
+                                <h3>{age}</h3>
+                                <h3>{breed}</h3>
+                                <h3>{gender}</h3>
+                                <h3>{city}, {state}, {country},  {zipcode}</h3>
                             
-                            <h3>Favorites: {favorites}</h3>
-                        </div>
-                        <div className='user-profile-buttons'>
-                            <button className="edit" onClick={(e)=>this.showEditFormDog(this.props.dog)}>EDIT MODE</button>
+                                <h3>Favorites: {favorites}</h3>
+                            <div className='user-profile-buttons'>
+                                <button className="edit" onClick={(e)=>this.showEditFormDog(this.props.dog)}>EDIT MODE</button>
+                            </div>
                         </div>
                     </div>
-            
-                    <div className='user-profile-image-container'>
+                        <div className='user-profile-image-container'>
                         <img alt='dog' src={image} />
                     </div>
+                </div>
+                
+            
                 </div>
             ):(
                 //editForm
                 <div className='user-profile-container'  >
-                    <div className='edit-user-profile'>
-                        <div className="user-profile-name">
-                            <div className='user-profile-info-logo'></div>
-                        {!this.state.editName ? (
-                        <div onClick={this.editName} >
-                            <h1>{this.state.name}</h1>
-                        </div>
-                        ):(
-                        <div>
-                            <input
-                                className='edit-select-regular'
-                                placeholder={this.state.name}
-                                type='text'
-                                onChange={(e)=> this.setState({
-                                    name: e.target.value
-                                })}
-                            />
-                        </div>
-                        )}
-                        </div>
-                        <div className='edit-user-profile-info'>
-                        {!this.state.editAge ? (
-                        <div onClick={(e)=> this.setState({editAge: !this.state.editAge})}>
-                            <h3>{this.state.age}</h3>
-                        </div>
-                        ):(
-                            <Select
-                            id='select'
-                            className='edit-select'
-                            placeholder={this.state.age}
+                    <div className='user-profile'>
+                        <div className="user-profile-information">
+                            <div className='user-profile-name'>
+                                <div className='user-profile-info-logo'></div>
+                                <input
+                                    className='edit-select-regular'
+                                    placeholder={this.state.name}
+                                    type='text'
+                                    onChange={(e)=> this.setState({
+                                        name: e.target.value
+                                    })}
+                                />
+                            </div>
+                            <div  className='edit-user-profile-info'>       
+                                <Select
+                                    id='select'
+                                    className='edit-select'
+                                    placeholder={this.state.age}
                             
-                            value={this.age}
-                            onChange={(age)=>this.setState({
-                                age: age.value
-                            })}
-                            options={ageGroups}
-                            />
-                        )}
-                        {!this.state.editBreed ? (
-                        <div onClick={(e)=> this.setState({editBreed: !this.state.editBreed})}>
-                            <h3 >{this.state.breed}</h3>
-                        </div>
-                        ):(
-                            <Select
-                            id='select'
-                            className='edit-select'
-                            placeholder={this.state.breed}
-                            
-                            value={this.breed}
-                            onChange={(breed)=>this.setState({
-                                breed: breed.value
-                            })}
-                            options={array}
-                        />
-                        )}
-                        {!this.state.editGender ? (
-                        <div onClick={(e)=> this.setState({editGender: !this.state.editGender})}>
-                            <h3 >{gender}</h3>
-                        </div>
-                        ):(
-                            <Select
-                            id='select'
-                            className='edit-select'
-                            placeholder={this.state.gender}
-                            value={this.gender}
-                            onChange={(gender)=>this.setState({
-                                gender: gender.value
-                            })}
-                            options={genders}
-                            />
-
-                        )}
-                        {!this.state.editLocation ? (
-                        <div onClick={(e)=> this.setState({editLocation: !this.state.editLocation})}>
-                            <h3>{city}, {state}, {country}, {zipcode}</h3>
-                        </div>
-                        ):(
-                        <div>
-
-                            <Select
-                            id='select'
-                            className='edit-select'
-                            placeholder={this.state.state}
-                            value={this.state}
-                            onChange={(state)=>this.setState({
-                                state: state.value
-                            })}
-                            options={stateOptions}
-                            />
+                                    value={this.age}
+                                    onChange={(age)=>this.setState({
+                                    age: age.value
+                                    })}
+                                    options={ageGroups}
+                                />
+                        
+                                <Select
+                                    id='select'
+                                    className='edit-select'
+                                    placeholder={this.state.breed}
+                                    
+                                    value={this.breed}
+                                    onChange={(breed)=>this.setState({
+                                        breed: breed.value
+                                    })}
+                                    options={array}
+                                />
+                        
+                                <Select
+                                    id='select'
+                                    className='edit-select'
+                                    placeholder={this.state.gender}
+                                    value={this.gender}
+                                    onChange={(gender)=>this.setState({
+                                        gender: gender.value
+                                    })}
+                                    options={genders}
+                                />
+                                <Select
+                                    id='select'
+                                    className='edit-select'
+                                    placeholder={this.state.state}
+                                    value={this.state}
+                                    onChange={(state)=>this.setState({
+                                        state: state.value
+                                    })}
+                                    options={stateOptions}
+                                />
 
 
-                            <Select
-                            id='select'
-                            className='edit-select'
-                            placeholder={this.state.country}
-                            name="country"
-                            value={this.country}
-                            onChange={(country)=>this.setState({
-                                country: country.value
-                            })}
-                            options={this.state.options}
-                            />
+                                <Select
+                                    id='select'
+                                    className='edit-select'
+                                    placeholder={this.state.country}
+                                    name="country"
+                                    value={this.country}
+                                    onChange={(country)=>this.setState({
+                                        country: country.value
+                                    })}
+                                    options={this.state.options}
+                                />
 
-                            <input 
-                            className='edit-select-regular'
-                            className='edit-select'
-                            placeholder={this.state.city}
-                            type='text'
+                                <input 
+                                    className='edit-select-regular'
+                                    className='edit-select'
+                                    placeholder={this.state.city}
+                                    type='text'
 
 
-                            onChange={(e)=> this.setState({
-                                city: e.target.value
-                            })}
-                            />
+                                    onChange={(e)=> this.setState({
+                                        city: e.target.value
+                                    })}
+                                />
 
-                            <input
-                                className='edit-select-regular'
-                                className='edit-select'
-                                placeholder={this.state.zipcode}
-                                type='text'
-                                onChange={(e)=> this.setState({
+                                <input
+                                    className='edit-select-regular'
+                                    className='edit-select'
+                                    placeholder={this.state.zipcode}
+                                    type='text'
+                                    onChange={(e)=> this.setState({
                                     zipcode: e.target.value
-                                })}
-                            />
-
-
-                        </div>
-                        )}
-
-                        {!this.state.editFavorites ? (
-                            <h3 onClick={(e)=>this.setState({editFavorites: !this.state.editFavorites})}>Favorites: {favorites}</h3>
-                        ):(
-                            <textarea 
-                            id='select'
-                            className='edit-select'
-                            className='edit-select-regular'
-                            placeholder={this.state.favorites}
-                            
-                            value={this.state.favorites}
-                            onChange={(e)=> this.setState({
-                                favorites: e.target.value
-                            })}
-                            />
-                        )}
-                        </div>
-                        <div className='user-profile-buttons'>
-                            <button className="edit" onClick={this.submitUpdates}>UPDATE</button>
-                            <button className="edit" onClick={this.showEditFormDog}>CANCEL</button>
-                            <button className="edit" onClick={this.submitChanges}>SUBMIT</button>
-                            <button className="edit" onClick={this.delete}>DELETE</button>
+                                    })}
+                                />
+                                <textarea 
+                                    id='select'
+                                    className='edit-select'
+                                    className='edit-select-regular'
+                                    placeholder={this.state.favorites}
+                                    
+                                    value={this.state.favorites}
+                                    onChange={(e)=> this.setState({
+                                        favorites: e.target.value
+                                    })}
+                                />
+                            <div className='user-profile-buttons'>
+                                <button className="edit" onClick={this.submitUpdates}>UPDATE</button>
+                                <button className="edit" onClick={this.showEditFormDog}>CANCEL</button>
+                                <button className="edit" onClick={this.submitChanges}>SUBMIT</button>
+                                <button className="edit" onClick={this.delete}>DELETE</button>
+                            </div>
                         </div>
                     </div>
                     {!this.state.editImage ? (
                         <div onClick={(e)=>this.setState({editImage: !this.state.editImage})}className='user-profile-image-container'>
                             <img alt='dog' src={image} />
                         </div>
+                    
                     ):(
                         <div>
                             <Dropzone onDrop={this.onImageDrop}accept="image/*, video/*" multiple={false}>
@@ -390,6 +354,7 @@ class UserProfile extends Component {
                             </Dropzone>
                         </div>
                     )}
+                    </div>
                 </div>
             )}
             </div>

@@ -105,10 +105,17 @@ app.delete(`/api/friend/:id`, fC.removeFriend)
 
 
 //chat endpoints
-app.get("/api/get_chatrooms_as_sender/:user_id", cC.getChatroomAsSender);
-app.get("/api/get_chatrooms_as_recipient/:user_id", cC.getChatroomAsRecipient);
-app.get("/api/get_chatroom_by_room_name/:room_name", cC.getChatroomByRoomName);
-app.get("/api/get_room_data/:room_name", cC.getRoomData);
+//get chatroom by user_1 as params and user_2 as a query
+app.get('/api/chatroom/:id', cC.getChatroomId)
+app.get('/api/messages/:id', cC.getMessagesByChatRoomId)
+app.get('/api/messages', cC.getMessagesBySenderId)
+//get chatrooms by user id
+app.get('/api/chatrooms/:id', cC.getUserChatRooms)
+
+// app.get("/api/get_chatrooms_as_sender/:user_id", cC.getChatroomAsSender);
+// app.get("/api/get_chatrooms_as_recipient/:user_id", cC.getChatroomAsRecipient);
+// app.get("/api/get_chatroom_by_room_name/:room_name", cC.getChatroomByRoomName);
+// app.get("/api/get_room_data/:room_name", cC.getRoomData);
 
 
 
@@ -159,25 +166,27 @@ io.on("connection", function(socket) {
   });
 
   socket.on("PM_MESSAGE", messageData => {
+    console.log(messageData, 'message data')
     const db = app.get("db");
-    io.in(messageData.room_name).emit("PM_MESSAGE", {
+    io.in(messageData.chatroom_id).emit("PM_MESSAGE", {
       message: messageData.message,
-      sender: messageData.sender
+      sender_id: messageData.sender_id
     });
-    db.create_room_data([
-      messageData.room_name,
-      messageData.sender,
-      messageData.recipient,
-      messageData.message
+    db.create_message([
+        messageData.chatroom_id,
+        messageData.sender_id,
+        messageData.receiver_id,
+        messageData.message
     ])
   });
 
   socket.on('JOIN_ROOM', roomName => {
-    socket.join(roomName.room_name)
+    socket.join(roomName.chatroom_id)
+    console.log(roomName.chatroom_id, 'joined chatroom')
   });
 
   socket.on('LEAVE_ROOM', roomName => {
-    socket.leave(roomName.room_name)
+    socket.leave(roomName.chatroom_id)
     console.log('User has left the room')
   });
 });

@@ -1,3 +1,9 @@
+.title i {
+    font-size: 40px;
+    padding-left: 30px;
+    
+}
+
 .mapped-friends{
     display: flex;
     justify-content: center;
@@ -20,6 +26,7 @@
 .friends {
     /* background: linear-gradient( white, grey, white); */
     background: lightgrey;
+    height: 100vh;
 }
 
 .mapped-current-friend{
@@ -57,6 +64,13 @@
     background: rgba(100, 100, 100, 0.7);
     padding: 20px 20px;
 
+}
+
+.click-on-friend{
+    max-width: 1500px;
+    width:100%;
+    margin: 0 auto;
+    text-align: center;
 }
 
 

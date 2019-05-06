@@ -87,9 +87,11 @@
 .friends-profile-container img:hover{
     opacity: 2;
     /* border: 2px solid black; */
+    /* -webkit-transform: scale(1.2);
+    transform: scale(1.0); */
+    /* box-shadow: 5px 5px 5px black; */
     -webkit-transform: scale(1.2);
-    transform: scale(1.0);
-    box-shadow: 5px 5px 5px black;
+    transform: scale(1.1);
 }
 
 .friends-profile-container img {
