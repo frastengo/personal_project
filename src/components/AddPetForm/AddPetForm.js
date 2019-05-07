@@ -72,6 +72,15 @@ class AddPetForm extends Component {
     changeHandler = (name, value) => {
         this.setState({
             [name]: value,
+            
+        })
+        this.updateDisplay()
+    }
+
+    updateDisplay = () => {
+        const {country, state, name, age, breed, favorites, gender, loggedInUserId, zipcode, image} = this.state
+        this.setState({
+            displayProfile: [{country, state, name, age, breed, favorites, gender, zipcode, image}]
         })
     }
 
@@ -186,7 +195,7 @@ class AddPetForm extends Component {
         let display = this.state.displayProfile 
         
        
-        const mappedDisplayProfile = this.state.displayProfile.map(dog => {
+        const mappedDisplayProfile = display.map(dog => {
             return <Profile dog={dog}/>
         })
 

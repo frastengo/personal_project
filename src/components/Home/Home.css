@@ -26,7 +26,7 @@ h2 {
     width: 1500px; 
     /* width: 100%; */
     /* height: auto; */
-    height: 900px;
+    height: 1000px;
     margin: 0 auto;
     /* background-size: cover; */
     background-position: 100% 80%;
@@ -50,7 +50,7 @@ h2 {
     width: 1500px; 
     /* width: 100%; */
     /* height: auto; */
-    height: 900px;
+    height: 1000px;
     margin: 0 auto;
     /* background-size: cover; */
     background-position: 100% 80%;
@@ -90,6 +90,19 @@ h2 {
     width: 100%;
 }
 
+.opacity-container2:hover{
+    color: white;
+    background:black;
+}
+.opacity-container1:hover{
+    color: white;
+    background:black;
+}
+.opacity-container3:hover{
+    color: white;
+    background:black;
+}
+
 
 
 .opacity-container2 h2{
@@ -99,11 +112,11 @@ h2 {
 
 .register {
     background-image: url('./resources/iggy2.JPG');
-    height: 900px;
+    height: 1000px;
     width: 1500px;
     margin: 0 auto;
-    background-size: 100% auto;
-    background-position: cover;
+    background-size: 1500PX AUTO;
+    background-position: 50% ;
     background-repeat: no-repeat;
     /* border-right: 3px solid white; */
     /* border-left: 3px solid white; */
@@ -117,7 +130,7 @@ h2 {
 
 @media screen and (max-width: 768px) {
     h2 {
-        font-size: 30px;
+        font-size: 35px;
         text-shadow: 4px 3px 3px black;
         color: white;   
     }
@@ -140,6 +153,42 @@ h2 {
         height:500px;
         width: 768px;
         margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    h2 {
+        font-size: 40px;
+        text-shadow: 1px 1px 1px black;
+        color: white;  
+        
+    }
+    .home {
+        width: 375px
+    }
+
+    .register {
+        
+        height: 530px;
+        width:100%;
+        margin: 0 auto;
+        background-size: cover;
+        border: none;
+        
+    }
+
+    .welcome {
+        height: 600px;
+        width: 375px;
+        margin: 0 auto;
+        border: none;
+    }
+
+    .find-friends{
+        height:500px;
+        width: 768px;
+        margin: 0 auto;
+        border: none;
     }
 }
 

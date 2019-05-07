@@ -1,5 +1,12 @@
 import React, {Component} from 'react'
 import logo from './../Home/resources/whitefurlogo.png'
+// import logo1 from './whitelogotest1.png'
+import whitelogotest2 from './whitelogotest2.png'
+import whitelogotest3 from './whitelogotest3.png'
+import whitelogotest4 from './whitelogotest4.png'
+import whitelogotest5 from './whitelogotest5.png'
+import whitelogotest6 from './whitelogotest6.png'
+import whitelogotest7 from './whitelogotest7.png'
 import './Header.css'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -66,7 +73,7 @@ class Header extends Component {
               }) => (
                 <header style={style}>
                 <div className='logo-container'>
-                    <Link to='/'><img className='logo' alt ='FURBook' src={logo}/></Link>
+                    <Link to='/'><img className='logo' alt ='FURBook' src={whitelogotest7}/></Link>
                     <nav>
                         {!user ? (
                             <div className='nav'>

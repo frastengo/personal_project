@@ -135,7 +135,12 @@ class Friends extends Component {
         })
 
         return (
+        
+        <div> 
+
+        {user ? (
             <div className='friends'>
+
                 <div className='title-container'>
                     <h1 className='title'>My Friends <i class="material-icons">pets</i> </h1>
                     
@@ -153,6 +158,11 @@ class Friends extends Component {
                 )}
                 
             </div>
+        ):(
+            <div>You need to login</div>
+        )}
+        </div>
+            
             
         )
     }

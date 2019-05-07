@@ -6,11 +6,16 @@
     border: 5px solid black;
 }
 
+.title-container-chatroom i {
+    font-size: 40px;
+    margin-right: 20px;
+}
+
 .chatroom{
     
     width: 100%;
     max-width: 1500px;
-    height: 1500px;
+    height: 1400px;
     
     margin: 0 auto;
     /* text-align: center; */
@@ -18,8 +23,26 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+    background: url('./pawprintsopacity.png');
+    background-size: 550px auto;
+    opacity: 1;
     
     
+}
+
+.title-container-chatroom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-container-chatroom button {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 25px;
+    border-radius: 5%;
+    padding: 19px 15px;
+    color: grey;
+    height: 100%;
 }
 
 .chatroom p {
@@ -58,9 +81,12 @@
     justify-content: flex-start;
     /* color: black; */
     background: white;
+    color: black;
 }
 .receiver{
     align-self: flex-end;
+    background: black;
+    color:white;
 }
 
 .message-submit-form{
@@ -94,6 +120,11 @@
 }
 
 .message-submit-form button:hover{
+    background: black;
+    color: white;
+}
+
+.title-container-chatroom button:hover {
     background: black;
     color: white;
 }

@@ -6,12 +6,12 @@
 
 .user-pet-profiles-display{
     display: flex;
-    /* justify-content: center; */
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     /* flex-wrap: wrap; */
     
-    height: 2000px;
+    height: 1650px;
     max-width: 1500px;
     width: 100%;
     margin: 0 auto;

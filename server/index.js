@@ -53,14 +53,16 @@ massive(CONNECTION_STRING).then(db => {
     console.log('Connected to db')
 }).catch(err => console.log('cannot connect to db', err))
 
+app.use( express.static( `${__dirname}/../build` ) );
+
 
 //auth
 
 app.route('/auth/register').post(uC.register);
 app.route('/auth/login').post(uC.login);
 
+app.use(sessionCheck)
 app.route('/auth/logout').get(uC.logout);
-// app.use(sessionCheck)
 
 // app.use(sessionCheck)
 
@@ -116,6 +118,7 @@ app.get('/api/chatrooms/:id', cC.getUserChatRooms)
 // app.get("/api/get_chatrooms_as_recipient/:user_id", cC.getChatroomAsRecipient);
 // app.get("/api/get_chatroom_by_room_name/:room_name", cC.getChatroomByRoomName);
 // app.get("/api/get_room_data/:room_name", cC.getRoomData);
+
 
 
 

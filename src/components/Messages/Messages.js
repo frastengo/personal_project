@@ -112,7 +112,7 @@ goToChatRoom =()=>{
    
       const mappedChatrooms = chatrooms.map(chatroom => {
         return (
-          <div className='go'>
+          <div key={chatrooms.chatroom_id} className='go'>
             <h3>Messages from {chatroom.user_name}</h3>
             <button className='go' onClick={(e)=>this.setChatRoom(chatroom.user_id)}>GO</button>
             {/* <Link onClick={(e)=>this.setChatRoom(chatroom.user_id)} to ={'/chatroom'}>Go</Link> */}

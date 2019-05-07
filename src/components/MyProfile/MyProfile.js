@@ -165,7 +165,7 @@ class MyProfile extends Component {
                             </div>
                         )}
                         <div className="user-pet-profiles">
-                            {this.state.userProfiles.length > 0 ? (
+                            {userProfiles.length > 0 ? (
                                 <h1 className='title'>My Pets</h1>
                             ):(
                                 <h1 className='title'>My Pet</h1> 

@@ -10,6 +10,7 @@
    
     border-top: 1px solid white;
     background-image: url('./../Home/resources/batman2.JPG');
+    background-size: 1800px auto;
  
     max-width: 1500px;
     margin: 0 auto;
@@ -30,10 +31,10 @@
 .login-form button {
     font-family: 'Fjalla One', sans-serif;
     font-size: 20px;
-    border-radius: 5%;
-    padding: 10px 15px;
+    /* border-radius: 5%; */
+    padding: 10px 30px;
     color: grey;
-    margin-right: 40px;
+    /* margin-right: 40px; */
     text-shadow: 1px 1px 3px lightgrey;
 }
 
@@ -41,7 +42,7 @@
     font-family: 'Fjalla One', sans-serif;
     font-size: 20px;
     border-radius: 5%;
-    padding: 10px 15px;
+    padding: 10px 30px;
     color: white;
     background: black;
 }
@@ -73,6 +74,19 @@
     justify-content: center;
     align-items: center;
     color: white;
+    font-size: 35px;
+}
+#next{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1500px;
+}
+#next button {
+    font-size: 30px;
+}
+#next button:hover {
     font-size: 30px;
 }
 

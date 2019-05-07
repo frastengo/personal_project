@@ -18,3 +18,10 @@ html {
 
     }
 }
+
+@media screen and (max-width: 375px) {
+   .App {
+    width: 375px;
+   }
+       
+}

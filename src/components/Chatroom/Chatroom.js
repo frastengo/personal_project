@@ -43,8 +43,7 @@ class Chatroom extends Component {
               loggedInUser: res.data, 
               loggedInUserId: res.data.id  
           })
-      }
-    })
+      
     
 
       const {chatroomId} = this.props.chatroomId
@@ -79,76 +78,22 @@ class Chatroom extends Component {
 
       this.scrollToBottom();
     }
+
+  
+})
+}
   
 
 
       
 
 
-      // axios.get(`/api/messages?id=${this.props.user.user.id}`).then(res => {
-      //   this.setState({
-      //     messagesOfUser: res.data
-      //   })
-      // })
-    // axios
-    //   .get(`/api/get_chatroom_by_room_name/${this.props.room_name}`)
-    //   .then(res => {
-    //     this.setState({ room_data: res.data });
-    //   });
-    // axios.get(`/api/get_room_data/${this.props.room_name}`).then(res => {
-    //   this.setState({ old_messages: res.data });
-    // });
-    // axios.get(`/api/listings/${this.props.listing_id}`).then(res => {
-    //     this.setState({listing: res.data})
-    // });
-    
-  
-  
-
-  // componentDidUpdate= (prevProps) =>{
-    
-  //   if (this.props.user !== prevProps.user){
-  //     const {user} = this.props.user
-  //     const {chatroomId} = this.props.chatroomId
-  //     let user2 = null
-  //     const {chatroom_id, user_2, user_1} = chatroomId[0]
-     
-  //     if (user.id !== user_1){
-  //       user2 = user_1
-  //     } else if (user.id !== user_2){
-  //       user2 = user_2
-  //     } else {
-  //       user2 = null
-  //     }
       
-  //     console.log(chatroom_id)
-  //     console.log(chatroomId[0])
-  //     this.setState({
-  //         chatroom: chatroomId,
-  //         chatroomId: chatroom_id,
-  //         loggedInUser: this.props.user.user,
-  //         user2: user2
-  //     })
-  //     axios.get(`/api/messages/${chatroom_id}`).then(res => {
-  //       this.setState({
-  //         messagesOfUser: res.data
-  //       })
-  //     })
     
+  
+  
 
-  //     this.socket.emit('JOIN_ROOM', {
-  //     chatroom_id: chatroom_id
-  //     })
-  //   }
-
-    
-  // }
-
-//   componentDidUpdate = (prevProps, prevState) => {
-//     if(prevState.listing !== this.state.listing){
-//         this.setState({listing: this.state.listing})
-//     }
-//   }
+  
 
   exit = () => {
       const {chatroomId} = this.props.chatroomId
@@ -159,7 +104,13 @@ class Chatroom extends Component {
 
   }
 
-  componentDidUpdate() {
+  componentDidUpdate=(prevProps, prevState) =>{
+    if (prevState.loggedInUser !== this.state.loggedInUser){
+      this.setState({
+        loggedInUser: this.state.loggedInUser
+      })
+    }
+    
     this.scrollToBottom();
   }
 
@@ -170,15 +121,7 @@ class Chatroom extends Component {
     this.messageList.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
   }
 
-  // componentWillUnmount = () => {
-  //     const {chatroomId} = this.props.chatroomId
-  //     const {chatroom_id} = chatroomId[0]
-  //     if (chatroomId) {
-  //       this.socket.emit('LEAVE_ROOM', {
-  //         chatroom_id: chatroom_id
-  //       })
-  //     }
-  // }
+ 
 
   addMessage = data => {
     this.setState({
@@ -235,8 +178,14 @@ const {user} = this.props.user
           <div className='chatroom-container'>
           {user ? (
             <div className='chatroom'>
-              <div className='title-container'>
-                <h1 className='title'>Chatroom</h1></div>
+              <div className='title-container-chatroom'>
+                  <h1 className='title'><i class="material-icons">
+group
+</i>Chatroom<i class="material-icons">
+pets
+</i>  </h1>
+                  <Link to='/friends'><button onClick={this.exit}>Exit</button></Link>
+                </div>
                 
                 <div>User 1 and User 2 info</div>
                 <Link to='/friends'><button onClick={this.exit}>Exit</button></Link>
@@ -275,58 +224,7 @@ const {user} = this.props.user
       )
   }
 }
-    // let {listing} = this.state  
-    // let inputStyle = {
-    //     height: 25,
-    //     width: 350,
-    //     borderBottomRightRadius: 0,
-    //     borderTopRightRadius: 0,
-    //   };
-    //   let buttonStyle = {
-    //     height: 25,
-    //     fontSize: 10,
-    //     borderTopLeftRadius: 0,
-    //     borderBottomLeftRadius: 0,
-    //     background: '#546D8C',
-    //   };
     
-    // // const mappedMessages = this.state.messages.map(message => {
-    // //   if (this.props.user.profile_name === message.sender) {
-    // //     return <p className='myMessages' style={{alignSelf: 'flex-start'}}>{message.message}</p>;
-    // //   } else {
-    // //     return <p className='theirMessages' style={{ alignSelf: 'flex-end' }}>{message.message}</p>;
-    // //   }
-    // // // });
-    // // const mappedOldMessages = this.state.old_messages.map(oldMessage => {
-    // //   if (this.props.user.profile_name === oldMessage.sender) {
-    // //     return <p className='myMessages' style={{ alignSelf: 'flex-start' }}>{oldMessage.message}</p>;
-    // //   } else {
-    // //     return <p className='theirMessages' style={{ alignSelf: 'flex-end' }}>{oldMessage.message}</p>;
-    // //   }
-    // // });
-    // return (
-    //   <div style={{display: 'flex', color: 'black'}}>
-    //   <div className="messagesContainer" style={{display: 'flex', flexDirection: 'column'}}>
-    //     <div style={{display: 'flex', flexDirection: 'column'}} className="messagesContainer__messages">
-    //       {/* {mappedOldMessages}
-    //       {mappedMessages} */}
-          
-    //     </div>
-    //     <form className="messagesContainer__form">
-    //         <input
-    //         style={inputStyle}
-    //           className='ui input focus'
-    //           value={this.state.message}
-    //           onChange={e => this.messageHandler(e.target.value)}
-    //           id="m"
-    //           autocomplete="off"
-    //         />
-    //         <button className='ui primary button' style={buttonStyle} onClick={this.sendPm}>Send</button>
-    //       </form>
-     
-       
-    //     </div>
-    //   </div>
 
 
 const mapStateToProps = reduxState => {

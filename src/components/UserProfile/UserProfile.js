@@ -21,7 +21,7 @@ class UserProfile extends Component {
 
             options: this.options,
             showEdit: false,
-            editMode: true,
+            editMode: false,
             editName: true,
             editAge: true,
             editFavorites: true,

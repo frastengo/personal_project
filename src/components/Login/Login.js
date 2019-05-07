@@ -113,12 +113,14 @@ class Login extends Component {
             </div>
             ):(
               <div className="login-form">
-                <h1>Welcome back {loggedInUser.name} </h1>
+                <h1>Welcome back {user.user_name} </h1>
                 <p>You are now logged-in and ready to continue your FurBook experience. Where do you want to go next?</p>
-                <div className='next'>
-                    <Link to='/profile' ><button>My Profile</button></Link>
+                <div id='next'>
+                    <Link to='/profile' ><button>Pets</button></Link>
                     <Link to='/profiles' ><button>Find Friends</button></Link>
-                    <Link to='/friends' ><button>My Friends</button></Link>
+                    <Link to='/friends' ><button>Friends</button></Link>
+                    <Link to='/messages' ><button>Messages</button></Link>
+                    <Link to='/new' ><button>Add Pet</button></Link>
                 </div>
                 {/* <h2>You are now registered and ready to create your dog profiles.</h2> */}
               </div>
