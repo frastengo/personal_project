@@ -4,11 +4,16 @@
     margin: 0 auto;
     /* display: flex;
     flex-direction: column; */
-    background: url('./../resources/iggy2.JPG');
+    /* background: url('./../resources/iggy2.JPG'); */
     background-repeat: no-repeat;
     background-size: cover;
     
-    height: 1400px;
+    height: 1500px;
+    /* background: url('./../resources/batmanbig.png'); */
+    /* background: url('./../resources/batmanbig.png'); */
+    /* background: url('./../resources/batmanbig.png');
+    background-size: cover;
+    background-repeat: no-repeat; */
 }
 
 .add-pet-form {
@@ -17,8 +22,8 @@
     width: 100%;
 
     width: 100%;
-    max-width: 500px;
-    height: 1400px;
+    max-width: 1500px;
+    height: 500px;
     
     /* margin: 0 auto; */
     /* border: 1px solid white; */
@@ -26,6 +31,9 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    /* background: url('./../resources/batmanbig.png'); */
+    background-size: cover;
+    background-repeat: no-repeat;
     
     
     /* height: 1000px; */
@@ -43,16 +51,46 @@
         color: white;
     
 }
+.mapped-display-profile i{
+    font-size: 30px;
+    margin-left: 20px;
+    align-self: center;
+    justify-self: center;
 
-.add-pet-form button {
+}
+
+.add-button-class{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.mapped-display-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 800px;
+}
+
+.mapped-display-profile button {
     font-family: 'Fjalla One', sans-serif;
     font-size: 25px;
     border-radius: 5%;
     padding: 10px 15px;
     color: grey;
+    width: 1500px;
+
     
 }
+.mapped-display-profile button:HOVER {
+    COLOR: WHITE;
+    BACKGROUND: BLACK;
 
+    
+}
 .add-pet-form input, textarea {
     font-family: 'Fjalla One', sans-serif;
     font-size: 30px;
@@ -69,7 +107,9 @@
 }
 
 .container-pet-form {
-    background: linear-gradient( white, grey, white);
+    /* background: url('./../resources/iggy.JPG'); */
+    /* background-repeat: no-repeat; */
+    background-size: 100%;
 }
 
 #dropzone{
@@ -79,4 +119,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }

@@ -131,15 +131,22 @@ h2 {
 @media screen and (max-width: 768px) {
     h2 {
         font-size: 35px;
-        text-shadow: 4px 3px 3px black;
-        color: white;   
+        text-shadow: 1px 1px 1px black;
+        color: white;  
+         
+    }
+
+    .link {
+        font-size: 20px;
     }
 
     .register {
         
         height: 530px;
         width: 768px;
+        background-size: cover;
         margin: 0 auto;
+        border: none;
         
     }
 
@@ -147,46 +154,56 @@ h2 {
         height: 600px;
         width: 768px;
         margin: 0 auto;
+        border: none;
     }
 
     .find-friends{
         height:500px;
         width: 768px;
         margin: 0 auto;
+        border: none;
     }
 }
 
 @media screen and (max-width: 375px) {
     h2 {
-        font-size: 40px;
-        text-shadow: 1px 1px 1px black;
-        color: white;  
+        /* font-size: 40px; */
+        /* text-shadow: 1px 1px 1px black; */
+        /* color: white;   */
         
     }
     .home {
-        width: 375px
+        /* width: 375px; */
+        /* height: 1500px; */
+        /* margin: 0 auto; */
+        /* background: black; */
+        /* display: flex; */
+        /* justify-content: center; */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        /* margin-left: 30px; */
     }
 
     .register {
         
-        height: 530px;
-        width:100%;
-        margin: 0 auto;
-        background-size: cover;
-        border: none;
+        /* height: 500px; */
+        /* width:100%; */
+        /* margin: 0 auto; */
+        /* background-size: cover; */
+        /* border: none; */
         
     }
 
     .welcome {
-        height: 600px;
-        width: 375px;
+        height: 500px;
+        width: 100%;
         margin: 0 auto;
         border: none;
     }
 
     .find-friends{
         height:500px;
-        width: 768px;
+        width: 100%;
         margin: 0 auto;
         border: none;
     }

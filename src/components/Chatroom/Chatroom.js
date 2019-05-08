@@ -12,6 +12,8 @@ import './Chatroom.css'
 class Chatroom extends Component {
   constructor(props) {
     super(props);
+
+    const {user} = this.props.user
     this.state = {
       message: "",
       messages: [],
@@ -36,6 +38,7 @@ class Chatroom extends Component {
   }
 
   componentDidMount = () => {
+  
     axios.get("/auth/user").then(res => {
       if (res.data){
         this.props.setUser(res.data);

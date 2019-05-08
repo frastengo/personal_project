@@ -12,6 +12,31 @@ html {
     background: black;
 }
 
+.footer{
+    height: 100px;
+    width: 100%;
+    background: black;
+
+}
+
+.footer-title i {
+    font-size: 40px;
+    padding-left: 30px;
+}
+
+.footer-title {
+    font-size: 40px;
+    /* border: 1px solid lightgrey; */
+    /* margin: 20px 20px; */
+    padding: 10px 10px;
+    width: 100%;
+    text-align: center;
+    /* border-radius: 7%; */
+    /* BACKGROUND: BLACK; */
+    COLOR: WHITE;
+    background: rgba(100, 100, 100, 0.4);
+}
+
 @media screen and (max-width: 768px) {
     .App {
         width: 768px;
@@ -21,7 +46,16 @@ html {
 
 @media screen and (max-width: 375px) {
    .App {
-    width: 375px;
+    /* width: 375px; */
+    /* width: 100%; */
+    /* background: black; */
+    
+   }
+
+   html {
+       /* width: 375px; */
+       /* width: 100%; */
+       
    }
        
 }

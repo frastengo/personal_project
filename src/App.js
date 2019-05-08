@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import routes from './routes'
 import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 
 
 class App extends Component {
@@ -13,6 +14,8 @@ class App extends Component {
         <Link to = '/profile'>Profile</Link>
         <Link to = '/create'>New Profile</Link> */}
         {routes}
+        <Footer/>
+        
       </div>
     );
   }

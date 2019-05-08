@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './AddPetForm.css'
 import axios from 'axios'
-import Profile from './../Profile/Profile'
+import ProfileDisplay from '../../components/ProfileDisplay/ProfileDisplay'
 import Select from 'react-select'
 import {genders, ageGroups, stateOptions} from './searchData.js'
 import countryList from 'react-select-country-list'
@@ -69,6 +69,10 @@ class AddPetForm extends Component {
         
     }
 
+    // componentDidUpdate = () => {
+    //     this.updateDisplay()
+    // }
+
     changeHandler = (name, value) => {
         this.setState({
             [name]: value,
@@ -89,28 +93,33 @@ class AddPetForm extends Component {
             
             gender: selectedGender.value
         })
+        this.updateDisplay()
     }
     handleAge = (selectedAge) => {
         this.setState({
             age: selectedAge.value,
         })
+        this.updateDisplay()
     }
 
     handleBreed = (selectedBreed) => {
         this.setState({
             breed: selectedBreed.value,
         })
+        this.updateDisplay()
     }
 
     handleState = (selectedState) => {
         this.setState({
             state: selectedState.value,
         })
+        this.updateDisplay()
     }
     handleCountry= (selectedCountry) => {
         this.setState({
             country: selectedCountry.value,
         })
+        this.updateDisplay()
     }
 
     addProfile = () => {
@@ -135,6 +144,7 @@ class AddPetForm extends Component {
         });
         
         this.handleImageUpload(files[0]);
+        this.updateDisplay()
     }
 
     handleImageUpload = (file) => {
@@ -196,7 +206,7 @@ class AddPetForm extends Component {
         
        
         const mappedDisplayProfile = display.map(dog => {
-            return <Profile dog={dog}/>
+            return <ProfileDisplay dog={dog}/>
         })
 
 
@@ -285,8 +295,8 @@ class AddPetForm extends Component {
                         /> */}
 
                         <textarea 
-                            className='select'
-                            placeholder='Favorites'
+                            className='select-favorites'
+                            placeholder="My favorite things are ..."
                             name="favorites"
                             value={this.state.favorites}
                             onChange={(e)=>this.changeHandler(e.target.name, e.target.value)}
@@ -297,30 +307,35 @@ class AddPetForm extends Component {
                                 <section>
                                 <div {...getRootProps()}>
                                     <input {...getInputProps()} />
-                                    <p id="dropzone">Click to select files, or drop file here</p>
+                                    <p id="display-dropzone">Click to select picture or drop your picture here </p>
                                 </div>
                                 </section>
                             )}
                         </Dropzone>
 
                     </div>
-                        <button onClick={this.addProfile}>Add Pet</button>
+                        
 
                     
                     
                 </div>
+            {this.state.displayProfile.length ? (
+                        <div className="mapped-display-profile">
+                            {mappedDisplayProfile}
+                            <button className='add-button-class' onClick={this.addProfile}>ADD PET<i class="material-icons">
+add_circle_outline
+</i></button>
+                        </div>
+
+                        
+
+                    ):(
+                        <div className="display-message"><h2>Your profile preview will display here </h2>  
+                        </div>
+                    )}
 
             </div>
 
-            {this.state.profile.length ? (
-                        <div>
-                            {mappedDisplayProfile}
-                        </div>
-
-                    ):(
-                        <div>Your profile preview will display here   
-                        </div>
-                    )}
         </div>
         )
     }

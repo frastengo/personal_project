@@ -10,6 +10,7 @@ import AddPetForm from './components/AddPetForm/AddPetForm'
 import Friends from './components/Friends/Friends'
 import Messages from './components/Messages/Messages'
 import Chatroom from './components/Chatroom/Chatroom'
+import UserInfo from './components/UserInfo/UserInfo'
 
 
 export default (
@@ -24,6 +25,7 @@ export default (
         <Route path = '/friends' component={Friends}/>
         <Route path = '/messages' component={Messages}/>
         <Route path = '/chatroom' component={Chatroom}/>
+        <Route path = '/userinfo' component={UserInfo}/>
     </Switch>
 
 )

@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import Modal from 'react-modal'
+import UserInfo from '../../components/UserInfo/UserInfo'
 import logo from './../Home/resources/whitefurlogo.png'
 // import logo1 from './whitelogotest1.png'
 import whitelogotest2 from './whitelogotest2.png'
@@ -14,13 +16,29 @@ import {setUser} from './../../ducks/userReducer'
 import axios from 'axios'
 import { StickyContainer, Sticky } from 'react-sticky';
 
+const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)',
+      height: '1000px',
+      width: '1000px',
+      borderRadius: '10%'
+
+    }
+  };
+
 
 class Header extends Component {
     constructor(props){
         super(props)
 
         this.state = {
-            loggedInUser: null
+            loggedInUser: null,
+            isActive: false,
         }
     }
     
@@ -28,6 +46,7 @@ class Header extends Component {
    
 
     componentDidMount() {
+        Modal.setAppElement('body');
         axios.get("/auth/user").then(res => {
             // this.props.setUser(res.data);
             if (res.data){
@@ -37,6 +56,12 @@ class Header extends Component {
             }
           
         });
+    }
+
+    toggleModal = ()=> {
+        this.setState({
+            isActive: !this.state.isActive
+        })
     }
 
     logout = () => {
@@ -71,7 +96,21 @@ class Header extends Component {
                 distanceFromBottom,
                 calculatedHeight
               }) => (
-                <header style={style}>
+            <header style={style}>
+                <section>
+                        <Modal 
+                            isOpen={this.state.isActive}
+                            onRequestClose={this.toggleModal}
+                            style={customStyles}
+                            animationType='slide'
+                            transparent={true}
+                        >
+                            
+                            <UserInfo />
+                            <button onClick={this.toggleModal}>Exit</button>
+                        </Modal>
+
+                    </section>
                 <div className='logo-container'>
                     <Link to='/'><img className='logo' alt ='FURBook' src={whitelogotest7}/></Link>
                     <nav>
@@ -85,12 +124,14 @@ class Header extends Component {
                         ) : (
                             <div className='nav'
                             >
-                                <h1 className='nav-link-name'>{user.user_name} logged in</h1>
-                                <Link className='nav-link' to = '/'> Home</Link>
-                                <Link className='nav-link' to = '/new'>       New</Link>
+                                <h1 onClick={this.toggleModal}className='nav-link-name'>{user.user_name} logged in <i class="material-icons">
+account_circle
+</i></h1>
+                                
+                                
                                 <Link to='/friends' className='nav-link' >Friends </Link>
                                 <Link className='nav-link' to = '/messages'>       Messages</Link>
-                                <Link to='/friends' className='nav-link' >Friends </Link>
+                                
                                 <Link className='nav-link' to = '/profile'> Pets</Link>
                                 <Link className='nav-link' to = '/profiles'> Find Friends</Link>
                                 <Link className='nav-link' onClick={this.logout} > Logout</Link>

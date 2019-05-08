@@ -90,19 +90,54 @@
 }
 
 @media screen and (max-width: 768px) {
-    .select-container{
-        display: flex;
-        width: 100%;
+    .profiles {
         max-width: 768px;
-        margin: 0 auto;
-        justify-content: space-around;
+        width: 100%;
+    }
+
+    .mapped-profiles {
+        /* border: 5px solid grey; */
+        display: flex;
+        justify-content: space-between;
         align-items: center;
+        flex-direction: column;
+        /* flex-wrap: wrap; */
+        
+        height: 700px;
+        max-width: 768px;
+        width: 100%;
+        margin: 0 auto;
+        /* border-radius: 1%; */
+    
+        overflow: scroll;
+        /* box-shadow: 5px 5px 5px grey; */
+    }
+
+
+    .select-container{
+        margin-top: 60px;
+        padding-top: 20px;
+        /* display: flex; */
+        /* width: 100%; */
+        /* max-width: 768px; */
+        /* margin: 0 auto; */
+        /* justify-content: space-around; */
+        /* align-items: center; */
     }
     .select {
         font-size: 20px;
         /* width: 150px; */
         /* margin-top: 50px; */
     
+    }
+    .select {
+        
+        width: 190px;
+    
+    }
+
+    .select-container h1{
+       font-size: 20px;
     }
 
     .friends-display-section h1{

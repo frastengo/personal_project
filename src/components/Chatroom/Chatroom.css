@@ -85,8 +85,8 @@
 }
 .receiver{
     align-self: flex-end;
-    background: black;
-    color:white;
+    background: grey;
+    /* color:white; */
 }
 
 .message-submit-form{

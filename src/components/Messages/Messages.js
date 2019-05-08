@@ -4,7 +4,8 @@ import axios from "axios";
 import { setUser} from '../../ducks/userReducer'
 import {getChatroomId} from '../../ducks/chatReducer'
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+
 import './Messages.css'
 
 class Messages extends Component {
@@ -51,13 +52,18 @@ class Messages extends Component {
     //     })
     // })
     this.props.getChatroomId(loggedInUserId, currentFriendUserId)
+    
     this.goToChatRoom()
     // this.props.history.push('/chatroom')
 
 }
 
 goToChatRoom =()=>{
+  if(this.props.chatroomId){
   this.props.history.push('/chatroom')
+  }else {
+    this.props.history.push('/messages')
+  }
 }
 
   render() {
@@ -110,9 +116,9 @@ goToChatRoom =()=>{
     console.log(chatrooms)
 
    
-      const mappedChatrooms = chatrooms.map(chatroom => {
+      const mappedChatrooms = chatrooms.map((chatroom, index) => {
         return (
-          <div key={chatrooms.chatroom_id} className='go'>
+          <div key={chatroom.chatroom_id} className='go'>
             <h3>Messages from {chatroom.user_name}</h3>
             <button className='go' onClick={(e)=>this.setChatRoom(chatroom.user_id)}>GO</button>
             {/* <Link onClick={(e)=>this.setChatRoom(chatroom.user_id)} to ={'/chatroom'}>Go</Link> */}

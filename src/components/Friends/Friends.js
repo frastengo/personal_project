@@ -8,6 +8,7 @@ import axios from 'axios'
 import { getFriends } from '../../ducks/friendsReducer'
 import FriendsProfile from './FriendsProfile'
 import FriendProfile from './FriendProfile'
+import Messages from './../Messages/Messages'
 import io from "socket.io-client";
 
 class Friends extends Component {
@@ -156,6 +157,7 @@ class Friends extends Component {
                 ):(
                     <div className='click-on-friend'><h3>Click on a friend to display</h3></div>
                 )}
+                
                 
             </div>
         ):(
