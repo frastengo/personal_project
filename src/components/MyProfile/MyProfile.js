@@ -136,7 +136,7 @@ class MyProfile extends Component {
 
             <div className='home'>
                 <div className='title-container'>
-                {userProfiles.length > 0 ? (
+                {userProfiles.length > 2 ? (
                     <h1 className='title'>My Pet <i class="material-icons">pets</i> </h1>
                 ):(
                     <h1 className='title'>My Pet <i class="material-icons">pets</i> </h1>
@@ -145,7 +145,7 @@ class MyProfile extends Component {
                 </div>
                 {user ? (
                     <div>  
-                        {userProfiles ? (
+                        {userProfiles.length == 0 ? (
                             <div className="user-pet-profiles">
                                 <h1 className='title'>You currently do not have any pet profiles</h1>
                                 <Link to='/new'><button onClick={this.displayFormToAdd}>ADD NEW</button></Link>
@@ -153,7 +153,7 @@ class MyProfile extends Component {
                         ): (
                         <div className="user-pet-profiles">
                             {userProfiles.length > 0 ? (
-                                <h1 className='title'>My Pets</h1>
+                                <h1 className='title'>You currently have {userProfiles.length} pet profiles.</h1>
                             ):(
                                 <h1 className='title'>My Pet</h1> 
                             )}
