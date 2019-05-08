@@ -82,9 +82,9 @@ class AddPetForm extends Component {
     }
 
     updateDisplay = () => {
-        const {country, state, name, age, breed, favorites, gender, loggedInUserId, zipcode, image} = this.state
+        const {country, state, name, age, breed, favorites, gender, loggedInUserId, zipcode, image, city} = this.state
         this.setState({
-            displayProfile: [{country, state, name, age, breed, favorites, gender, zipcode, image}]
+            displayProfile: [{country, state, name, age, breed, favorites, gender, city,zipcode, image}]
         })
     }
 
@@ -123,14 +123,14 @@ class AddPetForm extends Component {
     }
 
     addProfile = () => {
-        const {country, state, name, age, breed, favorites, gender, loggedInUserId, zipcode, image} = this.state
+        const {country, state, name, age, breed, favorites, gender, loggedInUserId, zipcode, image, city} = this.state
         
 
         
 
 
 
-        axios.post(`/api/profiles/${loggedInUserId}`, {country, state, name, age, breed, favorites, gender, zipcode, image}).then(res => {
+        axios.post(`/api/profiles/${loggedInUserId}`, {country, state, name, age, breed, favorites, gender, zipcode, image, city}).then(res => {
             this.setState({
                 profile: res.data
             })
