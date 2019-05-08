@@ -3,7 +3,9 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getAllProfiles, getAllProfilesByUserId} from './../../ducks/profilesReducer'
+import {getAllProfiles, getAllProfilesByUserId} 
+from './../../ducks/profilesReducer'
+import {setUser} from './../../ducks/userReducer'
 
 
 
@@ -137,6 +139,7 @@ class UserInfo extends Component {
                         {!this.state.showUserEdit ? (
                         
                             <div className="user-info">
+                                
                                 <h1>My Information: </h1>
                                 <h2>{user.user_name}</h2>
                                 <h2>{user.email}</h2>
@@ -163,7 +166,7 @@ class UserInfo extends Component {
                         )}
                         <div className="user-pet-profiles">
                             {userProfiles.length > 0 ? (
-                                <h1 className='title'>My Pets</h1>
+                                <h1 className='title'>My Information</h1>
                             ):(
                                 <h1 className='title'>My Pet</h1> 
                             )}
@@ -204,7 +207,7 @@ const mapStateToProps = reduxState => {
   };
   
   const mapDispatchToProps = {
-    // setUser: setUser,
+    setUser: setUser,
     getAllProfilesByUserId: getAllProfilesByUserId
   };
   

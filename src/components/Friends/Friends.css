@@ -26,7 +26,8 @@
 .friends {
     /* background: linear-gradient( white, grey, white); */
     background: lightgrey;
-    height: 100vh;
+    /* height: 100vh; */
+    height: 1500px;
 }
 
 .mapped-current-friend{
@@ -71,8 +72,8 @@
     width:100%;
     margin: 0 auto;
     text-align: center;
-    background: url('./../resources/dutchie1.JPG');
-    height: 900px;
+    /* background: url('./../resources/dutchie1.JPG'); */
+    height: 1900px;
     background-size: cover;
 }
 

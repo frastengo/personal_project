@@ -24,9 +24,10 @@ const customStyles = {
       bottom                : 'auto',
       marginRight           : '-50%',
       transform             : 'translate(-50%, -50%)',
-      height: '1000px',
-      width: '1000px',
-      borderRadius: '10%'
+      height: '900px',
+      width: '900px',
+      borderRadius: '3%',
+      backgroundColor: 'rgba(100, 100, 100, 0.7)'
 
     }
   };

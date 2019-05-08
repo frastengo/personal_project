@@ -1,6 +1,6 @@
 .chatrooms-container{
     width: 100%;
-    HEIGHT: 100VH;
+    HEIGHT: 1500px;
     
     /* background: url('./nala.JPG'); */
     /* MARGIN-TOP: 50PX; */
@@ -12,6 +12,7 @@
     width: 100%;
     max-width: 1500px;
     HEIGHT: 100%;
+    height: 1100px;
     margin: 0 auto;
     /* text-align: center; */
     /* margin-right: 100px; */
