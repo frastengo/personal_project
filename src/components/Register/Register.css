@@ -1,4 +1,8 @@
-
+.registration-container-1{
+    background-image: url('./../resources/babydutchie.JPG');
+    background-size: 150%;
+    background-repeat: no-repeat;
+}
 
 .registration-container{
     width: 100%;

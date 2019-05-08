@@ -1,7 +1,8 @@
 .profiles {
     /* background: linear-gradient( white, lightgrey, white); */
-    min-height: 100vh;
+    /* min-height: 100vh; */
     width: 100vw;
+    height: 1700px;
     /* position: relative; */
     /* padding-bottom: 50px; */
     /* background-image: url('./../resources/shine.png');

@@ -4,6 +4,13 @@
     margin: 0 auto;
 }
 
+.home-my-profile{
+    background: lightgrey;
+    padding-bottom: 100px;
+    position: relative;
+    height: 1700px;
+}
+
 .user-pet-profiles-display{
     display: flex;
     justify-content: space-between;
@@ -11,8 +18,8 @@
     flex-direction: column;
     /* flex-wrap: wrap; */
     
-    height: 900px;
-    max-width: 1500px;
+    height: 1200px;
+    max-width: 1700px;
     width: 100%;
     margin: 0 auto;
 

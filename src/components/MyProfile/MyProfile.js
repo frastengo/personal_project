@@ -129,15 +129,16 @@ class MyProfile extends Component {
 
         const {user} = this.props.user
 
-      
+      console.log(userProfiles.length)
+      console.log(this.props.userProfiles)
 
         return (
             
 
-            <div className='home'>
+            <div className='home-my-profile'>
                 <div className='title-container'>
-                {userProfiles.length > 2 ? (
-                    <h1 className='title'>My Pet <i class="material-icons">pets</i> </h1>
+                {userProfiles.length > 1 ? (
+                    <h1 className='title'>My Pets <i class="material-icons">pets</i> </h1>
                 ):(
                     <h1 className='title'>My Pet <i class="material-icons">pets</i> </h1>
                 )}

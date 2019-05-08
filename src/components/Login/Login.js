@@ -74,8 +74,9 @@ class Login extends Component {
         let { loggedInUser, email, password} = this.state;
         return (
           
-          
-          <div className="login-container">
+        
+          <div className="login-container-1">
+            <div className='login-container'>
             {!user ? (
             <div>
               <div className="login-form">
@@ -133,6 +134,7 @@ class Login extends Component {
             {/* <h4>User Data:</h4> */}
             {/* <p> {loggedInUser.email ? JSON.stringify(loggedInUser) : 'No User'} </p> */}
           </div>
+        </div>
         );
       }
     }

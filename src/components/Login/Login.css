@@ -10,7 +10,7 @@
    
     border: 1px solid white;
     background-image: url('./../Home/resources/batman2.JPG');
-    background-size: 120%;
+    background-size: 110%;
  
     width: 100%;
     max-width: 1500px;
@@ -24,7 +24,17 @@
     
    
 }
+
+.login-container-1{
+    width: 100%;
+    /* background: blue; */
+    background-image: url('./../Home/resources/batman2.JPG');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1500px;
+}
 .login-form h1 {
+    
     font-size: 55px;
     text-shadow: 4px 3px 3px black;
     text-align: center;
@@ -65,7 +75,7 @@
     align-items: center;
     
     background-size: cover;
-    height: 500px;
+    height: 600px;
     background: rgba(100, 100, 100, 0.4);
     color: white;
 
@@ -74,6 +84,9 @@
     border-radius: 10%;
     padding-right: 150px;
     padding-left: 200px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    overflow: hidden;
     
     
     

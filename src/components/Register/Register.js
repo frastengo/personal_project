@@ -64,7 +64,7 @@ class Register extends Component {
         const {user} = this.props.user
         return (
           
-        
+        <div className="registration-container-1">
           <div className="registration-container">
             {displayForm ? (
             <div>
@@ -128,6 +128,7 @@ pets
     
            
           </div>
+        </div>
         );
       }
       
