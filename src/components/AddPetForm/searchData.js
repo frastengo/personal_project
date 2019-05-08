@@ -54,8 +54,8 @@ export const ageGroups = [
 ]
 
 export const stateOptions = [
-    { value: 'AL', label: 'Alabama' },
-    { value: 'AK', label: 'Alaska' },
+    { value: 'Alabama', label: 'Alabama' },
+    { value: 'Alaska', label: 'Alaska' },
     { value: 'AS', label: 'American Samoa' },
     { value: 'AZ', label: 'Arizona' },
     { value: 'AR', label: 'Arkansas' },

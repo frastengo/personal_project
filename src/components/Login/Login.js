@@ -79,7 +79,7 @@ class Login extends Component {
             {!user ? (
             <div>
               <div className="login-form">
-                <h1>Welcome back FUR Parent, login to continue...</h1>
+                <h1>Welcome back FUR Parent, <br/>login to continue...</h1>
                 <form className='form'>
                   <div className='label-input'>
                     <label>Email: </label>
@@ -99,10 +99,11 @@ class Login extends Component {
                       placeholder="password"
                     />
                   </div>
-                  <div className='label-input'>
-                    <button type='submit' onClick={this.login}>Login</button>
-                  </div>
+                  
                 </form>
+                  <div className='label-input'>
+                    <button className='login-button' type='submit' onClick={this.login}>Login</button>
+                  </div>
                 
                 {/* {loggedInUser.email ? (
                   <button onClick={() => this.logout()}>Logout</button>
@@ -113,15 +114,15 @@ class Login extends Component {
             </div>
             ):(
               <div className="login-form">
-                <h1>Welcome back {user.user_name} </h1>
-                <p>You are now logged-in and ready to continue your FurBook experience. Where do you want to go next?</p>
-                <div id='next'>
+                <h1>Welcome back {user.user_name} !</h1>
+                <h2>Because it's not a home without FUR kids ... </h2>
+                {/* <div id='next'>
                     <Link to='/profile' ><button>Pets</button></Link>
                     <Link to='/profiles' ><button>Find Friends</button></Link>
                     <Link to='/friends' ><button>Friends</button></Link>
                     <Link to='/messages' ><button>Messages</button></Link>
                     <Link to='/new' ><button>Add Pet</button></Link>
-                </div>
+                </div> */}
                 {/* <h2>You are now registered and ready to create your dog profiles.</h2> */}
               </div>
             )}

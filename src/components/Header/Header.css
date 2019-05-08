@@ -26,6 +26,67 @@ header{
 
 }
 
+#next{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    
+}
+#next button {
+    font-size: 30px;
+    width: 250px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 30px;
+    border-radius: 5%;
+    padding: 10px 30px;
+    color: grey;
+}
+#next button:hover {
+    font-size: 30px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 30px;
+    border-radius: 5%;
+    padding: 10px 30px;
+    color: white;
+    background: black;
+}
+
+#next-test{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    
+}
+#next-test button {
+    font-size: 30px;
+    width: 160px;
+    font-family: 'Fjalla One', sans-serif;
+    /* font-size: 30px; */
+    /* border-radius: 5%; */
+    padding: 5px 5px;
+    color: white;
+    background: black;
+    border: none;
+}
+#next-test button:hover {
+    font-size: 30px;
+    /* font-family: 'Fjalla One', sans-serif; */
+    /* font-size: 35px; */
+    /* border-radius: 5%; */
+    padding: 5px 5px;
+    color: black;
+    background: white;
+    cursor: pointer;
+}
+
 .home-icon img{
     /* background-image: */
 }
@@ -33,6 +94,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    PADDING-LEFT: 40PX;
 }
 .nav-link-name i {
     margin-left: 10px;
@@ -46,8 +108,9 @@ header{
 
 .nav{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
+    WIDTH: 1100PX;
    
 }
 
@@ -61,13 +124,17 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* justify-content: flex-start; */
+    /* padding: 20px; */
+    padding-left: 10px;
+    padding-RIGHT: 10px;
 }
 
 .nav-link, .nav-link-name {
     text-decoration: none;
     color: white;
     font-size: 25px;
-    margin-right: 25px;
+    /* margin-right: 25px; */
 }
 
 .nav h1{

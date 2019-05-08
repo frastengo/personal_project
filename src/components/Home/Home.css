@@ -9,6 +9,8 @@
     /* height: 50px; */
     /* width: 500px; */
     background: lightgrey;
+    padding-bottom: 100px;
+    position: relative;
     /* background: url('resources/opacityprints.png'); */
 }
 

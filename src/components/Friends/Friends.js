@@ -11,6 +11,8 @@ import FriendProfile from './FriendProfile'
 import Messages from './../Messages/Messages'
 import io from "socket.io-client";
 
+const { HOST_NAME } = process.env
+
 class Friends extends Component {
 
     constructor(props){
@@ -26,7 +28,7 @@ class Friends extends Component {
             chatroom: null,
           
         }
-        this.socket = io("www.myfurbook.com");
+        this.socket = io(HOST_NAME);
     }
 
     getUserAndUserFriends =()=>{

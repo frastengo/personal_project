@@ -2,8 +2,10 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import './Register.css'
+import {connect} from 'react-redux'
+import {setUser} from './../../ducks/userReducer'
 
-export default class Register extends Component {
+class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,18 +13,20 @@ export default class Register extends Component {
           email: '',
           password: '',
           displayForm: true,
+          loggedInUser: null,
 
           registeredUser: []
         };
       }
     
-      // componentDidMount(){
-      //   axios.get('/auth/user').then(res => {
-      //     this.setState({
-      //       loggedInUser: res.data
-      //     })
-      //   })
-      // }
+      componentDidMount(){
+        axios.get('/auth/user').then(res => {
+          this.props.setUser(res.data)
+          this.setState({
+            loggedInUser: res.data
+          })
+        })
+      }
     
       // login() {
       //   let { email, password } = this.state
@@ -38,8 +42,9 @@ export default class Register extends Component {
       submit() {
         let { user_name, email, password } = this.state
         axios.post('/auth/register', {user_name, email, password}).then(res => {
+          this.props.setUser(res.data)
           this.setState({
-            registeredUser: res.data,
+            loggedInUser: res.data,
             displayForm: false
           })
         })
@@ -47,23 +52,28 @@ export default class Register extends Component {
     
       logout() {
         axios.get('/auth/logout').then(() => {
+          this.props.setUser(null)
           this.setState({
             loggedInUser: {}
           })
         })
       }
-    
       render() {
-        console.log(this.state.registeredUser)
-        let { registeredUser, email, password, user_name, displayForm} = this.state;
+        console.log(this.state.loggedInUser)
+        let { loggedInUser, email, password, user_name, displayForm} = this.state;
+        const {user} = this.props.user
         return (
           
-          
+        
           <div className="registration-container">
             {displayForm ? (
             <div>
               <div className="registration-form">
-                <h1>Welcome To FURBook</h1>
+                <h1 className='welcome-icons'><i class="material-icons">
+pets
+</i>Welcome in Fur Parent <i class="material-icons">
+pets
+</i></h1>
                 <div className='form'>
                   <div className='label-input'>
                     <label>Name: </label>
@@ -77,6 +87,7 @@ export default class Register extends Component {
                   <div className='label-input'>
                     <label>Email: </label>
                     <input
+                      
                       value={email}
                       onChange={e => this.setState({ email: e.target.value })}
                       type="text"
@@ -93,7 +104,7 @@ export default class Register extends Component {
                     />
                   </div>
                     <div className='label-input'>
-                      <button onClick={() => this.submit()}>Submit</button>
+                      <button onClick={() => this.submit()}>Register</button>
                     </div>
                 </div>
                 
@@ -106,19 +117,30 @@ export default class Register extends Component {
             </div>
             ):(
               <div className="registration-form">
-                <h1>Welcome {registeredUser.user_name},</h1>
+                <h1>Welcome {loggedInUser.user_name},</h1>
                 <p>You are now registered and ready to begin your FurBook experience.</p>
                 <Link to='/new' ><button>Create New FURRY Profile</button></Link>
-                {/* <h2>You are now registered and ready to create your dog profiles.</h2> */}
+                
               </div>
             )}
     
 
     
-            {/* <h4>Status: {loggedInUser.email ? 'Logged In' : 'Logged Out'}</h4> */}
-            {/* <h4>User Data:</h4> */}
-            {/* <p> {loggedInUser.email ? JSON.stringify(loggedInUser) : 'No User'} </p> */}
+           
           </div>
         );
       }
+      
     }
+
+    const mapStateToProps = reduxState => {
+      return {
+        user: reduxState.user
+      };
+    };
+    
+    const mapDispatchToProps = {
+      setUser: setUser
+    };
+    
+    export default connect(mapStateToProps, mapDispatchToProps)(Register);

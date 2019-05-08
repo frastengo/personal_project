@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import {Link} from 'react-router-dom'
 import './Chatroom.css'
 
+const { HOST_NAME } = process.env
+
 
 class Chatroom extends Component {
   constructor(props) {
@@ -28,7 +30,7 @@ class Chatroom extends Component {
       messagesOfUser: [],
     };
 
-    this.socket = io("www.myfurbook.com");
+    this.socket = io(HOST_NAME);
 
 
     this.socket.on("PM_MESSAGE", messageData => {

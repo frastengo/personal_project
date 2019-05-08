@@ -67,11 +67,11 @@ class Header extends Component {
 
     logout = () => {
         axios.get("/auth/logout").then(() => {
-          this.props.setUser(null)
-          this.setState({
-            loggedInUser: null
-          })
+            this.setState({
+                loggedInUser: null
+            })
         });
+        this.props.setUser(null)
 
     };
 
@@ -114,11 +114,13 @@ class Header extends Component {
                     </section>
                 <div className='logo-container'>
                     <Link to='/'><img className='logo' alt ='FURBook' src={whitelogotest7}/></Link>
+                    
                     <nav>
                         {!user ? (
-                            <div className='nav'>
-                                <Link className='nav-link' to='/register'>Register </Link>
-                                <Link className='nav-link' to='/login'> Login</Link>
+                            
+                            <div id='next-test'>
+                                <Link className='nav-link' to='/register'><button>Register</button> </Link>
+                                <Link className='nav-link' to='/login'> <button>Login</button></Link>
                                 <Link className='home-icon' className='nav-link' to = '/'><img/></Link>
                               
                             </div>
@@ -129,17 +131,19 @@ class Header extends Component {
 account_circle
 </i></h1>
                                 
+                                <div id='next-test'>    
+                                <Link to='/friends' className='nav-link' ><button>Friends </button></Link>
+                                <Link className='nav-link' to = '/messages'>       <button>Messages</button></Link>
                                 
-                                <Link to='/friends' className='nav-link' >Friends </Link>
-                                <Link className='nav-link' to = '/messages'>       Messages</Link>
-                                
-                                <Link className='nav-link' to = '/profile'> Pets</Link>
-                                <Link className='nav-link' to = '/profiles'> Find Friends</Link>
-                                <Link className='nav-link' onClick={this.logout} > Logout</Link>
+                                <Link className='nav-link' to = '/profile'> <button>Pets</button></Link>
+                                <Link className='nav-link' to = '/profiles'><button>Find Friends</button></Link>
+                                <Link className='nav-link' onClick={this.logout} > <button>Logout</button></Link>
+                                </div>
                             </div>
                         )}
                     </nav>
                 </div>
+                
                 <div className="nav-down-container" className='nav-down'>
                     <div className='nav-down'
                                 >
