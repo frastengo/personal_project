@@ -17,13 +17,13 @@ class Chatroom extends Component {
     this.state = {
       message: "",
       messages: [],
-      recipient: "",
+      // recipient: "",
       room_data: [],
       all_messages: [],
       chatroomId: null,
       chatroom: null,
       user1: null,
-      recipient: null,
+      // recipient: null,
       loggedInUser: null,
       messagesOfUser: [],
     };
@@ -130,8 +130,7 @@ class Chatroom extends Component {
     this.setState({
         messages: [...this.state.messages, data],
         all_messages: [...this.state.all_messages, data],
-        messagesOfUser: [...this.state.messagesOfUser, data],
-        message: "" ,
+        messagesOfUser: [...this.state.messagesOfUser, data]
     });
   };
 
