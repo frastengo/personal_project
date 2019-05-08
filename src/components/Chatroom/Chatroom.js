@@ -107,6 +107,11 @@ class Chatroom extends Component {
 
   }
 
+  
+  componentWillUnmount = () => {
+    this.exit()
+  }
+
   componentDidUpdate=(prevProps, prevState) =>{
     if (prevState.loggedInUser !== this.state.loggedInUser){
       this.setState({

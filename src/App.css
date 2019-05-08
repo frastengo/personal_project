@@ -1,22 +1,21 @@
 .App {
     font-family: 'Fjalla One', sans-serif;
     /* height: 100vh; */
-    max-height: 1600px;
+    /* max-height: 1600px; */
     width: 100vw;
     width: 100%;
     background: lightgrey;
+    position: relative;
+    min-height: 100vh;
     /* width: 2000px; */
+}
+
+.main{
+    padding-bottom: 100px;
 }
 
 html {
     background: black;
-}
-
-.footer{
-    height: 100px;
-    width: 100%;
-    background: black;
-
 }
 
 .footer-title i {
@@ -40,22 +39,31 @@ html {
 @media screen and (max-width: 768px) {
     .App {
         width: 768px;
-
+        
     }
 }
 
 @media screen and (max-width: 375px) {
-   .App {
-    /* width: 375px; */
-    /* width: 100%; */
-    /* background: black; */
+    .App {
+        /* width: 375px; */
+        /* width: 100%; */
+        /* background: black; */
+        
+    }
     
-   }
-
    html {
        /* width: 375px; */
        /* width: 100%; */
        
-   }
-       
+    }
+    
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    background: black;
+
 }
