@@ -121,3 +121,8 @@
     justify-content: center;
     
 }
+
+.add-pet-link {
+    text-decoration: none;
+    color: black;
+}

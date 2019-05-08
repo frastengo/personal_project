@@ -7,6 +7,7 @@ import {genders, ageGroups, stateOptions} from './searchData.js'
 import countryList from 'react-select-country-list'
 import {setUser} from './../../ducks/userReducer'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/frastengo2019/image/upload"
 
@@ -323,7 +324,7 @@ class AddPetForm extends Component {
             {this.state.displayProfile.length ? (
                         <div className="mapped-display-profile">
                             {mappedDisplayProfile}
-                            <button className='add-button-class' onClick={this.addProfile}>ADD PET<i class="material-icons">
+                            <button className='add-button-class' onClick={this.addProfile}><Link className='add-pet-link' to='/profile'>ADD PET</Link><i class="material-icons">
 add_circle_outline
 </i></button>
                         </div>
