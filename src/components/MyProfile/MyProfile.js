@@ -135,6 +135,10 @@ class MyProfile extends Component {
             
 
             <div className='home'>
+                <div className='title-container'>
+                    <h1 className='title'>My Pets <i class="material-icons">pets</i> </h1>
+                    
+                </div>
                 {user ? (
                     <div>
                         {!this.state.showUserEdit ? (
@@ -164,6 +168,12 @@ class MyProfile extends Component {
                                 <button onClick={this.showUserEditForm}>CANCEL</button>
                             </div>
                         )}
+                        {!userProfiles ? (
+                            <div className="user-pet-profiles">
+                                <h1 className='title'>You currently do not have any pet profiles</h1>
+                                <Link to='/new'><button onClick={this.displayFormToAdd}>ADD NEW</button></Link>
+                            </div>
+                        ): (
                         <div className="user-pet-profiles">
                             {userProfiles.length > 0 ? (
                                 <h1 className='title'>My Pets</h1>
@@ -176,6 +186,7 @@ class MyProfile extends Component {
                                 <button onClick={this.displayFormToAdd}>CANCEL</button>
                             )}
                         </div>
+                        )}
                         {this.state.showForm ? (
                             <div className='add-pet-form'>
                                 <AddPetForm />

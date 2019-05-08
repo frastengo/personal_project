@@ -119,7 +119,7 @@ pets
               <div className="registration-form">
                 <h1>Welcome {loggedInUser.user_name},</h1>
                 <p>You are now registered and ready to begin your FurBook experience.</p>
-                <Link to='/new' ><button>Create New FURRY Profile</button></Link>
+                <Link to='/new' ><button>Add Pet</button></Link>
                 
               </div>
             )}

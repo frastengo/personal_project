@@ -11,7 +11,7 @@
     flex-direction: column;
     /* flex-wrap: wrap; */
     
-    height: 1650px;
+    height: 900px;
     max-width: 1500px;
     width: 100%;
     margin: 0 auto;
@@ -20,6 +20,7 @@
 }
 
 .user-info{
+    /* display: none; */
     display: flex;
     /* flex-direction: column; */
     width: 100%;
@@ -28,8 +29,8 @@
     justify-content: space-around;
     align-items: center;
     background: rgba(100, 100, 100, 0.7);
-    border-top: 15px solid white;
-    border-radius: 15%;
+    /* border-top: 15px solid white; */
+    /* border-radius: 15%; */
     color: lightgrey;
     height: 80px;
 }

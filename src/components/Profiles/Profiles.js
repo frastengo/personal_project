@@ -368,6 +368,10 @@ class Profiles extends Component {
 
     return (
         <div className="profiles">
+                <div className='title-container'>
+                    <h1 className='title'>Find Friends <i class="material-icons">pets</i> </h1>
+                    
+                </div>
             <div className="select-container">
                 <h1 >Search by </h1>
 
