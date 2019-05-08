@@ -93,10 +93,11 @@ class Home extends Component {
                 </div>
                 <div className='register'>
                     <div className='opacity-container2'>
-                        <Link to='/register' className='link'><h2>Register</h2></Link>
-                        <Link onClick={this.toggleModal}>RegisterToggle</Link>
+                        <Link to='/register' className='link'><h2>Register </h2></Link>
+
+                        {/* <Link onClick={this.toggleModal}>RegisterToggle</Link> */}
                         
-                        <Link to='/login' className='link'><h2>| Login </h2></Link>
+                        <Link to='/login' className='link'><h2>    Login</h2></Link>
                     </div>
                 </div>
                 <div className='find-friends'>

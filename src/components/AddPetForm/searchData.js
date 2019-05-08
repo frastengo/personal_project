@@ -57,7 +57,7 @@ export const stateOptions = [
     { value: 'Alabama', label: 'Alabama' },
     { value: 'Alaska', label: 'Alaska' },
     { value: 'AS', label: 'American Samoa' },
-    { value: 'AZ', label: 'Arizona' },
+    { value: 'Arizona', label: 'Arizona' },
     { value: 'AR', label: 'Arkansas' },
     { value: 'CA', label: 'California' },
     { value: 'CO', label: 'Colorado' },
