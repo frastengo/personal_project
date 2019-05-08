@@ -28,7 +28,7 @@ class Friends extends Component {
             chatroom: null,
           
         }
-        this.socket = io(HOST_NAME);
+        this.socket = io();
     }
 
     getUserAndUserFriends =()=>{

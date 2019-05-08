@@ -136,39 +136,16 @@ class MyProfile extends Component {
 
             <div className='home'>
                 <div className='title-container'>
-                    <h1 className='title'>My Pets <i class="material-icons">pets</i> </h1>
+                {userProfiles.length > 0 ? (
+                    <h1 className='title'>My Pet <i class="material-icons">pets</i> </h1>
+                ):(
+                    <h1 className='title'>My Pet <i class="material-icons">pets</i> </h1>
+                )}
                     
                 </div>
                 {user ? (
-                    <div>
-                        {!this.state.showUserEdit ? (
-                        
-                            <div className="user-info">
-                                <h1>My Information: </h1>
-                                <h2>{user.user_name}</h2>
-                                <h2>{user.email}</h2>
-                                
-                                <button onClick={this.showUserEditForm}>EDIT</button>
-                            </div>
-                        ):(
-                        
-                            <div className="user-info">
-                                <h1>My Information: </h1>
-                                <input 
-                                    placeholder={user.user_name}
-                                    onChange={(e) => this.setState({user_name: e.target.value})}
-                                    
-                                />
-                                <input 
-                                    placeholder={user.email}
-                                    onChange={(e)=> this.setState({email: e.target.value})}
-                                    
-                                />
-                                <button onClick={this.submitUserChanges}>SUBMIT</button>
-                                <button onClick={this.showUserEditForm}>CANCEL</button>
-                            </div>
-                        )}
-                        {!userProfiles ? (
+                    <div>  
+                        {userProfiles ? (
                             <div className="user-pet-profiles">
                                 <h1 className='title'>You currently do not have any pet profiles</h1>
                                 <Link to='/new'><button onClick={this.displayFormToAdd}>ADD NEW</button></Link>

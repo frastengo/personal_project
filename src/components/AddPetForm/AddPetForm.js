@@ -214,9 +214,10 @@ class AddPetForm extends Component {
         console.log('STATE IN ADD PET FORM', this.state)
        return (
            <div className='container-pet-form'>
+           <h1 className='title'>Add Pet <i class="material-icons">pets</i> </h1>
             <div className="add-pet-form-container">
                 <div className='add-pet-form'>
-                    <h1>Add New Pet</h1>
+                    <h1>Complete the form below</h1>
                     <div className='selections'>
                         <input 
                             className='select'

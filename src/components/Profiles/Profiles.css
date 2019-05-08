@@ -15,6 +15,26 @@
 
 }
 
+.select-container button {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 25px;
+    border-radius: 5%;
+    padding: 10px 20px;
+    color: grey;
+    /* margin-bottom: 30px; */
+    /* margin-bottom: 30px; */
+    cursor: pointer;
+}
+
+.select-container button:hover{
+    font-family: 'Fjalla One', sans-serif;
+    /* font-size: 30px; */
+    border-radius: 5%;
+    /* padding: 10px 20px; */
+    color: white;
+    background: black;
+}
+
 .link {
     text-decoration: none;
 }

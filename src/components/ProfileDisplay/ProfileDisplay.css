@@ -74,6 +74,7 @@
 }
 
 .display-profile-image-container img {
+    background-image: contain;
     /* display: block; */
     height: 700px;
     width: 700px;

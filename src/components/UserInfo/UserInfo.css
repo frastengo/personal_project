@@ -1,0 +1,17 @@
+#modal-user-info{
+    
+    align-items: center;
+    font-size: 20px;
+}
+
+.modal-home{
+    font-family: 'Fjalla One', sans-serif;
+}
+
+#modal-user-info button{
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 30px;
+    border-radius: 5%;
+    padding: 10px 15px;
+    color: grey;
+}

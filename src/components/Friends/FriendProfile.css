@@ -81,6 +81,7 @@
 }
 
 .friend-profile-container img {
+    background-image: contain;
     /* display: block; */
     /* MARGIN-RIGHT: 5PX; */
     height: 700px;

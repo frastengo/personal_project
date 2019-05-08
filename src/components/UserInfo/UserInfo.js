@@ -7,6 +7,28 @@ import {getAllProfiles, getAllProfilesByUserId}
 from './../../ducks/profilesReducer'
 import {setUser} from './../../ducks/userReducer'
 
+const buttonStyle = {
+    
+    fontFamily: 'Fjalla One',
+    fontSize: '30px',
+    borderRadius: '5%',
+    padding: '10px 15px',
+    color: 'grey',
+    width: '200px',
+    alignSelf: 'center',
+    marginRight: '10px',
+    marginTop: '20px',
+}
+
+const inputStyle = {
+    fontSize: '30px',
+    fontFamily: 'Fjalla One', 
+    padding: '5px 5px',
+    width: '400px',
+    alignSelf: "center",
+    margin: "20px 20px"
+}
+
 
 
 class UserInfo extends Component {
@@ -133,58 +155,39 @@ class UserInfo extends Component {
         return (
             
 
-            <div className='home'>
+            <div className='modal-home'>
                 {user ? (
                     <div>
+                        <h1 className='title'>My Information</h1>
                         {!this.state.showUserEdit ? (
                         
-                            <div className="user-info">
+                            <div id="modal-user-info">
                                 
-                                <h1>My Information: </h1>
+                                
                                 <h2>{user.user_name}</h2>
                                 <h2>{user.email}</h2>
                                 
-                                <button onClick={this.showUserEditForm}>EDIT</button>
+                                <button style={buttonStyle}onClick={this.showUserEditForm}>EDIT</button>
                             </div>
                         ):(
                         
-                            <div className="user-info">
-                                <h1>My Information: </h1>
-                                <input 
+                            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}className="modal-user-info">
+                                <h1>Edit </h1>
+                                <input style={inputStyle }
                                     placeholder={user.user_name}
                                     onChange={(e) => this.setState({user_name: e.target.value})}
                                     
                                 />
-                                <input 
+                                <input style={inputStyle }
                                     placeholder={user.email}
                                     onChange={(e)=> this.setState({email: e.target.value})}
                                     
                                 />
-                                <button onClick={this.submitUserChanges}>SUBMIT</button>
-                                <button onClick={this.showUserEditForm}>CANCEL</button>
+                                <button style={buttonStyle}onClick={this.submitUserChanges}>SUBMIT</button>
+                                <button style={buttonStyle} onClick={this.showUserEditForm}>CANCEL</button>
                             </div>
                         )}
-                        <div className="user-pet-profiles">
-                            {userProfiles.length > 0 ? (
-                                <h1 className='title'>My Information</h1>
-                            ):(
-                                <h1 className='title'>My Pet</h1> 
-                            )}
-                            {!this.state.showForm ? (
-                                <Link to='/new'><button onClick={this.displayFormToAdd}>ADD NEW</button></Link>
-                            ):(
-                                <button onClick={this.displayFormToAdd}>CANCEL</button>
-                            )}
-                        </div>
-                        {this.state.showForm ? (
-                            <div className='add-pet-form'>
-                                {/* <AddPetForm /> */}
-                            </div>
-                        ):( 
-                            <div className='user-pet-profiles-display'>
-                            {/* {mappedPetProfiles} */}
-                            </div>
-                        )}
+                        
 
                     </div>
                 ):(  

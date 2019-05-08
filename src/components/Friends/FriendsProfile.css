@@ -95,6 +95,7 @@
 }
 
 .friends-profile-container img {
+    background-image: contain;
     /* display: block; */
     height: 300px;
     width: 300px;

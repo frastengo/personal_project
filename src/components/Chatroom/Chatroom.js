@@ -30,7 +30,7 @@ class Chatroom extends Component {
       messagesOfUser: [],
     };
 
-    this.socket = io(HOST_NAME);
+    this.socket = io();
 
 
     this.socket.on("PM_MESSAGE", messageData => {

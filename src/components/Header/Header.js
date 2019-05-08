@@ -24,13 +24,27 @@ const customStyles = {
       bottom                : 'auto',
       marginRight           : '-50%',
       transform             : 'translate(-50%, -50%)',
-      height: '900px',
-      width: '900px',
+      height: '700px',
+      width: '700px',
       borderRadius: '3%',
-      backgroundColor: 'rgba(100, 100, 100, 0.7)'
-
+      backgroundColor: 'rgba(100, 100, 100, 0.7)',
+      fontFamily: 'Fjalla One', 
+      textAlign: 'center',
+      fontSize: '20px'
     }
-  };
+  }
+  const buttonStyle = {
+    
+    fontFamily: 'Fjalla One',
+    fontSize: '30px',
+    borderRadius: '5%',
+    padding: '10px 15px',
+    color: 'grey',
+    width: '100px',
+    alignSelf: 'center',
+    marginRight: '10px',
+    marginTop: '20px',
+}
 
 
 class Header extends Component {
@@ -108,7 +122,7 @@ class Header extends Component {
                         >
                             
                             <UserInfo />
-                            <button onClick={this.toggleModal}>Exit</button>
+                            <button style={buttonStyle}onClick={this.toggleModal}>EXIT</button>
                         </Modal>
 
                     </section>
