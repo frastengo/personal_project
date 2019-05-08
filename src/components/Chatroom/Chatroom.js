@@ -28,7 +28,7 @@ class Chatroom extends Component {
       messagesOfUser: [],
     };
 
-    this.socket = io("localhost:4000");
+    this.socket = io("www.myfurbook.com");
 
 
     this.socket.on("PM_MESSAGE", messageData => {
