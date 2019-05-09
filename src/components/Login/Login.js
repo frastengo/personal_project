@@ -83,7 +83,7 @@ class Login extends Component {
                 <h1>Welcome back FUR Parent, <br/>login to continue...</h1>
                 <form className='form'>
                   <div className='label-input'>
-                    <label>Email: </label>
+                    <label><h1>Email:</h1> </label>
                     <input
                       value={email}
                       onChange={e => this.setState({ email: e.target.value })}
@@ -92,7 +92,7 @@ class Login extends Component {
                     />
                   </div>
                   <div className='label-input'>
-                    <label>Password: </label>
+                    <label><h1>Password:</h1> </label>
                     <input
                       value={password}
                       type="password"

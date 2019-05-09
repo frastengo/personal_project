@@ -23,6 +23,38 @@ html {
     padding-left: 30px;
 }
 
+#next-test-nav-down-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: fixed; */
+    background: red;
+    height: 70px;
+    width: 414px;
+    overflow: scroll;
+    /* padding-bottom: 400px; */
+}
+
+#next-test-nav-down-footer button{
+    font-size: 30px;
+    width: 250px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 30px;
+    border-radius: 5%;
+    padding: 10px 30px;
+    color: white;
+    background: black;
+}
+#next-test-nav-down-footer button:hover{
+    font-size: 30px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 30px;
+    border-radius: 5%;
+    padding: 10px 30px;
+    color: white;
+    background: black;
+}
+
 .footer{
     /* padding-top: 800px; */
 }
@@ -47,9 +79,9 @@ html {
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
     .App {
-        /* width: 375px; */
+        width: 414px;
         /* width: 100%; */
         /* background: black; */
         

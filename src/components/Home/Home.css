@@ -174,15 +174,18 @@ h2 {
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
+    main{
+        width: 414px;
+    }
     h2 {
-        /* font-size: 40px; */
+        font-size: 30px;
         /* text-shadow: 1px 1px 1px black; */
         /* color: white;   */
         
     }
     .home {
-        /* width: 375px; */
+        width: 414px;
         /* height: 1500px; */
         /* margin: 0 auto; */
         /* background: black; */
@@ -196,7 +199,7 @@ h2 {
     .register {
         
         /* height: 500px; */
-        /* width:100%; */
+        width:414px;;
         /* margin: 0 auto; */
         /* background-size: cover; */
         /* border: none; */
@@ -205,16 +208,18 @@ h2 {
 
     .welcome {
         height: 500px;
-        width: 100%;
+        width: 414px;
         margin: 0 auto;
         border: none;
     }
 
     .find-friends{
         height:500px;
-        width: 100%;
+        width: 414px;
         margin: 0 auto;
         border: none;
     }
 }
+
+
 

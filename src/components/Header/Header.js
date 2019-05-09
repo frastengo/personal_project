@@ -158,18 +158,23 @@ account_circle
                     </nav>
                 </div>
                 
-                <div className="nav-down-container" className='nav-down'>
-                    <div className='nav-down'
-                                >
-                                    
-                                    <Link className='link' to = '/'> Home</Link>
-                                    <Link className='link' to = '/new'>       New</Link>
-                                    <Link className='link' onClick={this.logout} >Logout</Link>
-                                    <Link to='/friends' className='link' >Friends</Link>
-                                    <Link className='link' to = '/profile'>My Pets</Link>
-                                    <Link className='link' to = '/profiles'>Find Friends</Link>
-                                </div>
-                            </div>
+                {user ? (
+                <div id='next-test-nav-down'>    
+                        <Link to='/friends' className='nav-link' ><button>Friends </button></Link>
+                        <Link className='nav-link' to = '/messages'>       <button>Messages</button></Link>
+                                
+                         <Link className='nav-link' to = '/profile'> <button>Pets</button></Link>
+                        <Link className='nav-link' to = '/profiles'><button>Find</button></Link>
+                        <Link className='nav-link' onClick={this.logout} > <button>Logout</button></Link>
+                </div>
+                ):(
+                    
+                <div id='next-test-nav-down-register-login'>    
+                        <Link to='/register' className='nav-link' ><button>Register </button></Link><i class="material-icons">pets</i>
+                        <Link className='nav-link' to = '/login'>       <button>Login</button></Link>
+                </div>
+                )}
+                
                 {/* <div className='header-nav-trial'>
                     <h1>HEllo</h1>
                     <div className='nav'>

@@ -189,3 +189,52 @@
     
 }
 
+@media screen and (max-width: 414px) {
+    .login-form{
+        width: 100%;
+        max-width: 414px;
+        height: 100%;
+        border-radius: 0%;
+        border: none;
+        padding: 2px 2px;
+        justify-content: flex-start;
+        /* align-items: flex-start; */
+        
+
+    }
+
+    .login-container-1{
+        height:900px;
+    }
+    .login-container{
+        padding-top: 0px;
+        height: 800px;
+        
+        border: none;
+    }
+
+    .login-form h1 {
+    
+        font-size: 30px;
+        text-shadow: 2px 2px 2px black;
+        text-align: center;
+        
+    }
+
+    .label-input input {
+        /* margin-right: 10px; */
+        font-size: 30px;
+        margin-bottom: 50px;
+        /* border-radius: 1%; */
+        font-family: 'Fjalla One', sans-serif;
+        /* text-shadow: 1px 1px 1px lightgrey; */
+        padding: 10px 5px;
+        
+        
+    }
+    form{
+        padding-left: 20px;
+    }
+    
+}
+
