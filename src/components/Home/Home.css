@@ -186,6 +186,9 @@ h2 {
     }
     .home {
         width: 414px;
+        height: 600px;
+        
+        
         /* height: 1500px; */
         /* margin: 0 auto; */
         /* background: black; */
@@ -198,8 +201,8 @@ h2 {
 
     .register {
         
-        /* height: 500px; */
-        width:414px;;
+        height: 400px;
+        width:414px;
         /* margin: 0 auto; */
         /* background-size: cover; */
         /* border: none; */
@@ -207,17 +210,18 @@ h2 {
     }
 
     .welcome {
-        height: 500px;
+        height: 400px;
         width: 414px;
         margin: 0 auto;
         border: none;
     }
 
     .find-friends{
-        height:500px;
+        height:400px;
         width: 414px;
         margin: 0 auto;
         border: none;
+        background-size: cover;
     }
 }
 

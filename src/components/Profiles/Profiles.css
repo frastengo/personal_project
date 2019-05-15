@@ -115,7 +115,25 @@
     margin-bottom: 900px;
 }
 
-@media screen and (max-width: 768px) {
+.button-show-all-for-mobile button{
+    display: none;
+    font-family: 'Fjalla One', sans-serif;
+    
+    cursor: pointer;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 20px;
+    border-radius: 5%;
+    padding: 10px 10px;
+    color: grey;
+
+}
+
+.button-show-all-for-mobile button:hover{
+    color: white;
+    background: black;
+}
+
+@media screen (max-width: 768px) and (min-width: 415px) {
     .profiles {
         max-width: 768px;
         width: 100%;
@@ -174,4 +192,52 @@
         
     }
 
+}
+
+@media screen and (max-width: 414px) {
+    .title {
+        margin-top: 0px;
+        
+    }
+
+    .profiles {
+        width: 100%;
+    }
+
+    .mapped-profiles{
+        width: 100%;
+        max-width: 414px;
+    }
+
+    #profile {
+        width: 100%;
+    }
+
+    .select-container h1{
+        display: none;
+    }
+
+    .select-container button {
+        display: none;
+    }
+    .button-show-all-for-mobile button{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        
+    }
+
+
+    .select{
+        font-size: 20px;
+    }
+
+    .button-show-all-for-mobile{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 414px;
+        
+    }
+    
 }

@@ -76,7 +76,7 @@ pets
 </i></h1>
                 <div className='form'>
                   <div className='label-input'>
-                    <label>Name: </label>
+                    <label><h1>Name:</h1> </label>
                     <input
                         value={user_name}
                         onChange={e => this.setState({ user_name: e.target.value })}
@@ -85,7 +85,7 @@ pets
                       />
                   </div>
                   <div className='label-input'>
-                    <label>Email: </label>
+                    <label><h1>Email:</h1> </label>
                     <input
                       
                       value={email}
@@ -95,7 +95,7 @@ pets
                     />
                   </div>
                   <div className='label-input'>
-                    <label>Password: </label>
+                    <label><h1>Password:</h1> </label>
                     <input
                       value={password}
                       type="password"

@@ -36,7 +36,7 @@
 
 .go {
     border: 3px solid white;
-    margin: 10px;
+    
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -52,4 +52,23 @@
 .go h3{
     FONT-SIZE: 35PX;
     letter-spacing: 1px;
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 414px) {
+   .go{
+    margin: 5px 5px;
+    padding: 0px 10px;
+   }
+
+   .go h3{
+    FONT-SIZE: 30PX;
+    letter-spacing: 1px;
+    }
+    .chatrooms-container{
+        margin-top: 600px;
+    }
 }

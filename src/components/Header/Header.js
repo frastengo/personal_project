@@ -141,7 +141,7 @@ class Header extends Component {
                         ) : (
                             <div className='nav'
                             >
-                                <h1 onClick={this.toggleModal}className='nav-link-name'>{user.user_name} logged in <i class="material-icons">
+                                <h1 onClick={this.toggleModal}className='nav-link-name'>{user.user_name}<i class="material-icons">
 account_circle
 </i></h1>
                                 

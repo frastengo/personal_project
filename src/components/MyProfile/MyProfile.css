@@ -145,3 +145,27 @@
     }
 
 }
+
+@media screen and (max-width: 414px) {
+    .user-pet-profiles h1 {
+        font-size: 20px;
+    }
+
+    .user-pet-profiles{
+        max-width: 414px;
+    }
+    .user-pet-profiles button{
+        margin-right: 0px;
+        
+    }
+    .user-pet-profiles-display{
+        max-width: 414px;
+        overflow: none;
+        
+    }
+
+    .user-info{
+        max-width: 414px;
+    }
+
+}

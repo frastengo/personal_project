@@ -273,3 +273,31 @@
 
 }
 }
+
+@media screen and (max-width: 414px) {
+    .friend-profile-container {
+        max-width: 414px;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .friend-profile {
+        max-width: 414px;
+    }
+    .friend-profile-container img {
+        height: 414px;
+        width: 414px;
+        border: 5px solid white;
+    }
+    .friend-name {
+        width: 414px;
+    }
+    .friend-profile .friend-info {
+        width: 414px;
+    }
+    .friend-info h3{
+        font-size: 25px;
+    }
+    .friend-name h1{
+        font-size: 45px;
+    }
+}

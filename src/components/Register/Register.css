@@ -66,7 +66,7 @@
     /* margin-top: 200px; */
     width: 100%;
     max-width: 1000px;
-    height: 500px;
+    height: 700px;
     /* margin: 0 auto; */
     
     /* margin: 0 auto; */
@@ -88,8 +88,8 @@
 
 .form {
     display: flex;
-    /* flex-direction: column; */
-    flex-wrap: wrap;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
     justify-content: center;
     align-items: center;
     color: white;
@@ -140,7 +140,11 @@
     }
 
     .registration-form {
-        flex-direction: column;
+        /* flex-direction: column; */
+    }
+
+    .registration-container-1{
+        height: 1700px;
     }
 
     .registration-form{
@@ -150,12 +154,13 @@
         align-items: center;
         
         background-size: cover;
-        height: 900px;
+        height: 100%;
         background: rgba(100, 100, 100, 0.4);
         color: white;
     
         width: 100%;
         max-width: 1500px;
+        border-radius: 0%;
         
         
       
@@ -165,6 +170,68 @@
 
     .login-form h1 {
         text-align: center;
+    }
+    
+}
+
+@media screen and (max-width: 414px) {
+    .registration-form{
+        width: 100%;
+        max-width: 414px;
+        height: 100%;
+        /* height: 200px; */
+        border-radius: 0%;
+        border: none;
+        padding: 2px 2px;
+        justify-content: flex-start;
+        /* align-items: flex-start; */
+        
+
+    }
+
+    .registration-container-1{
+        height:1200px;
+        overflow: scroll;
+        padding-bottom: 150px;
+    }
+    .registration-container{
+        padding-top: 0px;
+        height: 100%;
+        
+        
+        border: none;
+        overflow: scroll;
+    }
+
+    .registration-form h1 {
+    
+        font-size: 30px;
+        text-shadow: 2px 2px 2px black;
+        text-align: center;
+        
+    }
+
+    .label-input {
+        margin-top: 0px;
+    }
+
+    .label-input input {
+        /* margin-right: 10px; */
+        font-size: 30px;
+        margin-bottom: 0px;
+       
+        /* border-radius: 1%; */
+        font-family: 'Fjalla One', sans-serif;
+        /* text-shadow: 1px 1px 1px lightgrey; */
+        padding: 10px 5px;
+        margin-top: 0px;
+        
+        
+    }
+    form{
+        height: 100%;
+        overflow: scroll;
+        /* padding-left: 20px; */
     }
     
 }

@@ -403,6 +403,7 @@ class Profiles extends Component {
 
 
             </div>
+            <div className='button-show-all-for-mobile'><button onClick={this.getAllProfiles}>Show All</button></div>
             
             <div className="mapped-profiles">{mappedProfiles} </div>
             <div className="friends-display-section">

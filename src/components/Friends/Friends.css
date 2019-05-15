@@ -92,11 +92,11 @@
     }
     .title{
         font-size: 30px;
-        margin-top: 50px;
-        background: lightgrey;
-        color: grey;
+        margin-top: 10px;
+        background: grey;
+        color: white;
         border: none;
-        /* width: 768px; */
+        width: 100%;
         /* margin: 0 auto; */
     }
 
@@ -120,5 +120,16 @@
     }
 
     
+
+}
+
+@media screen and (max-width: 414px) {
+    .mapped-current-friend{
+        max-width: 414px;
+    }
+
+    .mapped-friends{
+        height: 300px;
+    }
 
 }

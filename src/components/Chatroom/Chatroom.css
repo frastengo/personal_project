@@ -47,12 +47,12 @@
 
 .chatroom p {
     /* padding: 5px 5px; */
-    border: 4px solid GREY;
+    border: 2px solid black;
     border-radius: 15%;
     width: 100%;
     max-width: 300px;
     flex-wrap: wrap;
-    background-color: white;
+    /* background-color: white; */
     padding: 20px 20px;
     box-shadow: 5px 5px 5px grey;
     FONT-SIZE: 25PX;
@@ -86,7 +86,7 @@
 .receiver{
     align-self: flex-end;
     background: grey;
-    color:white;
+    color:black;
 }
 
 .message-submit-form{
@@ -127,4 +127,23 @@
 .title-container-chatroom button:hover {
     background: black;
     color: white;
+}
+
+@media screen and (max-width: 414px) {
+    .chatroom{
+        max-width: 414px
+    }
+
+    .chatroom p {
+        /* padding: 5px 5px; */
+        border: 2px solid black;
+        border-radius: 15%;
+        width: 45%;
+        max-width: 300px;
+        flex-wrap: wrap;
+        /* background-color: white; */
+        padding: 10px 10px;
+        box-shadow: 5px 5px 5px grey;
+        FONT-SIZE: 20PX;
+    }
 }
