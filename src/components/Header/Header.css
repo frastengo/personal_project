@@ -69,6 +69,10 @@ header{
     padding: 10px 30px;
     color: grey;
 }
+#nav-login-register nav{
+    width: 1000px;
+    
+}
 
 #next-test-nav-down button {
     font-size: 30px;
@@ -92,7 +96,7 @@ header{
 
 #next-test{
     display:flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     
     width: 100%;

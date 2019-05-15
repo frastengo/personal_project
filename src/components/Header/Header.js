@@ -129,13 +129,13 @@ class Header extends Component {
                 <div className='logo-container'>
                     <Link to='/'><img className='logo' alt ='FURBook' src={whitelogotest7}/></Link>
                     
-                    <nav>
+                    <nav id="nav-login-register">
                         {!user ? (
                             
                             <div id='next-test'>
                                 <Link className='nav-link' to='/register'><button>Register</button> </Link>
                                 <Link className='nav-link' to='/login'> <button>Login</button></Link>
-                                <Link className='home-icon' className='nav-link' to = '/'><img/></Link>
+                                
                               
                             </div>
                         ) : (
