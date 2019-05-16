@@ -18,7 +18,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 
 const customStyles = {
     content : {
-      top                   : '50%',
+      top                   : '500px',
       left                  : '50%',
       right                 : 'auto',
       bottom                : 'auto',
