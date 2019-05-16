@@ -28,7 +28,7 @@ header{
 
 }
 .logo-container nav {
-    width: 1150px;
+    /* width: 1150px; */
 }
 #next{
     display:flex;
