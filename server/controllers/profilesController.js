@@ -63,6 +63,7 @@ module.exports = {
     deleteProfile: (req, res) => {
         const db = req.app.get('db')
         const {id} = req.params
+        console.log(id, 'id at delete')
         db.delete_profile([id]).then(profiles => {
             res.status(200).send(profiles)
         }).catch(err => console.log(err.detail))

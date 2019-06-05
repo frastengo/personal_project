@@ -176,6 +176,7 @@ class Profiles extends Component {
     
     addFriend = (profileId) => {
         console.log('profileID in add friend in PROFILES', profileId)
+        //get user where profileId matches
         const { loggedInUserId } = this.state
         console.log('logged in user id in profiles', loggedInUserId)
         axios.post(`/api/friend/${loggedInUserId}?id=${profileId}`).then(res =>{
