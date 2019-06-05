@@ -1,3 +1,4 @@
+?
 # FURBook
 
 ## frontend
@@ -54,6 +55,8 @@ const initialState = {
 ## backend
 
 ### dependencies
+
+npm i massive express bcrypt axios redux redux-promise-middleware react-redux react-router-dom express-session dotenv concurrently
 
 npm i massive express bcrypt axios redux redux-promise-middleware react-redux react-router-dom express-session dotenv concurrently
 

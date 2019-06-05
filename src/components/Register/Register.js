@@ -28,17 +28,6 @@ class Register extends Component {
         })
       }
     
-      // login() {
-      //   let { email, password } = this.state
-      //   axios.post('/login', {email, password}).then(res => {
-      //     this.setState({
-      //       loggedInUser: res.data,
-      //       email: '',
-      //       password: ''
-      //     })
-      //   })
-      // }
-    
       submit() {
         let { user_name, email, password } = this.state
         axios.post('/auth/register', {user_name, email, password}).then(res => {
@@ -70,10 +59,10 @@ class Register extends Component {
             <div>
               <div className="registration-form">
                 <h1 className='welcome-icons'><i class="material-icons">
-pets
-</i>Welcome in Fur Parent <i class="material-icons">
-pets
-</i></h1>
+                  pets
+                  </i>Welcome in Fur Parent <i class="material-icons">
+                  pets
+                  </i></h1>
                 <div className='form'>
                   <div className='label-input'>
                     <label><h1>Name:</h1> </label>
@@ -107,12 +96,6 @@ pets
                       <button onClick={() => this.submit()}>Register</button>
                     </div>
                 </div>
-                
-                {/* {loggedInUser.email ? (
-                  <button onClick={() => this.logout()}>Logout</button>
-                ) : (
-                  <button onClick={() => this.login()}>Login</button>
-                )} */}
               </div>
             </div>
             ):(

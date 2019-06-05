@@ -9,6 +9,7 @@ const fC = require('./controllers/friendsController')
 const cC = require('./controllers/chatController')
 const bodyParser = require('body-parser')
 const cloudinary = require('cloudinary')
+
 const socket = require("socket.io");
 
 
@@ -73,7 +74,7 @@ app.get('/auth/user', (req, res) => {
 app.put('/auth/user/:id', uC.edit)
 // app.route('/session').get(uC.getSession)
 
-//profiles
+//profiles`
 
 //get all profiles
 app.get('/api/profiles', pC.getAllProfiles)
