@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import {Link} from 'react-router-dom'
 import './Chatroom.css'
 
-const { HOST_NAME } = process.env
+
 
 
 class Chatroom extends Component {
@@ -196,8 +196,8 @@ pets
                   <Link to='/friends'><button onClick={this.exit}>Exit</button></Link>
                 </div>
                 
-                <div>User 1 and User 2 info</div>
-                <Link to='/friends'><button onClick={this.exit}>Exit</button></Link>
+                {/* <div>User 1 and User 2 info</div> */}
+                {/* <Link to='/friends'><button onClick={this.exit}>Exit</button></Link> */}
                 {this.state.messagesOfUser ? (
                   <div>
                     <div className='messages-container' ref={(div) => {this.messageList = div;}}> messages will display here: {mappedMessages}

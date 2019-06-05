@@ -1,3 +1,9 @@
-select * from users
-join profiles on profiles.profile_id = friends.profile_id
-where friends.logged_id = $1;
+delete from friends
+where profile_id = $1;
+
+
+delete from profiles
+where profile_id = $1;
+
+
+select * from profiles;

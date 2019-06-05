@@ -61,8 +61,8 @@ app.use( express.static( `${__dirname}/../build` ) );
 
 app.route('/auth/register').post(uC.register);
 app.route('/auth/login').post(uC.login);
-
 app.use(sessionCheck)
+
 app.route('/auth/logout').get(uC.logout);
 
 // app.use(sessionCheck)
