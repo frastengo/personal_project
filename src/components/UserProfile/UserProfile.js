@@ -105,6 +105,35 @@ class UserProfile extends Component {
         })
     }
 
+    delete = () => {
+        const {profileId} = this.state
+        console.log(profileId, 'profile id at delete')
+
+        axios.delete(`/api/profile/${profileId}`).then(res=>{
+            console.log('RESDATA AT delete',res.data)
+            this.props.getUserAndProfiles()
+            this.setState({
+                editMode: !this.state.editMode,
+                profileId: null,
+    
+                name: null,
+                
+                gender: null,
+                age: null,
+                city: null,
+                country: null,
+                state: null,
+                favorites: null,
+                zipcode: null,
+                breed: null,
+                
+                image: null,
+                
+            })
+        })
+
+    }
+
     showEditFormDog = (dog) =>{
         console.log(dog)
         this.setState({
