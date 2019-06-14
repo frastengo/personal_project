@@ -11,12 +11,14 @@ describe("integration test", () => {
       return (db = theDb);
     });
   });
+
   
   describe("submit (create new user) function", () => {
 
     it('should send new user to db', () => {
         // console.log(db)
-        aC.addProfile(db, {
+
+        return aC.addProfile(db, {
             user_id: 1,
             name: 'Batman',
             breed: 'Pitbull',
@@ -27,7 +29,10 @@ describe("integration test", () => {
             country: 'United States',
             city: "Phoenix",
             state: "Arizona",
-            zipcode: 12345
+            zipcode: 1234
+
+
+
         }).then(newProfile => {
             console.log(newProfile)
             expect(newProfile.length).not.toEqual(0);
@@ -44,6 +49,7 @@ describe("integration test", () => {
                 state: expect.any(String),
                 zipcode: expect.any(Number)
             });
+
         })
     })
   })

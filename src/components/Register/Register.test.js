@@ -16,7 +16,7 @@ describe("integration test", () => {
 
     it('should send new user to db', () => {
         // console.log(db)
-        rC.submit(db, {
+        return rC.submit(db, {
             email: 'frastengo@gmail.com',
             password: '1234',
             user_name: 'Francisca'
