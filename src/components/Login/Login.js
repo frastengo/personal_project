@@ -80,7 +80,7 @@ class Login extends Component {
             {!user ? (
             <div>
               <div className="login-form">
-                <h1>Welcome back FUR Parent, <br/>login to continue...</h1>
+                <h1>Welcome back, FUR Parent! <br/>login to continue...</h1>
                 <form className='form'>
                   <div className='label-input'>
                     <label><h1>Email:</h1> </label>

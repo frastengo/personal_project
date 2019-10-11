@@ -60,12 +60,12 @@ class Register extends Component {
               <div className="registration-form">
                 <h1 className='welcome-icons'><i class="material-icons">
                   pets
-                  </i>Welcome in Fur Parent <i class="material-icons">
+                  </i>Welcome in, Fur Parent!<i class="material-icons">
                   pets
                   </i></h1>
                 <div className='form'>
                   <div className='label-input'>
-                    <label><h1>Name:</h1> </label>
+                    <label><h4>Name:</h4> </label>
                     <input
                         value={user_name}
                         onChange={e => this.setState({ user_name: e.target.value })}
@@ -74,7 +74,7 @@ class Register extends Component {
                       />
                   </div>
                   <div className='label-input'>
-                    <label><h1>Email:</h1> </label>
+                    <label><h4>Email:</h4> </label>
                     <input
                       
                       value={email}
@@ -84,7 +84,7 @@ class Register extends Component {
                     />
                   </div>
                   <div className='label-input'>
-                    <label><h1>Password:</h1> </label>
+                    <label><h4>Password:</h4> </label>
                     <input
                       value={password}
                       type="password"
@@ -92,10 +92,10 @@ class Register extends Component {
                       placeholder="password"
                     />
                   </div>
-                    <div className='label-input'>
+                </div>
+                <div className='label-input'>
                       <button onClick={() => this.submit()}>Register</button>
                     </div>
-                </div>
               </div>
             </div>
             ):(
